@@ -12,7 +12,7 @@ public class Solution3 {
 
     private ListNode helper(ListNode head, ListNode newHead) {
         if (head == null) return newHead;
-        var next = head.next;
+        ListNode next = head.next;
         head.next = newHead;
         return helper(next, head);
     }

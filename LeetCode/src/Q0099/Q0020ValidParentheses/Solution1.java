@@ -14,13 +14,13 @@ public class Solution1 {
 
     @Test
     public void test1() {
-        var s = "()[]{}";
+        String s = "()[]{}";
         assertTrue(isValid(s));
     }
 
     @Test
     public void test2() {
-        var s = "([)]";
+        String s = "([)]";
         assertFalse(isValid(s));
     }
 
