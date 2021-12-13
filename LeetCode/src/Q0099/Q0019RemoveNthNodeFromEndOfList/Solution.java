@@ -14,7 +14,8 @@ import DataStructure.ListNode;
   */
 public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        ListNode dummy = new ListNode(0, head);   // 转换为带头结点
+        // 挂头结点的原因，若不挂，当n=1时，second.next 之后不会再有 next
+        ListNode dummy = new ListNode(0, head);
         ListNode first = dummy.next, second = dummy;
         // first 先走n步
         for (int i = 0; i < n; i++) first = first.next;
