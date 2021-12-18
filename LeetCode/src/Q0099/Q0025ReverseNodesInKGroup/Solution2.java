@@ -4,63 +4,30 @@ import DataStructure.ListNode;
 
 public class Solution2 {
     /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     * int val;
-     * ListNode next;
-     * ListNode() {}
-     * ListNode(int val) { this.val = val; }
-     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     * }
+     * recursion
+     *
+     * @param head
+     * @param k
+     * @return
      */
     public ListNode reverseKGroup(ListNode head, int k) {
-        if (head == null)
-            return null;
-        if (k == 1)
-            return head;
-        ListNode ans = head;
-        ListNode pre = head;
-        ListNode qhead = head;
-        ListNode tail = head;
-        int kk;
-        boolean flag = false;
-        while (true) {
-            kk = k;
-            while (qhead != null && kk != 0) {
-                qhead = qhead.next;
-                kk--;
-                if (kk == 1 && flag) {
-                    tail.next = qhead;
-                }
-            }
-            if (kk != 0)
-                break;
-            tail = pre;
-            pre = reverseList(pre, qhead);
-            if (!flag) {
-                ans = pre;
-                tail.next = null;
-            }
-            pre = qhead;
-            flag = true;
+        ListNode cur = head;
+        int count = 0;
+        while (cur != null && count != k) { // find the k + 1 node
+            cur = cur.next;
+            count++;
         }
-        if (flag)
-            tail.next = pre;
-        return ans;
 
-    }
-
-    public ListNode reverseList(ListNode pre, ListNode qhead) {
-        if (pre == null || pre.next == null)
-            return pre;
-        ListNode temp1 = pre;
-        ListNode temp2 = pre.next;
-        while (temp2 != qhead) {
-            pre = temp2;
-            temp2 = pre.next;
-            pre.next = temp1;
-            temp1 = pre;
+        if (count == k) {   // if k + 1 node is found
+            cur = reverseKGroup(cur, k);       // reverse list with k+1 node as head
+            while (count-- > 0) {       // reverse current k-group
+                ListNode p = head.next;
+                head.next = cur;
+                cur = head;
+                head = p;
+            }
+            head = cur;
         }
-        return pre;
+        return head;
     }
 }
