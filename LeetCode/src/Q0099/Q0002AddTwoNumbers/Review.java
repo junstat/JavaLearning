@@ -32,6 +32,15 @@ public class Review {
         assertEquals(addTwoNumbers(l1, l2), expect);
     }
 
+    @Test
+    public void test2() {
+        ListNode l1 = ListNodes.createListFromArray(new int[]{9, 9, 9, 9, 9, 9, 9});
+        ListNode l2 = ListNodes.createListFromArray(new int[]{9, 9, 9, 9});
+        ListNode expect = ListNodes.createListFromArray(new int[]{8, 9, 9, 9, 0, 0, 0, 1});
+        assertEquals(addTwoNumbers(l1, l2), expect);
+    }
+
+
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
         return null;

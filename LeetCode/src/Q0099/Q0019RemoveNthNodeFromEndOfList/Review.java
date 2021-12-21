@@ -4,8 +4,18 @@ import DataStructure.ListNode;
 import Utils.ListNodes;
 import org.junit.Test;
 
+import javax.swing.plaf.ListUI;
+
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Given the head of a linked list, remove the nth node from the end of the list and return its head.
+ * <p>
+ * Input: head = [1,2,3,4,5], n = 2
+ * Output: [1,2,3,5]
+ * <p>
+ * 核心思路: 找到倒数第n个结点的前驱pre， pre.next = pre.next.next 即可
+ */
 public class Review {
     @Test
     public void test1() {
