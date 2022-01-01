@@ -1,4 +1,5 @@
-package Q0099.Q0004MedianofTwoSortedArrays;/*
+package Q0099.Q0004MedianofTwoSortedArrays;
+/*
     分析：
       <1.> 只考虑一个有序数组的时候，找中位数，我们做了什么？
            中位数定义: 中位数（又称中值，英语：Median），统计学中的专业名词，代表一个样本、种群或概率分布中的一个数值，
@@ -19,11 +20,10 @@ package Q0099.Q0004MedianofTwoSortedArrays;/*
            nums2: 1  2       7 |      10 11 12
            观察发现:
            a. 在隔断左侧有: 1 2 3 5 7 共5个数，右侧有: 8 9 10 11 12 共5个数 => 隔断把序列分为size为5的两part。
-           b. nums1的隔断cut1两边的值为，左l1 = 5, r1=8; nums2的隔断 cur2两边l2=7, r2=10。=> l1 <= r2 && l2 <= r1
+           b. nums1的隔断cut1两边的值为，左l1 = 5, r1=8; nums2的隔断 cut2两边l2=7, r2=10。=> l1 <= r2 && l2 <= r1
            c. 因为len(nums1) + len(nums2) = 10为偶数 => 中位数为(7+8)*0.5 = 7.5
            于是，问题变为求解满足上述a. b. c. 的cur1,cu2的位置。进一步地，使用二分查找加快查找速度。
  */
-
 public class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) return findMedianSortedArrays(nums2, nums1);
@@ -32,7 +32,7 @@ public class Solution {
         int start = 0, end = nums1.length;
         while (start <= end) {
             int cut1 = start + (end - start) / 2;
-            int cut2 = len / 2 - cut1; // 根据 a. 及 cut1 => cut2
+            int cut2 = len / 2 - cut1; // 根据 a. 及 cut1 => cut2，隔断两侧数量相等
             double l1 = (cut1 == 0) ? Integer.MIN_VALUE : nums1[cut1 - 1];
             double l2 = (cut2 == 0) ? Integer.MIN_VALUE : nums2[cut2 - 1];
             double r1 = (cut1 == nums1.length) ? Integer.MAX_VALUE : nums1[cut1];
@@ -40,13 +40,8 @@ public class Solution {
             if (l1 > r2) end = cut1 - 1;
             else if (l2 > r1) start = cut1 + 1;
             else {
-                if (len % 2 == 0) {
-                    l1 = Math.max(l1, l2);
-                    r1 = Math.min(r1, r2);
-                    return (l1 + r1) / 2;
-                } else {
-                    return Math.min(r1, r2);
-                }
+                if (len % 2 == 0) return (Math.max(l1, l2) + Math.min(r1, r2)) / 2;
+                else return Math.min(r1, r2);
             }
         }
         return -1;

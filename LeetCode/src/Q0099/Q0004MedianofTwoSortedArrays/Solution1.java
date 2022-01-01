@@ -9,7 +9,6 @@ public class Solution1 {
      * @return int整型
      */
     public int findMedianInTwoSortedArray(int[] arr1, int[] arr2) {
-        // write code here
         if (null == arr1 || null == arr2 || arr1.length != arr2.length)
             throw new RuntimeException("Invalid input array!");
 

@@ -1,5 +1,11 @@
 package Q0099.Q0011ContainerWithMostWater;
 
+import org.junit.Test;
+
+import static java.lang.Math.max;
+import static java.lang.Math.min;
+import static org.junit.Assert.assertEquals;
+
 /*
    Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
 
@@ -27,7 +33,21 @@ package Q0099.Q0011ContainerWithMostWater;
         0 <= height[i] <= 3 * 10^4
  */
 public class Review {
+
+    @Test
+    public void test1() {
+        int[] height = new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7};
+        assertEquals(maxArea(height), 49);
+    }
+
+    @Test
+    public void test2() {
+        int[] height = new int[]{1, 1};
+        assertEquals(maxArea(height), 1);
+    }
+
     public int maxArea(int[] height) {
+
         return 0;
     }
 }

@@ -33,11 +33,8 @@ public class Solution {
                     while (low < high && nums[high] == nums[high - 1]) high--;
                     low++;
                     high--;
-                } else if (nums[low] + nums[high] < -nums[i]) { // small
-                    low++;
-                } else { // large
-                    high--;
-                }
+                } else if (nums[low] + nums[high] < -nums[i]) low++;    // small
+                else high--;    // large
             }
         }
         return res;
