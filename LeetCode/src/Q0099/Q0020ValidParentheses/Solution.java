@@ -10,18 +10,6 @@ import static org.junit.Assert.assertTrue;
 
 public class Solution {
 
-    @Test
-    public void test1() {
-        String s = "()[]{}";
-        assertTrue(isValid(s));
-    }
-
-    @Test
-    public void test2() {
-        String s = "([)]";
-        assertFalse(isValid(s));
-    }
-
     public boolean isValid(String s) {
         Deque<Character> brackets = new ArrayDeque<>();
         for (char c : s.toCharArray()) {

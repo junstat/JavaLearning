@@ -6,9 +6,11 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Solution3 {
-    /*
-   方法三: 优先队列
- */
+    /**
+     * 方法三: 优先队列
+     * @param lists
+     * @return
+     */
     public ListNode mergeKLists(ListNode[] lists) {
         ListNode dummy = new ListNode(0);
         ListNode cur = dummy;
