@@ -5,8 +5,7 @@ import DataStructure.ListNode;
 public class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || k == 1) return head;
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
+        ListNode dummy = new ListNode(0, head);
         int len = 1;
         while (head.next != null) {  // 求链表长
             head = head.next;

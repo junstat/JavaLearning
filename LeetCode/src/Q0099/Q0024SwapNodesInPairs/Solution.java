@@ -13,30 +13,19 @@ public class Solution {
        3、注意，当逆转完成时，pre,p的相对位置关系已逆转，p为pre前驱。故，为保证不断链，
           cur的后继为p,pre中的相对位置靠前的那个(逆转完成后为p) cur->next = p;
           cur后移处理下一对Pairs: cur= pre;
-        cur->pre->p->....  ==> cur->p->pre->....
+        cur -> pre -> p  ==> p -> pre(cur)....
     */
     public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) return head;
         ListNode dummy = new ListNode(0, head);
-        ListNode cur = dummy;
 
-        while (cur.next != null && cur.next.next != null) {
-            ListNode pre = cur.next;
-            ListNode p = pre.next;
+        for (ListNode cur = dummy, pre, p; cur.next != null && cur.next.next != null;
+             cur.next = p, cur = pre) {
+            pre = cur.next;
+            p = pre.next;
 
-            pre.next = p.next;  // step 1.
+            pre.next = p.next; // 逆转: pre -> p ==> p -> pre
             p.next = pre;
-
-            cur.next = p;  // step 3.
-            cur = pre;
         }
         return dummy.next;
-    }
-
-    @Test
-    public void test1() {
-        ListNode head = ListNodes.createListFromArray(new int[]{1, 2, 3, 4});
-        ListNode expected = ListNodes.createListFromArray(new int[]{2, 1, 4, 3});
-        assertEquals(swapPairs(head), expected);
     }
 }

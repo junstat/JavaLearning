@@ -21,10 +21,4 @@ public class Solution2 {
         return suc;
     }
 
-    @Test
-    public void test1() {
-        ListNode head = ListNodes.createListFromArray(new int[]{1, 2, 3, 4});
-        ListNode expected = ListNodes.createListFromArray(new int[]{2, 1, 4, 3});
-        assertEquals(swapPairs(head), expected);
-    }
 }
