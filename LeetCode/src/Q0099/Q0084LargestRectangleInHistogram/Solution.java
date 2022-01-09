@@ -34,6 +34,8 @@ class Solution {
        特殊情况1: 遍历完成以后
        特殊情况2: 弹出栈顶元素后，栈为空
        特殊情况3: 栈中存在高度相等的元素
+
+       youtube leetcode 官方: https://www.youtube.com/watch?v=XwUb7x6YDeA
       */
     public int largestRectangleArea2(int[] heights) {
         int len = heights.length;

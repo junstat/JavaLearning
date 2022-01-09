@@ -1,16 +1,17 @@
-package Q0099.Q00042TrappingRainWater;
+package Q0099.Q0042TrappingRainWater;
 
 import java.util.Deque;
 import java.util.LinkedList;
 
 public class Solution4 {
-    /*
-   方法4: 单调栈
-   https://www.yuque.com/zapibeidounai/shlaqk/evghql
-  */
+    /**
+     * 方法4: 单调栈
+     * @param height
+     * @return
+     */
     public int trap(int[] height) {
         int ans = 0, current = 0;
-        Deque<Integer> stack = new LinkedList<Integer>();
+        Deque<Integer> stack = new LinkedList<>();
         while (current < height.length) {
             while (!stack.isEmpty() && height[current] > height[stack.peek()]) {
                 int top = stack.pop();

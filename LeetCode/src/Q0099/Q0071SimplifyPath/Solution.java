@@ -1,7 +1,8 @@
 package Q0099.Q0071SimplifyPath;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import org.junit.Test;
+
+import java.util.*;
 
 /*
     分析
@@ -14,15 +15,23 @@ import java.util.Deque;
 
  */
 public class Solution {
+    @Test
+    public void test1() {
+        String path = "/home//foo/";
+        System.out.println(simplifyPath(path));
+    }
+
     public String simplifyPath(String path) {
         // corner case
         if (path == null || path.length() == 0) return "";
         String[] dirs = path.trim().split("/");
         Deque<String> stack = new ArrayDeque<>();
+        Set<String> skips = new HashSet<>(Arrays.asList("..", ".", ""));
         for (String dir : dirs) {
             if (!stack.isEmpty() && "..".equals(dir)) {
                 stack.removeLast();
-            } else if (!".".equals(dir) && !"..".equals(dir) && !"".equals(dir)) {
+                // } else if (!".".equals(dir) && !"..".equals(dir) && !"".equals(dir)) {
+            } else if (!skips.contains(dir)) {
                 stack.addLast(dir);
             }
         }

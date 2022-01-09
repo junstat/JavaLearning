@@ -1,5 +1,12 @@
 package Q0099.Q0048RotateImage;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.Collections;
+
+import static org.junit.Assert.assertEquals;
+
 /*
    1> Rotation of point through 90° about the origin in clockwise direction when point M (x, y) is rotated about the
    origin O through 90° in clockwise direction. The new position of point M (x, y) will become M’ (y, -x).
@@ -12,6 +19,19 @@ package Q0099.Q0048RotateImage;
             2> (x, y) (关于x轴对称) -> (x, -y) (关于y=-x 对称) -> (y, -x)
  */
 public class Solution {
+
+    @Test
+    public void test1() {
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        int[][] expected = {{7, 4, 1}, {8, 5, 2}, {9, 6, 3}};
+        rotate(matrix);
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                assertEquals(matrix[i][j], expected[i][j]);
+            }
+        }
+    }
+
     /*
        clockwise rotate
        first reverse up to down, then swap the symmetry
@@ -20,23 +40,20 @@ public class Solution {
        7 8 9     1 2 3     9 6 3
      */
     public void rotate(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = i; j < matrix[0].length; j++) {
-                swap(matrix, i, j, j, i);
-            }
-        }
+        // 反转二维数组
+        Collections.reverse(Arrays.asList(matrix));
 
+        // 对上三角部分，进行按主对角线对称交换
         for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0, k = matrix.length - 1; j < k; j++, k--) {
-                swap(matrix, i, j, i, k);
-            }
+            for (int j = i + 1; j < matrix[i].length; ++j)
+                exchange(matrix, i, j, j, i);
         }
     }
 
-    private void swap(int[][] matrix, int i, int j, int s, int t) {
-        int tmp = matrix[i][j];
-        matrix[i][j] = matrix[s][t];
-        matrix[s][t] = tmp;
+    private void exchange(int[][] matrix, int i, int j, int m, int n) {
+        int temp = matrix[i][j];
+        matrix[i][j] = matrix[m][n];
+        matrix[m][n] = temp;
     }
 }
 

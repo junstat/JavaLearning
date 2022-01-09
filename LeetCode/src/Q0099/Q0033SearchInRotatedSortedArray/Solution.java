@@ -5,34 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class Solution {
-    @Test
-    public void test1() {
-        int[] nums = {1};
-        int target = 1;
-        assertEquals(search(nums, target), 0);
-    }
-
-    @Test
-    public void test2() {
-        int[] nums = {1, 3};
-        int target = 3;
-        assertEquals(search(nums, target), 1);
-    }
-
-    @Test
-    public void test3() {
-        int[] nums = {1, 3};
-        int target = 1;
-        assertEquals(search(nums, target), 0);
-    }
-
-    @Test
-    public void test4() {
-        int[] nums = {1, 3};
-        int target = 2;
-        assertEquals(search(nums, target), -1);
-    }
-
 
     /*
        method 1:
@@ -47,7 +19,8 @@ public class Solution {
         /*
            Find the index of the smallest value using binary search.
            Loop will terminate since mid < high, and low or hi will shrink by at least 1.
-           Proof by contradiction that mid < high: if mid == high, then low == high and loop would have been terminated.
+           Proof by contradiction that mid < high:
+           if mid == high, then low == high and loop would have been terminated.
          */
         while (low < high) {
             int mid = low + (high - low) / 2;
@@ -108,25 +81,31 @@ public class Solution {
     }
 
     /*
-       method 3: https://www.youtube.com/watch?v=lWEIIFFflQY
+       method 3: 进行二分查找
+       将数组中中间分开成左右两部分的时候，一定有一部分数组是有序的。在常规二分查找的时候，查看当前mid为分割位置分隔出来的
+       两部分[low, mid] 和 [mid + 1, hi]
+       case 1: 若 [low, mid]是有序的部分
+            1.a 若 nums[low] <= target <=  nums[mid]  ==> 缩小搜索范围至 [low, mid - 1]
+            1.b 不然，在[mid + 1, hi] 中寻找
+       case 2: 若[mid + 1, hi]是有序部分
+            2.a 若 nums[mid + 1] <= target <= nums[hi] ==> 缩小搜索范围至 [mid + 1, hi]
+            2.b 不然在[low, mid - 1] 中寻找
+
      */
     public int search(int[] nums, int target) {
         if (nums == null || nums.length == 0) return -1;
-        int low = 0, high = nums.length - 1;
-        while (low + 1 < high) {  // low 与 high 相邻即退出循环
-            int mid = low + (high - low) / 2;
+        int low = 0, hi = nums.length - 1;
+        while (low <= hi) {  // 执行二分查找
+            int mid = low + (hi - low) / 2;
             if (nums[mid] == target) return mid;
-            if (nums[low] < nums[mid]) {
-                if (nums[low] <= target && nums[mid] >= target) high = mid;    // nums[low] <= target <= nums[mid]
-                else low = mid;
-            } else if (nums[mid] < nums[high]) {
-                if (nums[high] >= target && nums[mid] <= target) low = mid;   // nums[mid] <= target <= nums[high]
-                else high = mid;
+            if (nums[low] <= nums[mid]) {
+                if (nums[low] <= target && target < nums[mid]) hi = mid - 1;    // nums[low] <= target < nums[mid]
+                else low = mid + 1;
+            } else {
+                if (nums[mid] < target && target <= nums[hi]) low = mid + 1;   // nums[mid] < target <= nums[high]
+                else hi = mid - 1;
             }
         }
-
-        if (nums[low] == target) return low;
-        if (nums[high] == target) return high;
         return -1;
     }
 }

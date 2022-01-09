@@ -1,16 +1,10 @@
-package Q0099.Q00042TrappingRainWater;
-
-import java.util.Deque;
-import java.util.LinkedList;
+package Q0099.Q0042TrappingRainWater;
 
 public class Solution {
     /*
        For column_i, the rain it can trap:
                     左边最大值      右边最大值
-         r[i] = min(max(h[0~i], max(h[i~n-1))  - h[i]
-      */
-
-    /*
+         r[i] = min( max(h[0~i]), max(h[i~n-1]) )  - h[i]
        Approach 1: Brute force
        For each column, find max of left and right which takes O(n)
        Time complexity: O(n^2)
@@ -27,7 +21,7 @@ public class Solution {
             for (int j = i; j < size; j++) { // Search the right part for max bar size.
                 maxRight = Math.max(maxRight, height[j]);
             }
-            ans += Math.min(maxLeft, maxRight) - height[i];
+            ans += Math.min(maxLeft, maxRight) - height[i];  // 按当前列逐步增量
         }
         return ans;
     }
