@@ -2,6 +2,7 @@ package Q0099.Q0085MaximalRectangle;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+
 /*
    以 example 1. 为例
     matrix = [
@@ -39,26 +40,19 @@ public class Solution {
     // 来自 Q84
     public int largestRectangleArea(int[] heights) {
         int len = heights.length;
-        if (len == 0) return 0;
-        if (len == 1) return heights[0];
-        int area = 0;
-        int[] newHeights = new int[len + 2];
-        System.arraycopy(heights, 0, newHeights, 1, len);
-        len += 2;
-        heights = newHeights;
-
-        // 官方不推荐使用 Stack, 因为 Stack 依赖 Vector(效率低)
-        Deque<Integer> stack = new ArrayDeque<>();
-        stack.addLast(0);
-        for (int i = 1; i < len; i++) {
-            //          当前元素小于栈顶元素(不单调了)
-            while (heights[stack.peekLast()] > heights[i]) {
-                int height = heights[stack.removeLast()];  // 弹栈，保存栈顶高度
-                int width = i - stack.peekLast() - 1;
-                area = Math.max(area, height * width);
+        Deque<Integer> s = new ArrayDeque<>();
+        int maxArea = 0;
+        for (int i = 0; i <= len; i++) {
+            int h = (i == len ? 0 : heights[i]);
+            if (s.isEmpty() || h >= heights[s.peek()]) {
+                s.push(i);
+            } else {
+                int tp = s.pop();
+                int width = (s.isEmpty() ? i : i - 1 - s.peek());
+                maxArea = Math.max(maxArea, heights[tp] * width);
+                i--;
             }
-            stack.addLast(i);
         }
-        return area;
+        return maxArea;
     }
 }

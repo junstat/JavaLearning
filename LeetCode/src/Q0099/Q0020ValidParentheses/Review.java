@@ -5,22 +5,22 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',
- * determine if the input string is valid.
- * <p>
- * An input string is valid if:
- * <p>
- * Open brackets must be closed by the same type of brackets.
- * Open brackets must be closed in the correct order.
- * <p>
- * Example 1:
- * Input: s = "()"
- * Output: true
- * <p>
- * Example 3:
- * Input: s = "(]"
- * Output: false
+/*
+  [Easy]
+  Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',
+  determine if the input string is valid.
+
+  An input string is valid if:
+  Open brackets must be closed by the same type of brackets.
+  Open brackets must be closed in the correct order.
+
+  Example 1:
+  Input: s = "()"
+  Output: true
+
+  Example 3:
+  Input: s = "(]"
+  Output: false
  */
 public class Review {
     @Test

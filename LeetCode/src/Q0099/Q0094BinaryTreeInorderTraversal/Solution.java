@@ -10,12 +10,11 @@ public class Solution {
        方法一: 递归
      */
     public void inorder(TreeNode root, List<Integer> ans) {
-        if (root == null) {
-            return;
+        if (root != null) {
+            inorder(root.left, ans);
+            ans.add(root.val);
+            inorder(root.right, ans);
         }
-        inorder(root.left, ans);
-        ans.add(root.val);
-        inorder(root.right, ans);
     }
 
     public List<Integer> inorderTraversal(TreeNode root) {
