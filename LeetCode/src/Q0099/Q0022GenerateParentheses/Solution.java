@@ -1,20 +1,12 @@
 package Q0099.Q0022GenerateParentheses;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
 
-    @Test
-    public void test1() {
-        int n = 3;
-        System.out.println(generateParenthesis(n));
-    }
-
     public List<String> generateParenthesis(int n) {
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
         backtrack(result, "", 0, 0, n);
         return result;
     }

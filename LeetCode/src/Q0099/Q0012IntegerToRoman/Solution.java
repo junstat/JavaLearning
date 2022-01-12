@@ -1,20 +1,6 @@
 package Q0099.Q0012IntegerToRoman;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-/*
-    执行用时：19 ms, 在所有 Java 提交中击败了5.36%的用户
-    内存消耗：39.3 MB, 在所有 Java 提交中击败了5.03%的用户
- */
 public class Solution {
-
-    @Test
-    public void test1() {
-        int num = 1994;
-        assertEquals(intToRoman(num), "MCMXCIV");
-    }
-
     public String intToRoman(int num) {
         //            0    1000 2000   3000
         String M[] = {"", "M", "MM", "MMM"};

@@ -3,17 +3,25 @@ package Q0099.Q0017LetterCombinationsOfAPhoneNumber;
 import java.util.List;
 
 /*
-  [Medium]
-  Given an array nums of n integers,
-  return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
-  0 <= a, b, c, d < n
-  a, b, c, and d are distinct.
-  nums[a] + nums[b] + nums[c] + nums[d] == target
-  You may return the answer in any order.
+    [Medium]
+    Given a string containing digits from 2-9 inclusive,
+    return all possible letter combinations that the number could represent.
+    Return the answer in any order.
 
-  Example 1:
-  Input: nums = [1,0,-1,0,-2,2], target = 0
-  Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+    A mapping of digit to letters (just like on the telephone buttons) is given below.
+    Note that 1 does not map to any letters.
+
+    Example 1:
+    Input: digits = "23"
+    Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+
+    Example 2:
+    Input: digits = ""
+    Output: []
+
+    Example 3:
+    Input: digits = "2"
+    Output: ["a","b","c"]
 */
 public class Review {
     public List<List<Integer>> fourSum(int[] nums, int target) {

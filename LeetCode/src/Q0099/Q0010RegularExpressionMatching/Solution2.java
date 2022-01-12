@@ -1,30 +1,31 @@
 package Q0099.Q0010RegularExpressionMatching;
 
+/*
+ We define dp[i][j] to be true if s[0...i) matches p[0..j) and false otherwise. The state equations will be:
+ 1. dp[i][j] = dp[i-1][j-1], if p[j-1] != '*' && (s[i-1] == p[j-1] || p[j-1] == '.')
+ 2. dp[i][j] = d[i][j-2], if p[j-1] == '*' and the pattern repeats for 0 time.
+ 3. dp[i][j] = dp[i-1][j] && (s[i-1] == p[j-2] || p[j-2] == '.'),
+    if p[j-1] == '*' and the pattern repeats for at least 1 time.
+ */
 public class Solution2 {
-    int[][] memo;
 
     public boolean isMatch(String s, String p) {
-        memo = new int[s.length() + 1][p.length() + 1];
-        return dp(s.toCharArray(), 0, p.toCharArray(), 0);
-    }
-
-    public boolean dp(char[] s, int i, char[] p, int j) {
-        //memo is 1 means true, else means false;
-        // if(i == s.length) return j == p.length;
-        if (j == p.length) return i == s.length;
-        if (memo[i][j] != 0) return memo[i][j] == 1;
-        boolean first = i < s.length && (p[j] == s[i] || p[j] == '.');
-        boolean ans = false;
-        if (j <= p.length - 2 && p[j + 1] == '*') {
-            ans = dp(s, i, p, j + 2) || (first && dp(s, i + 1, p, j));
-        } else {
-            ans = first && dp(s, i + 1, p, j + 1);
+        int m = s.length(), n = p.length();
+        boolean[][] dp = new boolean[m + 1][n + 1];
+        dp[0][0] = true;
+        for (int i = 0; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (p.charAt(j - 1) == '*') {
+                    dp[i][j] = dp[i][j - 2] || (
+                            i > 0 && dp[i - 1][j] &&
+                                    (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.')
+                    );
+                } else {
+                    dp[i][j] = i > 0 && dp[i - 1][j - 1] &&
+                            (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.');
+                }
+            }
         }
-        if (ans) {
-            memo[i][j] = 1;
-        } else {
-            memo[i][j] = 2;
-        }
-        return ans;
+        return dp[m][n];
     }
 }

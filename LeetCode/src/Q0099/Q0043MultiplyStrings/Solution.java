@@ -1,36 +1,37 @@
 package Q0099.Q0043MultiplyStrings;
 
-import org.junit.Test;
-
 public class Solution {
 
-    @Test
-    public void test1() {
-        String num1 = "123", num2 = "456";
-        System.out.println(multiply(num1, num2));
-    }
-
+    /*
+        若num1 m 位，num2 n 位，则num1 * num2 最大 m+n 位。
+        如:
+            9 9
+          * 0 9
+          ---------
+          0 8 1 <-- num1[0] * num2[0] = result[0+0+1] * 10 ^ (0+0+1) + result[0+0] * 10 ^ (0+0)
+          8 1 0 <-- num1[1] * num2[0] = result[1+0+1] * 10 ^(1+0+1) + result[1+0] * 10 ^ (1+0)
+          ------------
+          8 9 1 <-- result
+         综上，num1[i] * num2[j] = result[i + j +1] * 10 ^ (i + j +1) + result[i+j] * 10 ^(i+j)
+     */
     public String multiply(String num1, String num2) {
         if (num1.equals("0") || num2.equals("0")) return "0";
         int m = num1.length(), n = num2.length();
-        int[] ansArr = new int[m + n];
+        int[] productArr = new int[m + n];
         for (int i = m - 1; i >= 0; i--) {
-            int x = num1.charAt(i) - '0';
             for (int j = n - 1; j >= 0; j--) {
-                int y = num2.charAt(j) - '0';
-                ansArr[i + j + 1] += x * y;
+                int product = (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+                int p1 = i + j, p2 = i + j + 1;
+                int sum = product + productArr[p2];
+                productArr[p1] += sum / 10;
+                productArr[p2] = sum % 10;
             }
         }
-        for (int i = m + n - 1; i > 0; i--) {
-            ansArr[i - 1] += ansArr[i] / 10;
-            ansArr[i] %= 10;
-        }
-        int index = ansArr[0] == 0 ? 1 : 0;
-        StringBuffer ans = new StringBuffer();
-        while (index < m + n) {
-            ans.append(ansArr[index]);
-            index++;
-        }
-        return ans.toString();
+
+        StringBuilder builder = new StringBuilder();
+        for (int num : productArr)
+            if (builder.length() != 0 || num != 0)
+                builder.append(num);
+        return builder.length() == 0 ? "0" : builder.toString();
     }
 }

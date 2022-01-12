@@ -4,7 +4,7 @@ public class Solution {
     /**
      * Dynamic Programming
      * 1. 状态定义
-     *    booleam dp[i][j] = s[i, j] is Palindromic
+     *    boolean dp[i][j] = s[i, j] is Palindromic
      * 2. 状态初始条件
      *    dp[i][j] = true            if len(s[i, j]) == 1 or j == i or j - i == 0;
      *    dp[i][j] = s[i] == s[j]    if len(s[i, j]) == 2 or j == (i + 1) or j - i == 1;

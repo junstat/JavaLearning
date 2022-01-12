@@ -1,7 +1,5 @@
 package Q0099.Q0032LongestValidParentheses;
 
-import org.junit.Test;
-
 /*
    思路一: 动态规划
    定义 dp[i] 表示以下标i字符结尾的最长有效括号的长度(init 0)。
@@ -13,12 +11,6 @@ import org.junit.Test;
     最后的答案即为 dp 数组中的最大值
  */
 public class Solution {
-
-    @Test
-    public void test1() {
-        String s = "(()";
-    }
-
     public int longestValidParentheses(String s) {
         int maxans = 0;
         int[] dp = new int[s.length()];
