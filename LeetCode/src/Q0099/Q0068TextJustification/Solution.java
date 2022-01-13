@@ -1,22 +1,22 @@
 package Q0099.Q0068TextJustification;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+    We start with left being the first word.
+    findRight: Then we greedily try to go as far right as possible until we fill our current line.
+    Then we justify one line at a time.
+    justify: In all case we pad the right side with spaces until we reach max width for the line;
+    1. If it's one word then it is easy, the result is just that word.
+    2. If it's the last line then the result is all words separated by a single space.
+    3. Otherwise we calculate the size of each space evenly and if there is a remainder we distribute an extra space
+    until it is gone.
+ */
 public class Solution {
-
-    @Test
-    public void test1() {
-        String[] words = {"What", "must", "be", "acknowledgment", "shall", "be"};
-        int maxWidth = 16;
-        System.out.println(fullJustify(words, maxWidth));
-    }
 
     public List<String> fullJustify(String[] words, int maxWidth) {
         int left = 0;
-        List<String> result = new ArrayList<String>();
+        List<String> result = new ArrayList<>();
 
         while (left < words.length) {
             int right = findRight(left, words, maxWidth);

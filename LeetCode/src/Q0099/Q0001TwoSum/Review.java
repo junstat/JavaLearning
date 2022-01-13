@@ -1,5 +1,9 @@
 package Q0099.Q0001TwoSum;
 
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
 /*
    [Easy]
    Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
@@ -29,6 +33,17 @@ package Q0099.Q0001TwoSum;
         Only one valid answer exists.
  */
 public class Review {
+    @Test
+    public void test1() {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        int[] result = twoSum(nums, target);
+        int[] expected = {0, 1};
+        for (int i = 0; i < result.length; i++) {
+            assertEquals(expected[i], result[i]);
+        }
+    }
+
     public int[] twoSum(int[] nums, int target) {
         return null;
     }

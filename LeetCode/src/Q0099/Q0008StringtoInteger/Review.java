@@ -1,5 +1,9 @@
 package Q0099.Q0008StringtoInteger;
 
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
 /*
   [Medium]
   Implement the myAtoi(string s) function, which converts a string to a 32-bit
@@ -63,6 +67,14 @@ package Q0099.Q0008StringtoInteger;
     Since 4193 is in the range [-231, 231 - 1], the final result is 4193.
     */
 public class Review {
+
+    @Test
+    public void test1() {
+        assertEquals(42, myAtoi("42"));
+        assertEquals(-42, myAtoi("      42"));
+        assertEquals(4229, myAtoi("4229 with words"));
+    }
+
     public int myAtoi(String str) {
 
         return 0;

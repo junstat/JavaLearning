@@ -3,58 +3,44 @@ package Q0099.Q0068TextJustification;
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution1 {
+public class Solution1 {
+
     public List<String> fullJustify(String[] words, int maxWidth) {
         List<String> result = new ArrayList<>();
-        List<String> curr = new ArrayList<>();
-        int size = 0;
-        for (String word : words) {
-            int incSize = size + word.length() + curr.size();
-            if (incSize <= maxWidth) {
-                curr.add(word);
-                size = size + word.length();
-            } else {
-                int f = maxWidth - size;
-                int d = curr.size() > 1 ? curr.size() - 1 : curr.size();
-                int q = f / d;
-                int r = f % d;
-                StringBuilder filler = new StringBuilder();
-                while (q != 0) {
-                    filler.append(' ');
-                    q--;
-                }
-
-                StringBuilder sb = new StringBuilder();
-                for (String w : curr) {
-                    if (sb.length() > 0) {
-                        sb.append(filler);
-                        if (r != 0) {
-                            sb.append(' ');
-                            r--;
-                        }
-                    }
-                    sb.append(w);
-                }
-                while (sb.length() < maxWidth) {
-                    sb.append(' ');
-                }
-                result.add(sb.toString());
-
-                curr = new ArrayList<>();
-                curr.add(word);
-                size = word.length();
-            }
+        if (words.length == 0 || maxWidth == 0) {
+            result.add("");
+            return result;
         }
 
-        if (curr.size() > 0) {
-            StringBuilder sb = new StringBuilder();
-            for (String s : curr) {
-                if (sb.length() > 0)
-                    sb.append(' ');
-                sb.append(s);
+        for (int i = 0, w; i < words.length; i = w) {
+            int len = -1;
+            for (w = i; w < words.length && len + words[w].length() + 1 <= maxWidth; w++)
+                len += words[w].length() + 1;
+
+            int evenlyDistributedSpaces = 1;
+            int extraSpaces = 0;
+            int numOfGapsBwWords = w - i - 1;
+
+            if (w != i + 1 && w != words.length) {
+                evenlyDistributedSpaces = ((maxWidth - len) / numOfGapsBwWords) + 1;
+                extraSpaces = (maxWidth - len) % numOfGapsBwWords;
             }
-            while (sb.length() < maxWidth) {
+
+            StringBuilder sb = new StringBuilder(words[i]);
+            for (int j = i + 1; j < w; j++) {
+                for (int s = 0; s < evenlyDistributedSpaces; s++)
+                    sb.append(' ');
+                if (extraSpaces > 0) {
+                    sb.append(' ');
+                    extraSpaces--;
+                }
+                sb.append(words[j]);
+            }
+
+            int remaining = maxWidth - sb.length();
+            while (remaining > 0) {
                 sb.append(' ');
+                remaining--;
             }
             result.add(sb.toString());
         }

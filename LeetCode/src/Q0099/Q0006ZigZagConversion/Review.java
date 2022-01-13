@@ -1,5 +1,9 @@
 package Q0099.Q0006ZigZagConversion;
 
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
 /*
   [Medium]
   The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this:
@@ -31,4 +35,17 @@ package Q0099.Q0006ZigZagConversion;
 */
 public class Review {
 
+    @Test
+    public void test1() {
+        String s = "PAYPALISHIRING";
+        int numRows = 3;
+        String result = convert(s, numRows);
+        assertEquals("PAHNAPLSIIGYIR", result);
+
+    }
+
+    public String convert(String s, int numRows) {
+
+        return null;
+    }
 }

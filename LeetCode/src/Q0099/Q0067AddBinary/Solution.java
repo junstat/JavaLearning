@@ -11,7 +11,7 @@ public class Solution {
             sum += i >= 0 ? a.charAt(i) - '0' : 0;
             sum += j >= 0 ? b.charAt(j) - '0' : 0;
             carry = sum >> 1;
-            ans.append(sum & 1);
+            ans.append(sum & 1); // sum % 2
         }
         if (carry > 0) ans.append(carry);
         return ans.reverse().toString();

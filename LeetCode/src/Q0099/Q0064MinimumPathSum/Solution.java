@@ -1,5 +1,15 @@
 package Q0099.Q0064MinimumPathSum;
 
+
+/*
+    1. 状态定义
+       minSum[i][j] 表示 到达grid[i][j]是的路径最小和
+    2. 初始状态
+       首行(i=0) minSum[i][j] = minSum[i][j - 1] + grid[i][j]
+       首列(j=0) minSum[i][j] = minSum[i - 1][j] + grid[i][j]
+    3. 状态转移方程
+        minSum[i][j] = min(minSum[i - 1][j], minSum[i][j - 1]) + grid[i][j]
+ */
 public class Solution {
     /*
       This is a typical DP problem. Suppose the minimum path sum of arriving at point (i, j) is S[i][j], then the state
@@ -24,8 +34,4 @@ public class Solution {
         }
         return minSum[m - 1][n - 1];
     }
-
-
-
-
 }
