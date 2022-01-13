@@ -1,7 +1,5 @@
 package Q0099.Q0056MergeIntervals;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -9,12 +7,6 @@ import java.util.List;
 
 
 public class Solution {
-
-    @Test
-    public void test1() {
-        int[][] intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-        System.out.println(Arrays.deepToString(merge(intervals)));
-    }
 
     /*
      The idea is to sort the intervals by their starting points.

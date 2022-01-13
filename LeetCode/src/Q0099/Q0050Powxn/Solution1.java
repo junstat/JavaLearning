@@ -1,7 +1,5 @@
 package Q0099.Q0050Powxn;
 
-import org.junit.Test;
-
 /**
  * 沿用方法一的思想，迭代实现
  */

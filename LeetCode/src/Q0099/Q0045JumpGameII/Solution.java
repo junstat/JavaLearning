@@ -1,18 +1,9 @@
 package Q0099.Q0045JumpGameII;
 
-import org.junit.Test;
-
 public class Solution {
-
-    @Test
-    public void test1() {
-        int[] nums = {2, 3, 1, 1, 4};
-        System.out.println(jump(nums));
-    }
 
     /**
      * Explanation
-     * <p>
      * The main idea is based on greedy. Let's say the range of the current jump is [curBegin, curEnd], curFarthest is
      * the farthest point that all points in [curBegin, curEnd] can reach. Once the current point reaches curEnd, then
      * trigger another jump, and set the new curEnd with curFarthest, then keep the above steps, as the following:
@@ -20,7 +11,7 @@ public class Solution {
     public int jump(int[] nums) {
         int curEnd = 0, curFarthest = 0, steps = 0;
 
-        for (int i = 0; i < nums.length - 1; i++) {  // 不访问最后一个元素，
+        for (int i = 0; i < nums.length - 1; i++) {  // 不访问最后一个元素
             curFarthest = Math.max(curFarthest, nums[i] + i);
             if (i == curEnd) {
                 steps++;

@@ -3,10 +3,6 @@ package Q0099.Q0057InsertInterval;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-   执行用时：1 ms, 在所有 Java 提交中击败了99.92%的用户
-   内存消耗：40.8 MB, 在所有 Java 提交中击败了51.97%的用户
- */
 public class Solution2 {
     // 模拟法 O(N) + O(N)
     public int[][] insert(int[][] intervals, int[] newInterval) {

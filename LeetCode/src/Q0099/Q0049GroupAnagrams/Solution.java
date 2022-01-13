@@ -2,6 +2,10 @@ package Q0099.Q0049GroupAnagrams;
 
 import java.util.*;
 
+/*
+    Use an Map to group the strings by their sorted counterparts. Use the sorted string as the key and all anagram
+    strings as the value.
+ */
 public class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<String, List<String>>();
