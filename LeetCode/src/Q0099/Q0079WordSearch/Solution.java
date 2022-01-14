@@ -1,30 +1,52 @@
 package Q0099.Q0079WordSearch;
 
+import org.junit.Test;
+
+import static org.junit.Assert.assertTrue;
+
 public class Solution {
 
+    @Test
+    public void test1() {
+        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+        String word = "ABCCED";
+        boolean result = exist(board, word);
+        assertTrue(result);
+    }
+
     /*
-       Here accepted solution based on recursion. To save memory I decuded to apply bit mask for every visited cell. Please check board[y][x] ^= 256;
+       Here accepted solution based on recursion. To save memory I decided to apply bit mask for every visited cell.
+       Please check board[y][x] ^= 256;
      */
     public boolean exist(char[][] board, String word) {
-        char[] w = word.toCharArray();
-        for (int y = 0; y < board.length; y++) {  // y represent row number
-            for (int x = 0; x < board[y].length; x++) {  // x represent col number
-                if (exist(board, y, x, w, 0)) return true;
+        for (int i = 0; i < board.length; i++) {  // y represent row number
+            for (int j = 0; j < board[i].length; j++) {  // x represent col number
+                if (exist(board, i, j, word, 0)) return true;
             }
         }
         return false;
     }
 
-    private boolean exist(char[][] board, int y, int x, char[] word, int i) {
-        if (i == word.length) return true;
-        if (y < 0 || x < 0 || y == board.length || x == board[y].length) return false;
-        if (board[y][x] != word[i]) return false;
-        board[y][x] ^= 256;  // 已检查过
-        boolean exist = exist(board, y, x + 1, word, i + 1) // 右
-                || exist(board, y, x - 1, word, i + 1) // 左
-                || exist(board, y + 1, x, word, i + 1)  // 上
-                || exist(board, y - 1, x, word, i + 1); // 下
-        board[y][x] ^= 256;  // 恢复
+    /**
+     * 判断以网格的(i,j)位置出发，能否搜索到单词 word[k...]
+     *
+     * @param board
+     * @param i
+     * @param j
+     * @param word
+     * @param k
+     * @return
+     */
+    private boolean exist(char[][] board, int i, int j, String word, int k) {
+        if (k == word.length()) return true;
+        if (i < 0 || j < 0 || i == board.length || j == board[i].length) return false;
+        if (board[i][j] != word.charAt(k)) return false;
+        board[i][j] ^= 256;  // 已检查过
+        boolean exist = exist(board, i, j + 1, word, k + 1) // 右
+                || exist(board, i, j - 1, word, k + 1) // 左
+                || exist(board, i + 1, j, word, k + 1)  // 上
+                || exist(board, i - 1, j, word, k + 1); // 下
+        board[i][j] ^= 256;  // 恢复
         return exist;
 
     }
