@@ -1,16 +1,6 @@
 package Q0099.Q0088MergeSortedArray;
 
-import org.junit.Test;
-
 public class Solution {
-
-    @Test
-    public void test() {
-        int[] nums1 = {0};
-        int[] nums2 = {1};
-        merge(nums1, 0, nums2, 1);
-    }
-
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         // from tail to head, merge two arrays
         // two pointers from nums1 and nums2

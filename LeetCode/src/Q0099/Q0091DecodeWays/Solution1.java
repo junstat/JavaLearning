@@ -1,7 +1,5 @@
 package Q0099.Q0091DecodeWays;
 
-import org.junit.Test;
-
 import java.util.HashMap;
 
 /*
@@ -12,18 +10,6 @@ import java.util.HashMap;
     W(s[0....n-1]) = W(s[1....n-1]) + W(s[2...n-1]) if '10' <= s[0]s[1] <= '26'
  */
 public class Solution1 {
-
-    @Test
-    public void test1() {
-        String s = "0";
-        System.out.println(numDecodings(s));
-    }
-
-    @Test
-    public void test2() {
-        String s = "226";
-        System.out.println(numDecodings(s));
-    }
 
     private HashMap<Integer, Integer> m_ways = new HashMap<>();
 

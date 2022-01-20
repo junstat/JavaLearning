@@ -1,21 +1,15 @@
 package Q0099.Q0093RestoreIPAddresses;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /*
    3-loop divides the string s into 4 substring: s1, s2, s3, s4. Check if each substring is valid.
-In isValid, strings whose length greater than 3 or equals to 0 is not valid; or if the string's length is longer than 1 and the first letter is '0' then it's invalid; or the string whose integer representation greater than 255 is invalid.
+   In isValid, strings whose length greater than 3 or equals to 0 is not valid; or if the string's length is longer
+   than 1 and the first letter is '0' then it's invalid;
+   or the string whose integer representation greater than 255 is invalid.
  */
 public class Solution {
-    @Test
-    public void test1() {
-        String s = "25525511135";
-        System.out.println(restoreIpAddresses(s));
-    }
-
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<String>();
         int len = s.length();
