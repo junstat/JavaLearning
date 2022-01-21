@@ -8,25 +8,26 @@ import java.util.List;
 
 public class Solution {
     /*
-       1. O(n) solution by using LinkedList along with ArrayList. So insertion in the inner list and outer list are both O(1),
+       1. O(n) solution by using LinkedList along with ArrayList.
+        So insertion in the inner list and outer list are both O(1),
        2. Using DFS and creating new lists when needed.
      */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> sol = new ArrayList<>();
-        travel(root, sol, 0);
-        return sol;
+        List<List<Integer>> result = new ArrayList<>();
+        travel(root, result, 0);
+        return result;
     }
 
-    private void travel(TreeNode curr, List<List<Integer>> sol, int level) {
+    private void travel(TreeNode curr, List<List<Integer>> result, int level) {
         if (curr == null) return;
-        if (sol.size() <= level) sol.add(new LinkedList<>());
+        if (result.size() <= level) result.add(new LinkedList<>());
 
-        List<Integer> collection = sol.get(level);
+        List<Integer> collection = result.get(level);
         if (level % 2 == 0) collection.add(curr.val);  // level为偶数，尾插
         else collection.add(0, curr.val);  // level 为奇数，头插
 
-        travel(curr.left, sol, level + 1);
-        travel(curr.right, sol, level + 1);
+        travel(curr.left, result, level + 1);
+        travel(curr.right, result, level + 1);
     }
 }
 
