@@ -1,7 +1,9 @@
 package Q0199.Q0115DistinctSubsequences;
 
 /*
-   Notice that we keep the whole m*n matrix simply for dp[i - 1][j - 1]. So we can simply store that value in a single variable and further optimize the space complexity. The final code is as follows.
+   Notice that we keep the whole m*n matrix simply for dp[i - 1][j - 1].
+   So we can simply store that value in a single variable and further optimize the space complexity.
+   The final code is as follows.
  */
 public class Solution1 {
     public int numDistinct(String s, String t) {
