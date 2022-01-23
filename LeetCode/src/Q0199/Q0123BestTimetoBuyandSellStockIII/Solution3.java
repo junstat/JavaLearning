@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 public class Solution3 {
     /*
-   We need to save min for each transaction, so there are k 'min'.
-We can find the second dimension (variable i) is only dependent on the previous one (i-1), so we can compact this dimension. (We can choose the first dimension (variable k) as well since it is also only dependent on its previous one k-1, but can't compact both.)
- */
+        We need to save min for each transaction, so there are k 'min'.
+        We can find the second dimension (variable i) is only dependent on the previous one (i-1), so we can compact
+        this dimension. (We can choose the first dimension (variable k) as well since it is also only dependent on its
+        previous one k-1, but can't compact both.)
+    */
     public int maxProfit(int[] prices) {
         if (prices.length == 0) return 0;
         int[] dp = new int[3];

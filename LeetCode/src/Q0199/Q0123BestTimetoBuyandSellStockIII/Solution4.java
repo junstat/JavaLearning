@@ -1,7 +1,7 @@
 package Q0199.Q0123BestTimetoBuyandSellStockIII;
 
 // In this case, K is 2. We can expand the array to all named variables:
-public class Solution {
+public class Solution4 {
     public int maxProfit(int[] prices) {
         int buy1 = Integer.MAX_VALUE, buy2 = Integer.MAX_VALUE;
         int sell1 = 0, sell2 = 0;

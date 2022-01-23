@@ -1,16 +1,9 @@
 package Q0199.Q0119PascalsTriangleII;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-
-    @Test
-    public void test() {
-        System.out.println(getRow(3));
-    }
 
     public List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<>();

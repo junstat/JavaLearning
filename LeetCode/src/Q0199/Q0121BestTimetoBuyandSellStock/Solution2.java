@@ -1,8 +1,5 @@
 package Q0199.Q0121BestTimetoBuyandSellStock;
 
-/*
-   100%
- */
 public class Solution2 {
     public int maxProfit(int[] prices) {
         int n = prices.length;
