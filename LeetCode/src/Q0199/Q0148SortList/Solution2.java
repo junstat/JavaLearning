@@ -35,5 +35,4 @@ public class Solution2 {
 
         return head;
     }
-
 }

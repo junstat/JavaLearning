@@ -1,15 +1,6 @@
 package Q0199.Q0152MaximumProductSubarray;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
 public class Solution {
-    @Test
-    public void test() {
-        int[] nums = {2, 3, -2, 4};
-        assertEquals(maxProduct(nums), 6);
-    }
 
     public int maxProduct(int[] nums) {
         // store the result that is the max we have found so far
