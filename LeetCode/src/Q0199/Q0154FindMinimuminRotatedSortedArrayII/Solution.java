@@ -1,27 +1,6 @@
 package Q0199.Q0154FindMinimuminRotatedSortedArrayII;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
 public class Solution {
-    @Test
-    public void test1() {
-        int[] nums = {2, 2, 2, 0, 1};
-        assertEquals(findMin(nums), 0);
-    }
-
-    @Test
-    public void test2() {
-        int[] nums = {1, 3, 5};
-        assertEquals(findMin(nums), 1);
-    }
-
-    @Test
-    public void test3() {
-        int[] nums = {1, 1};
-        assertEquals(findMin(nums), 1);
-    }
 
     /*
        When num[mid] == num[hi], we couldn't sure the position of minimum in mid's left or right, so just let upper

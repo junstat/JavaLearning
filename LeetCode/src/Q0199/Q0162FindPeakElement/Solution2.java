@@ -4,13 +4,6 @@ public class Solution2 {
     /*
       Binary Search: recursion
     */
-
-    // @Test
-    // public void test() {
-    //     int[] nums = {1, 2, 1, 3, 5, 6, 4};
-    //     System.out.println(findPeakElement(nums));
-    // }
-
     public int findPeakElement(int[] nums) {
         return helper(nums, 0, nums.length - 1);
     }

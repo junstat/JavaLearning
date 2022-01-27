@@ -3,7 +3,10 @@ package Q0199.Q173BinarySearchTreeIterator;
 import DataStructure.TreeNode;
 
 import java.util.ArrayList;
-import java.util.Stack;
+
+public class Solution1 {
+}
+
 
 /*
    方法一: 使用递归用中序遍历，把所有结点放到ArrayList
@@ -37,38 +40,5 @@ class BSTIterator1 {
      */
     public boolean hasNext() {
         return this.index + 1 < this.nodeSorted.size();
-    }
-}
-
-/*
-   方法二: 改递归为栈
-  */
-public class BSTIterator {
-    private Stack<TreeNode> stack;
-
-    public BSTIterator(TreeNode root) {
-        this.stack = new Stack<>();
-        this.leftMostInorder(root);
-    }
-
-    private void leftMostInorder(TreeNode root) {
-        while (root != null) {
-            this.stack.push(root);
-            root = root.left;
-        }
-    }
-
-    public int next() {
-        TreeNode topMostNode = this.stack.pop();
-
-        if (topMostNode.right != null) {
-            this.leftMostInorder(topMostNode.right);
-        }
-
-        return topMostNode.val;
-    }
-
-    public boolean hasNext() {
-        return this.stack.size() > 0;
     }
 }

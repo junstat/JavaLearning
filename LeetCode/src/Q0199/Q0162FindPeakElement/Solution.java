@@ -1,17 +1,9 @@
 package Q0199.Q0162FindPeakElement;
 
-import org.junit.Test;
-
-
 /*
    Binary Search: iteration
  */
 public class Solution {
-    @Test
-    public void test2() {
-        int[] nums = {1, 2, 1, 3, 5, 6, 4};
-        System.out.println(findPeakElement(nums));
-    }
 
     public int findPeakElement(int[] nums) {
         int low = 0;
