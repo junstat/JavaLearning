@@ -1,18 +1,8 @@
 package Q0099.Q0003LongestSubstringWithoutRepeatingCharacters;
 
-import org.junit.Test;
-
 import java.util.HashMap;
 
-import static org.junit.Assert.assertEquals;
-
 public class Solution {
-
-    @Test
-    public void test1() {
-        String s = "pwwkew";
-        assertEquals(lengthOfLongestSubstring(s), 3);
-    }
 
     /**
      * 滑动窗口：在窗口中始终保存不重复的字母，求窗口的长度并更新到结果中

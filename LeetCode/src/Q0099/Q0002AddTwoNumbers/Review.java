@@ -29,7 +29,7 @@ public class Review {
         ListNode l1 = ListNodes.createListFromArray(new int[]{2, 4, 3});
         ListNode l2 = ListNodes.createListFromArray(new int[]{5, 6, 4});
         ListNode expect = ListNodes.createListFromArray(new int[]{7, 0, 8});
-        assertEquals(addTwoNumbers(l1, l2), expect);
+        assertEquals(expect, addTwoNumbers(l1, l2));
     }
 
     @Test
@@ -37,7 +37,7 @@ public class Review {
         ListNode l1 = ListNodes.createListFromArray(new int[]{9, 9, 9, 9, 9, 9, 9});
         ListNode l2 = ListNodes.createListFromArray(new int[]{9, 9, 9, 9});
         ListNode expect = ListNodes.createListFromArray(new int[]{8, 9, 9, 9, 0, 0, 0, 1});
-        assertEquals(addTwoNumbers(l1, l2), expect);
+        assertEquals(expect, addTwoNumbers(l1, l2));
     }
 
 

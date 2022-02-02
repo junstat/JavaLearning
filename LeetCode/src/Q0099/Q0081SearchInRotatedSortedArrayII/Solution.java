@@ -1,9 +1,5 @@
 package Q0099.Q0081SearchInRotatedSortedArrayII;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
-
 /*
     The idea is the same as the previous one without duplicates
     1) everytime check if target == nums[mid], if so, we find it.
@@ -22,13 +18,6 @@ import static org.junit.Assert.assertTrue;
     right both towards the middle by 1. and repeat.
  */
 public class Solution {
-    @Test
-    public void test1() {
-        int[] nums = {2, 5, 6, 0, 0, 1, 2};
-        int target = 0;
-        boolean result = search(nums, target);
-        assertTrue(result);
-    }
 
     public boolean search(int[] nums, int target) {
         int lo = 0, hi = nums.length - 1, mid;
