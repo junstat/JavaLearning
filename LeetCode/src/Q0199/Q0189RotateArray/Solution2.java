@@ -1,16 +1,16 @@
 package Q0199.Q0189RotateArray;
 
-public class Solution2 {
-    /*
-   Approach 1:
-   nums = "----->-->"; k =3
-   result = "-->----->";
+/*
+Solution 2:
+nums = "----->-->"; k =3
+result = "-->----->";
 
-   reverse "----->-->" we can get "<--<-----"
-   reverse "<--" we can get "--><-----"
-   reverse "<-----" we can get "-->----->"
-   this visualization help me figure it out :)
- */
+reverse "----->-->" we can get "<--<-----"
+reverse "<--" we can get "--><-----"
+reverse "<-----" we can get "-->----->"
+this visualization help me figure it out :)
+*/
+public class Solution2 {
 
     public void rotate(int[] nums, int k) {
         k %= nums.length;
