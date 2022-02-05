@@ -1,41 +1,33 @@
 package Q0099.Q0005LongestPalindromicSubstring;
 
 public class Solution2 {
-    private char[] str;
-    private int n;
-    private int beginIndex, longestLength; // 记录最长回文子串的起始位置与长度。
 
     public String longestPalindrome(String s) {
-        str = s.toCharArray();
-        n = str.length;
-        expansionCenter(n >> 1, 0);
-        return new String(str, beginIndex, longestLength);
-    }
-
-    // 以 str[index] 为中心进行扩展。
-    private void expansionCenter(int index, int direction) {
-        int i = index - 1, j = index + 1;
-        while (i >= 0 && str[i] == str[index]) {
-            i--;
+        if (s == null || s.length() == 0) return s;
+        String rev = new StringBuilder(s).reverse().toString();
+        int n = s.length();
+        int[] dp = new int[n + 1];
+        int maxLen = 0;
+        int end = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = n - 1; j >= 0; j--) {
+                if (s.charAt(i) == rev.charAt(j)) {
+                    dp[j + 1] = dp[j] + 1;
+                    if (dp[j + 1] > maxLen) {
+                        int idxInSource = n - 1 - j;    // dp推导出的顺读起点
+                        // dp导出的顺读终点                  实际顺读终点
+                        if (idxInSource + dp[j + 1] - 1 == i) {
+                            maxLen = dp[j + 1];
+                            end = i;
+                        }
+                    }
+                } else dp[j + 1] = 0;
+            }
         }
-        while (j < n && str[j] == str[index]) {
-            j++;
-        }
-        // 此时 str(i, j) 是一段连续且相同的字符，以 s(i, j) 为中心进行扩展。
-        int left = i, right = j;
-        while (left >= 0 && right < n && str[left] == str[right]) {
-            left--;
-            right++;
-        }
-        if (right - left - 1 > longestLength) {
-            beginIndex = left + 1;
-            longestLength = right - left - 1;
-        }
-        if (direction <= 0 && i << 1 > longestLength) {
-            expansionCenter(i, -1); // 当前搜索方向向左。
-        }
-        if (direction >= 0 && n - j << 1 > longestLength) {
-            expansionCenter(j, 1); // 当前搜索方向向右。
-        }
+        return s.substring(end - maxLen + 1, end + 1);
     }
 }
+/*
+    time complexity: O(n^2)
+    space complexity: O(n)
+ */

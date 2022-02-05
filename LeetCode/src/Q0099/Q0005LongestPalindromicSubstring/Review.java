@@ -43,6 +43,12 @@ public class Review {
         assertEquals("bab", longestPalindrome(s));
     }
 
+    @Test
+    public void test2() {
+        String s = "aaaa";
+        assertEquals("aaaa", longestPalindrome(s));
+    }
+
     public String longestPalindrome(String s) {
 
         return null;
