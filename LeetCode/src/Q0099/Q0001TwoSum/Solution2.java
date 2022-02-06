@@ -11,7 +11,7 @@ import java.util.HashMap;
         4. 若遍历结束，破镜未能圆，return [-1, -1].
  */
 
-public class Solution {
+public class Solution2 {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> elemIndexMaps = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {

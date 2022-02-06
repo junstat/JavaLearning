@@ -2,62 +2,33 @@ package Q0099.Q0002AddTwoNumbers;
 
 import DataStructure.ListNode;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-
 /*
-   NC40 两个链表生成相加链表
-    描述
-    假设链表中每一个节点的值都在 0 - 9 之间，那么链表整体就可以代表一个整数。
-    给定两个这种链表，请生成代表两个整数相加值的结果链表。
-    例如：链表 1 为 9->3->7，链表 2 为 6->3，最后生成新的结果链表为 1->0->0->0。
-    937 + 63 = 1000
-
-    思路:
-    1、因为求和的时候是链表遍历的逆序，所以遍历链表，把值存到栈中。
-    2、结果也是逆序，也存到栈中
-    3、注意进位
+    分析:
+        1. 整体的思想是模拟手算加法： p1.val(获取操作数1) + p2.val2(操作数2) = sum;
+            则，保存当前位结果值为sum的个位(sum % 10)，并将sum的十位作为进位传递给下一位进行计算。
+        2. 注意点1: 进入循环的条件是: p1 != null || p2 != null ,即 l1,l2只要有一个不为空就可以计算，
+            避免l1, l2长度不一致，在循环外做额外的处理。
+        3. 注意点2: 循环结束后，检查进位是否为0，不然需要把进位的值保存下来；
+        4. 注意点3: 创建虚拟头节点dummy，是因为，每一位保存值的方式都是将值保存到的cur.next.val，而给头节点赋值则是cur.val;
+            为了后续操作一致，浪费掉头节点。
  */
 public class Solution1 {
-    /**
-     * @param l1 ListNode类
-     * @param l2 ListNode类
-     * @return ListNode类
-     */
-    public ListNode addInList(ListNode l1, ListNode l2) {
-        Deque<Integer> l1Values = new ArrayDeque<>();
-        Deque<Integer> l2Values = new ArrayDeque<>();
-        Deque<Integer> result = new ArrayDeque<>();
-        ListNode dummy = new ListNode(0);
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0);  // 挂头结点
+        int sum = 0;
         ListNode cur = dummy;
         ListNode p1 = l1, p2 = l2;
-        int sum = 0;
-
-        while (p1 != null) {
-            l1Values.push(p1.val);
-            p1 = p1.next;
-        }
-
-        while (p2 != null) {
-            l2Values.push(p2.val);
-            p2 = p2.next;
-        }
-
-        while (!l1Values.isEmpty() || !l2Values.isEmpty()) {
-            int n1 = !l1Values.isEmpty() ? l1Values.pop() : 0;
-            int n2 = !l2Values.isEmpty() ? l2Values.pop() : 0;
+        while (p1 != null || p2 != null) {
+            int n1 = p1 != null ? p1.val : 0;
+            int n2 = p2 != null ? p2.val : 0;
             sum = n1 + n2 + sum;
-            result.push(sum % 10);
-            sum /= 10;
-        }
-
-        if (sum != 0) result.push(sum);
-
-        while (!result.isEmpty()) {
-            cur.next = new ListNode(result.pop());
+            cur.next = new ListNode(sum % 10);
             cur = cur.next;
-        }
-
+            sum /= 10;
+            if (p1 != null) p1 = p1.next;
+            if (p2 != null) p2 = p2.next;
+        } // end of while loop
+        if (sum != 0) cur.next = new ListNode(sum);
         return dummy.next;
     }
 }

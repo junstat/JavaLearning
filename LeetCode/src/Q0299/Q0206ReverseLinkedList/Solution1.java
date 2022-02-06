@@ -2,7 +2,7 @@ package Q0299.Q0206ReverseLinkedList;
 
 import DataStructure.ListNode;
 
-public class Solution {
+public class Solution1 {
 
     /*
        方法一: 遍历，逐个摘下结点，头插到新链表

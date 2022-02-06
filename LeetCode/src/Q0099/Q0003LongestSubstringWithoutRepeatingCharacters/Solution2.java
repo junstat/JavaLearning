@@ -4,12 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Solution2 {
-    /**
-     * 使用Set做窗口
-     *
-     * @param s
-     * @return
-     */
+
+    // 使用Set做窗口
     public static int lengthOfLongestSubstring(String s) {
         int n = s.length();
         Set<Character> window = new HashSet<>();
@@ -18,7 +14,7 @@ public class Solution2 {
             // try to extend the range [i, j]
             if (!window.contains(s.charAt(end))) {
                 window.add(s.charAt(end++));
-                res = Math.max(res, window.size());  // window.size() <==> end - start, 这里为什么不+1了呢？
+                res = Math.max(res, window.size());
             } else {
                 window.remove(s.charAt(start++));
             }

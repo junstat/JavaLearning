@@ -7,13 +7,13 @@ import DataStructure.ListNode;
  */
 public class Solution3 {
     public ListNode reverseList(ListNode head) {
-        return helper(head, null);
+        return reverseListAux(head, null);
     }
 
-    private ListNode helper(ListNode head, ListNode newHead) {
-        if (head == null) return newHead;
-        ListNode next = head.next;
-        head.next = newHead;
-        return helper(next, head);
+    private ListNode reverseListAux(ListNode p, ListNode pre) {
+        if (p == null) return pre;
+        ListNode r = p.next;
+        p.next = pre;
+        return reverseListAux(r, p);
     }
 }
