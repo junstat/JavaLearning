@@ -52,6 +52,16 @@ public class Review {
         assertEquals(findMedianSortedArrays(nums1, nums2), 2.0D);
     }
 
+    @Test
+    public void test1() {
+        // nums1:      3  5     8  9
+        // nums2: 1  2       7       10 11 12
+        int[] nums1 = {1, 2, 7};
+        int[] nums2 = {3, 5, 8, 9, 10, 11, 12};
+        System.out.println(findMedianSortedArrays(nums1, nums2));
+    }
+
+
     /*
           nums1:      3  5     8  9
           nums2: 1  2       7       10 11 12
@@ -61,15 +71,7 @@ public class Review {
            于是，问题变为求解满足上述a. b. c. 的cur1,cu2的位置。进一步地，使用二分查找加快查找速度。
      */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        if (nums1.length > nums2.length)
-            return findMedianSortedArrays(nums2, nums1);
-        int len1 = nums1.length, len2 = nums2.length, len = len1 + len2;
-        int lo = 0, hi = len1 - 1;
-        while (lo <= hi) {
-            int cut1 = lo + (hi - lo) / 2;
-            int cut2 = len / 2 - cut1;
-            // int l1 =
-        }
+
         return -1;
     }
 }

@@ -1,22 +1,6 @@
 package Q0299.Q0238ProductofArrayExceptSelf;
 
-import org.junit.Test;
-
-import java.util.Arrays;
-
 public class Solution {
-
-    @Test
-    public void test1() {
-        int[] nums = {1, 2, 3, 4};
-        System.out.println(Arrays.toString(productExceptSelf(nums)));
-    }
-
-    @Test
-    public void test2() {
-        int[] nums = {-1, 1, 0, -3, 3};
-        System.out.println(Arrays.toString(productExceptSelf(nums)));
-    }
 
     /*
        res[i] = nums[0] * nums[1] * ... * nums[i-1] * nums[i+1] * ... * nums[n-1]

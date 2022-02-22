@@ -1,4 +1,5 @@
 package Q0099.Q0004MedianofTwoSortedArrays;
+
 /*
     分析：
       <1.> 只考虑一个有序数组的时候，找中位数，我们做了什么？
@@ -24,7 +25,7 @@ package Q0099.Q0004MedianofTwoSortedArrays;
            c. 因为len(nums1) + len(nums2) = 10为偶数 => 中位数为(7+8)*0.5 = 7.5
            于是，问题变为求解满足上述a. b. c. 的cur1,cu2的位置。进一步地，使用二分查找加快查找速度。
  */
-public class Solution {
+public class Solution3 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) return findMedianSortedArrays(nums2, nums1);
         int len = nums1.length + nums2.length;

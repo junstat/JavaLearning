@@ -1,5 +1,9 @@
 package Q0099.Q0053MaximumSubarray;
 
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
+
 /*
  [Easy]
   Given an integer array nums, find the contiguous subarray (containing at least one number)
@@ -21,6 +25,12 @@ package Q0099.Q0053MaximumSubarray;
   Output: 23
  */
 public class Review {
+    @Test
+    public void test1() {
+        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        assertEquals(6, maxSubArray(nums));
+    }
+
     public int maxSubArray(int[] nums) {
 
         return 0;

@@ -1,41 +1,34 @@
 package Q0099.Q0004MedianofTwoSortedArrays;
 
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
+
+/*
+    把两个有序数组合并成一个有序数组，然后按上面的定义求一个数组的中位数。
+    中位数求法, 先排序，若数组长度是奇数，就取正中间的那个数，如数组长度是偶数，则取中间两个数的平均值。
+    time complexity: 遍历了全部数组，O(m+n)
+    space complexity: 开辟了一个数组，保存合并后的两个数组，O(m+n)
+ */
 public class Solution1 {
-    /**
-     * find median in two sorted array
-     *
-     * @param arr1 int整型一维数组 the array1
-     * @param arr2 int整型一维数组 the array2
-     * @return int整型
-     */
-    public int findMedianInTwoSortedArray(int[] arr1, int[] arr2) {
-        if (null == arr1 || null == arr2 || arr1.length != arr2.length)
-            throw new RuntimeException("Invalid input array!");
 
-        int start1 = 0;
-        int end1 = arr1.length - 1;
-        int start2 = 0;
-        int end2 = arr2.length - 1;
-        int mid1 = 0;
-        int mid2 = 0;
-        int offset = 0;
-        while (start1 < end1) {
-            mid1 = (start1 + end1) / 2;
-            mid2 = (start2 + end2) / 2;
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length, n = nums2.length, len = m + n;
+        int[] nums = new int[len];
+        merge(nums1, nums2, nums);
+        if (len % 2 != 0)
+            return nums[len / 2];
+        return (nums[len / 2 - 1] + nums[len / 2]) / 2.0;
+    }
 
-            // 数组长度为奇数时，offset=0；数组长度为偶数时，offset=1
-            offset = ((end1 - start1 + 1) & 1) ^ 1; // 数组长度在不断缩减
-            if (arr1[mid1] > arr2[mid2]) {
-                end1 = mid1;
-                start2 = mid2 + offset;
-            } else if (arr1[mid1] < arr2[mid2]) {
-                start1 = mid1 + offset;
-                end2 = mid2;
-            } else {
-                return arr1[mid1];
-            }
-        }
 
-        return Math.min(arr1[start1], arr2[start2]);  // 数组长度为1时，直接返回组合数组的最小元素
+    public void merge(int[] nums1, int[] nums2, int[] nums) {
+        int p1 = 0, p2 = 0, p = 0;
+        while (p1 < nums1.length && p2 < nums2.length)
+            nums[p++] = (nums1[p1] <= nums2[p2]) ? nums1[p1++] : nums2[p2++];
+        if (p2 < nums2.length)
+            System.arraycopy(nums2, p2, nums, p, nums2.length - p2);
+        if (p1 < nums1.length)
+            System.arraycopy(nums1, p1, nums, p, nums1.length - p1);
     }
 }
