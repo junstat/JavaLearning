@@ -37,7 +37,7 @@ public class Review {
 
     @Test
     public void test3() {
-        int x = Integer.MAX_VALUE;
+        int x = Integer.MAX_VALUE; // 2147483647
         System.out.println(reverse(x));
     }
 

@@ -10,15 +10,12 @@ package Q0099.Q0008StringtoInteger;
                 signed      end             end         in_number   end
                 in_number   end             end         in_number   end
                 end         end             end         end         end
-     来自官方题解
      System.out.println(Integer.MAX_VALUE);  // 2147483647
      System.out.println(Integer.MIN_VALUE);  // -2147483648   -2147483647
  */
-public class Solution {
-    /**
-     * 不使用long，手动判断溢出
-     * @param str
-     * @return
+public class Solution1 {
+    /*
+      不使用long，手动判断溢出
      */
     public int myAtoi(String str) {
         str = str.trim();
@@ -29,7 +26,7 @@ public class Solution {
         int curNumberIndex = !Character.isDigit(str.charAt(0)) ? 1 : 0;
         while (curNumberIndex < str.length() && Character.isDigit(str.charAt(curNumberIndex))) {
             // int型的边界扣除当前数，即当前res的边界
-            int tmp = ( (neg ? Integer.MIN_VALUE : Integer.MIN_VALUE + 1) + (str.charAt(curNumberIndex) - '0') ) / 10;
+            int tmp = ((neg ? Integer.MIN_VALUE : Integer.MIN_VALUE + 1) + (str.charAt(curNumberIndex) - '0')) / 10;
             if (tmp > res) { // 因为tmp, res均为负，tmp > res <=> abs(tmp) < abs(res)，即当前res已越界
                 return neg ? Integer.MIN_VALUE : Integer.MAX_VALUE;
             }

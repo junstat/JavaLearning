@@ -1,7 +1,5 @@
 package Q0099.Q0010RegularExpressionMatching;
 
-import org.junit.Test;
-
 /*
   I. 状态定义
      f[i][j] = s的前i个字符与p中的前j个字符是否能够匹配。
@@ -50,7 +48,7 @@ import org.junit.Test;
    然而，在题目描述中，我们必须将 a* 看成一个整体，因此将 a 进行匹配是不符合题目要求的。
    看来我们进行了额外的状态转移，这样会对最终的答案产生影响吗？
  */
-public class Solution {
+public class Solution1 {
 
     public boolean isMatch(String s, String p) {
         int m = s.length();
