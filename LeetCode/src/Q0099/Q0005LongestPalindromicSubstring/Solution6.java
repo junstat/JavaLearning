@@ -1,41 +1,50 @@
 package Q0099.Q0005LongestPalindromicSubstring;
 
 public class Solution6 {
-    private char[] str;
-    private int n;
-    private int beginIndex, longestLength; // 记录最长回文子串的起始位置与长度。
-
-    public String longestPalindrome(String s) {
-        str = s.toCharArray();
-        n = str.length;
-        expansionCenter(n >> 1, 0);
-        return new String(str, beginIndex, longestLength);
+    public String preProcess(String s) {
+        int n = s.length();
+        if (n == 0) return "^$";
+        StringBuilder ret = new StringBuilder("^");
+        for (int i = 0; i < n; i++)
+            ret.append("#").append(s.charAt(i));
+        ret.append("#$");
+        return ret.toString();
     }
 
-    // 以 str[index] 为中心进行扩展。
-    private void expansionCenter(int index, int direction) {
-        int i = index - 1, j = index + 1;
-        while (i >= 0 && str[i] == str[index]) {
-            i--;
+    public String longestPalindrome(String s) {
+        String T = preProcess(s);
+        int n = T.length();
+        int[] P = new int[n];
+        int C = 0, R = 0;
+        for (int i = 1; i < n - 1; i++) {
+            int i_m = 2 * C - i;
+            if (R > i) {
+                P[i] = Math.min(R - i, P[i_m]);
+            } else {
+                P[i] = 0;   // 等于R的情况
+            }
+
+            // 碰到之前的三种情况，需要利用中心扩展法
+            while (T.charAt(i + 1 + P[i]) == T.charAt(i - 1 - P[i]))
+                P[i]++;
+
+            // 判断是否需要更新R
+            if (i + P[i] > R) {
+                C = i;
+                R = i + P[i];
+            }
         }
-        while (j < n && str[j] == str[index]) {
-            j++;
+
+        // 找出P的最大值
+        int maxLen = 0;
+        int centerIndex = 0;
+        for (int i = 1; i < n - 1; i++) {
+            if (P[i] > maxLen) {
+                maxLen = P[i];
+                centerIndex = i;
+            }
         }
-        // 此时 str(i, j) 是一段连续且相同的字符，以 s(i, j) 为中心进行扩展。
-        int left = i, right = j;
-        while (left >= 0 && right < n && str[left] == str[right]) {
-            left--;
-            right++;
-        }
-        if (right - left - 1 > longestLength) {
-            beginIndex = left + 1;
-            longestLength = right - left - 1;
-        }
-        if (direction <= 0 && i << 1 > longestLength) {
-            expansionCenter(i, -1); // 当前搜索方向向左。
-        }
-        if (direction >= 0 && n - j << 1 > longestLength) {
-            expansionCenter(j, 1); // 当前搜索方向向右。
-        }
+        int start = (centerIndex - maxLen) / 2;     // 最开始讲的求原字符串下标
+        return s.substring(start, start + maxLen);
     }
 }

@@ -2,29 +2,21 @@ package Q0099.Q0006ZigZagConversion;
 
 public class Solution2 {
     public String convert(String s, int numRows) {
-        int len = s.length();
+        char[] c = s.toCharArray();
+        int len = c.length;
+        StringBuilder[] sb = new StringBuilder[numRows];
+        for (int i = 0; i < sb.length; i++) sb[i] = new StringBuilder();
 
-        if (len < numRows || numRows <= 1)
-            return s;
-
-        char zigZag[] = new char[len];
-        int interval = 2 * numRows - 2;
-        int count = 0;
-
-        for (int i = 0; i < numRows; i++) {
-            int step = interval - 2 * i;
-
-            for (int j = i; j < len; j = j + interval) {
-
-                zigZag[count] = s.charAt(j);
-                count++;
-                if (step > 0 && step < interval && j + step < len) {
-                    zigZag[count] = s.charAt(j + step);
-                    count++;
-                }
-            }
+        int i = 0;
+        while (i < len) {
+            for (int idx = 0; idx < numRows && i < len; idx++)  // vertically down
+                sb[idx].append(c[i++]);
+            for (int idx = numRows - 2; idx >= 1 && i < len; idx--) // obliquely up
+                sb[idx].append(c[i++]);
         }
+        for (int idx = 1; idx < sb.length; idx++)
+            sb[0].append(sb[idx]);
 
-        return new String(zigZag);
+        return sb[0].toString();
     }
 }
