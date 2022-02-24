@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * 方法一: 暴力解法
- * 三重循环, time: O(n^3), space: O(1)
+/*
+  方法一: 暴力解法
+  三重循环, time: O(n^3), space: O(1)
  */
 public class Solution {
     /*

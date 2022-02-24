@@ -39,8 +39,7 @@ public class Review {
     }
 
     public List<List<Integer>> threeSum(int[] nums) {
-        List<List<Integer>> res = new LinkedList<>();
 
-        return res;
+        return null;
     }
 }

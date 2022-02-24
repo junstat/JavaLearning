@@ -1,5 +1,9 @@
 package Q0099.Q0013RomanToInteger;
 
+/*
+    以CM = 900为例
+    策略: 从右往左遍历，M = 1000, C = 100, 若出现逆序，则作差， CM = 1000 - 100 = 900.
+ */
 public class Solution {
 
     public int romanToInt(String s) {

@@ -2,6 +2,8 @@ package Q0099.Q0007ReverseInteger;
 
 import org.junit.Test;
 
+import static junit.framework.TestCase.assertEquals;
+
 /*
     [Medium]
     Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside
@@ -25,20 +27,20 @@ public class Review {
     public void test1() {
         int x = -123;
         int result = reverse(x);
-        System.out.println(result);
+        assertEquals(-321, result);
     }
 
     @Test
     public void test2() {
         int x = 123;
         int result = reverse(x);
-        System.out.println(result);
+        assertEquals(321, result);
     }
 
     @Test
     public void test3() {
         int x = Integer.MAX_VALUE; // 2147483647
-        System.out.println(reverse(x));
+        assertEquals(0, reverse(x));
     }
 
     public int reverse(int x) {

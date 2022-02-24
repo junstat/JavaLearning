@@ -22,7 +22,21 @@ package Q0099.Q009PalindromeNumber;
     Output: false
     Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
  */
+
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertFalse;
+import static junit.framework.TestCase.assertTrue;
+
 public class Review {
+
+    @Test
+    public void test1() {
+        assertTrue(isPalindrome(121));
+        assertFalse(isPalindrome(-121));
+        assertFalse(isPalindrome(10));
+    }
+
     public boolean isPalindrome(int x) {
 
         return false;

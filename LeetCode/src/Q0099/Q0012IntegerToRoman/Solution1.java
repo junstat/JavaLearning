@@ -1,6 +1,6 @@
 package Q0099.Q0012IntegerToRoman;
 
-public class Solution {
+public class Solution1 {
     public String intToRoman(int num) {
         //            0    1000 2000   3000
         String M[] = {"", "M", "MM", "MMM"};
