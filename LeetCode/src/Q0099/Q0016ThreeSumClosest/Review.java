@@ -28,7 +28,7 @@ public class Review {
         int target = 1;
         int result = threeSumClosest(nums, target);
         int expected = 2;
-        assertEquals(result, expected);
+        assertEquals(expected, result);
     }
 
     public int threeSumClosest(int[] nums, int target) {

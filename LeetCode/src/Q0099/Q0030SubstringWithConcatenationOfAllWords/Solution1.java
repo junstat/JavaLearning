@@ -3,38 +3,29 @@ package Q0099.Q0030SubstringWithConcatenationOfAllWords;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /*
-    We use an Map<String, Integer> counts to record the expected times of each word
-    and another Map<String, Integer>seen to record the times we have seen. Then we
-    check for every possible position of i. Once we meet an expected word or the times
-    of some word is larger than its expected times, we stop the check. If we finish the
-    check successfully, push i to the result indexes.
+   思路一: 因为单词长度固定，可以计算出截取字符串的单词个数是否和`words`里的各单词出现次数是否相等。count操作的结果保存在 map结构里。
+   时间复杂度: O(n^2)
  */
 public class Solution1 {
     public List<Integer> findSubstring(String s, String[] words) {
-        Map<String, Integer> counts = new HashMap<>();
-        for (String word : words) {
-            counts.put(word, counts.getOrDefault(word, 0) + 1);
-        }
-        List<Integer> indexes = new ArrayList<>();
-        int n = s.length(), num = words.length, len = words[0].length();
-
-        for (int i = 0; i < n - num * len + 1; i++) {
-            Map<String, Integer> seen = new HashMap<>();
-            int j = 0;
-            while (j < num) {
-                String word = s.substring(i + j * len, i + (j + 1) * len);
-                if (!counts.containsKey(word))
-                    break;
-                seen.put(word, seen.getOrDefault(word, 0) + 1);
-                if (seen.get(word) > counts.getOrDefault(word, 0))
-                    break;
-                j++;
+        List<Integer> res = new ArrayList<Integer>();
+        if (s == null || s.length() == 0 || words == null || words.length == 0) return res;
+        HashMap<String, Integer> map = new HashMap<>();
+        int oneWord = words[0].length();
+        int wordNum = words.length;
+        int allLen = oneWord * wordNum;
+        for (String word : words) map.put(word, map.getOrDefault(word, 0) + 1);
+        for (int i = 0; i < s.length() - allLen + 1; i++) {
+            String tmp = s.substring(i, i + allLen);
+            HashMap<String, Integer> tmpMap = new HashMap<>();
+            for (int j = 0; j < allLen; j += oneWord) {
+                String w = tmp.substring(j, j + oneWord);
+                tmpMap.put(w, tmpMap.getOrDefault(w, 0) + 1);
             }
-            if (j == num) indexes.add(i);
+            if (map.equals(tmpMap)) res.add(i);
         }
-        return indexes;
+        return res;
     }
 }

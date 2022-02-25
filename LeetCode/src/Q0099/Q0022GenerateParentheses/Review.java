@@ -2,7 +2,11 @@ package Q0099.Q0022GenerateParentheses;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static junit.framework.TestCase.assertEquals;
 
 /*
     [Medium]
@@ -20,7 +24,9 @@ public class Review {
     @Test
     public void test1() {
         int n = 3;
-        System.out.println(generateParenthesis(n));
+        String[] expected = {"((()))", "(()())", "(())()", "()(())", "()()()"};
+        List<String> expectedList = new ArrayList<>(Arrays.asList(expected));
+        assertEquals(expectedList, generateParenthesis(n));
     }
 
     public List<String> generateParenthesis(int n) {

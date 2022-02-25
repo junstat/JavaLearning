@@ -1,5 +1,7 @@
 package Q0099.Q0030SubstringWithConcatenationOfAllWords;
 
+import org.junit.Test;
+
 import java.util.List;
 
 /*
@@ -24,6 +26,13 @@ import java.util.List;
     Output: [6,9,12]
  */
 public class Review {
+    @Test
+    public void test() {
+        String s = "barfoothefoobarman";
+        String[] words = {"foo", "bar"};
+        System.out.println(findSubstring(s, words));
+    }
+
     public List<Integer> findSubstring(String s, String[] words) {
 
         return null;

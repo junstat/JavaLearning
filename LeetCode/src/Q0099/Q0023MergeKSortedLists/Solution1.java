@@ -5,7 +5,7 @@ import DataStructure.ListNode;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Solution {
+public class Solution1 {
 
     // 来自Q21
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

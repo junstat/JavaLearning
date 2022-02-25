@@ -2,7 +2,7 @@ package Q0099.Q0025ReverseNodesInKGroup;
 
 import DataStructure.ListNode;
 
-public class Solution {
+public class Solution1 {
     public ListNode reverseKGroup(ListNode head, int k) {
         if (head == null || k == 1) return head;
         ListNode dummy = new ListNode(0, head);

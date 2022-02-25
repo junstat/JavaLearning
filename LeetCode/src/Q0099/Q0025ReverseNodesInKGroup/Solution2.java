@@ -3,12 +3,8 @@ package Q0099.Q0025ReverseNodesInKGroup;
 import DataStructure.ListNode;
 
 public class Solution2 {
-    /**
-     * recursion
-     *
-     * @param head
-     * @param k
-     * @return
+    /*
+      recursion
      */
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode cur = head;

@@ -4,10 +4,6 @@ import DataStructure.ListNode;
 import Utils.ListNodes;
 import org.junit.Test;
 
-import java.io.PipedReader;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-
 import static org.junit.Assert.assertEquals;
 
 /*
@@ -35,7 +31,7 @@ public class Review {
         ListNode l3 = ListNodes.createListFromArray(new int[]{2, 6});
         ListNode[] lists = new ListNode[]{l1, l2, l3};
         ListNode expected = ListNodes.createListFromArray(new int[]{1, 1, 2, 3, 4, 4, 5, 6});
-        assertEquals(mergeKLists(lists), expected);
+        assertEquals(expected, mergeKLists(lists));
     }
 
     public ListNode mergeKLists(ListNode[] lists) {
