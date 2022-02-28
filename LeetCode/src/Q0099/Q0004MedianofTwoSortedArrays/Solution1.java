@@ -1,9 +1,5 @@
 package Q0099.Q0004MedianofTwoSortedArrays;
 
-import org.junit.Test;
-
-import static junit.framework.TestCase.assertEquals;
-
 /*
     把两个有序数组合并成一个有序数组，然后按上面的定义求一个数组的中位数。
     中位数求法, 先排序，若数组长度是奇数，就取正中间的那个数，如数组长度是偶数，则取中间两个数的平均值。

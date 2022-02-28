@@ -1,4 +1,4 @@
-package Q0399.Q316RemoveDuplicateLetters;
+package Q0399.Q0316RemoveDuplicateLetters;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -28,10 +28,8 @@ import java.util.Deque;
        如果当前看到的字母已经在栈中，它一定不是某一段单调递增字母的最后一个字母；故，若遍历到栈中已存在的字符可以舍弃
        需要使用栈作为辅助的数据结构；
        需要记录每一个字符最后一次出现的下标；
-
-
   */
-class Solution {
+public class Solution1 {
     public String removeDuplicateLetters(String s) {
         int len = s.length();
         char[] charArray = s.toCharArray();  // 不用charAt，因为它还要检查下标是否越界
@@ -39,12 +37,6 @@ class Solution {
         for (int i = 0; i < len; i++) {
             lastIndex[charArray[i] - 'a'] = i;
         }
-        /*
-        Stack 文档中说，用 Deque(双端队列) 代替 Stack
-       A more complete and consistent set of LIFO stack operations is provided by the Deque interface and its implementations, which should be used in preference to this class. For example:
-
-        Deque<Integer> stack = new ArrayDeque<Integer>();
-      */
         Deque<Character> stack = new ArrayDeque<>();
         boolean[] visited = new boolean[26];
         for (int i = 0; i < len; i++) {
