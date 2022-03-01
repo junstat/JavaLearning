@@ -5,7 +5,7 @@ public class Solution2 {
         2. KMP，实现来自于算法导论
      */
     public int strStr(String haystack, String needle) {
-        int m = haystack.length(), n = needle.length();
+        int n = needle.length();
         if (n == 0) return 0;
         int[] next = getNext(needle);
         int k = -1;

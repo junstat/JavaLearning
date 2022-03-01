@@ -28,6 +28,13 @@ public class Review {
         String s = "(()";
     }
 
+    @Test
+    public void test2() {
+        String s = "()(())";
+        System.out.println(longestValidParentheses(s));
+    }
+
+
     public int longestValidParentheses(String s) {
 
         return 0;

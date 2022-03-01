@@ -1,10 +1,14 @@
 package Q0099.Q0040CombinationSumII;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
+
+
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
         List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(candidates);
@@ -12,15 +16,15 @@ public class Solution {
         return list;
     }
 
-    private void backtrack(List<List<Integer>> list, ArrayList<Integer> tempList, int[] nums, int remain, int start) {
+    private void backtrack(List<List<Integer>> list, ArrayList<Integer> cur, int[] nums, int remain, int start) {
         if (remain < 0) return;
-        else if (remain == 0) list.add(new ArrayList<>(tempList));
+        else if (remain == 0) list.add(new ArrayList<>(cur));
         else {
             for (int i = start; i < nums.length; i++) {
                 if (i > start && nums[i] == nums[i - 1]) continue; // skip duplicates
-                tempList.add(nums[i]);
-                backtrack(list, tempList, nums, remain - nums[i], i + 1);
-                tempList.remove(tempList.size() - 1);
+                cur.add(nums[i]);
+                backtrack(list, cur, nums, remain - nums[i], i + 1);
+                cur.remove(cur.size() - 1);
             }
         }
     }

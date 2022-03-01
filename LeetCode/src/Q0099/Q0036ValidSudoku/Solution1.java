@@ -3,7 +3,7 @@ package Q0099.Q0036ValidSudoku;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Solution {
+public class Solution1 {
     public boolean isValidSudoku(char[][] board) {
         Set<String> seen = new HashSet<>();
         for (int i = 0; i < 9; i++) {
