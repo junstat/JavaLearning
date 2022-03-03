@@ -1,7 +1,5 @@
 package Q0099.Q0040CombinationSumII;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

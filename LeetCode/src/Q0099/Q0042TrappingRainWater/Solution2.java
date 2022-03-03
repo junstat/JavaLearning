@@ -1,13 +1,13 @@
 package Q0099.Q0042TrappingRainWater;
 
 public class Solution2 {
-    /**
-     * Approach 2: DP
-     * l[i] = i == 0  ? max(h[0: i+1]) = h[i] : max(l[i-1], h[i])
-     * r[i] = i == (n-1) ? max(h[i:n]) = h[i] : max(l[i+1], h[i])
-     * ans = sum(min(l[i], r[i]) - h[i])
-     * Time complexity: O(n)
-     * Space complexity: O(n)
+    /*
+      Approach 2: DP
+      l[i] = i == 0  ? max(h[0: i+1]) = h[i] : max(l[i-1], h[i])
+      r[i] = i == (n-1) ? max(h[i:n]) = h[i] : max(l[i+1], h[i])
+      ans = sum(min(l[i], r[i]) - h[i])
+      Time complexity: O(n)
+      Space complexity: O(n)
      */
     public int trap(int[] height) {
         if (height == null || height.length == 0) return 0;

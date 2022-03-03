@@ -4,10 +4,8 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 public class Solution4 {
-    /**
-     * 方法4: 单调栈
-     * @param height
-     * @return
+    /*
+      方法4: 单调栈
      */
     public int trap(int[] height) {
         int ans = 0, current = 0;

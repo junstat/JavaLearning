@@ -1,6 +1,6 @@
 package Q0099.Q0042TrappingRainWater;
 
-public class Solution {
+public class Solution1 {
     /*
        For column_i, the rain it can trap:
                     左边最大值      右边最大值

@@ -1,16 +1,14 @@
 package Q0099.Q0042TrappingRainWater;
 
 public class Solution3 {
-    /**
-     * Approach 3: Two Pointers
-     * We can use two variables to track the max_l and max_r so far.
-     *
-     * Use l, r to track two sides, move l, r based on whether max_l < max_r. if max_l < max_r,
-     * answer depends on max_l, so we move l. 短板原理
-     * time complexity: O(n)
-     * space complexity: O(1)
-     * @param height
-     * @return
+    /*
+      Approach 3: Two Pointers
+      We can use two variables to track the max_l and max_r so far.
+
+      Use l, r to track two sides, move l, r based on whether max_l < max_r. if max_l < max_r,
+      answer depends on max_l, so we move l. 短板原理
+      time complexity: O(n)
+      space complexity: O(1)
      */
     public int trap(int[] height) {
         int left = 0, right = height.length - 1;
