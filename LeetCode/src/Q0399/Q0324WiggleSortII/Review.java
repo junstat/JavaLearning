@@ -21,15 +21,21 @@ import java.util.Arrays;
 public class Review {
     @Test
     public void test1() {
-        int[] nums = {1, 5, 1, 1, 6, 4};
+        int[] nums = {2, 3, 5, 5, 5, 6};
         wiggleSort(nums);
         System.out.println(Arrays.toString(nums));
     }
 
     @Test
     public void test2() {
-        int[] nums = {1, 3, 2, 2, 3, 1};
-        // 2,3,1,3,1,2
+        int[] nums = {1, 5, 1, 1, 6, 4};
+        wiggleSort(nums);
+        System.out.println(Arrays.toString(nums));
+    }
+
+    @Test
+    public void test3() {
+        int[] nums = {1, 5, 1, 7, 1, 6, 4};
         wiggleSort(nums);
         System.out.println(Arrays.toString(nums));
     }
