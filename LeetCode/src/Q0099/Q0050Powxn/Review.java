@@ -1,5 +1,9 @@
 package Q0099.Q0050Powxn;
 
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
+
 /*
   [Medium]
   Implement pow(x, n), which calculates x raised to the power n (i.e., x^n).
@@ -18,6 +22,13 @@ package Q0099.Q0050Powxn;
   Explanation: 2-2 = 1/22 = 1/4 = 0.25
  */
 public class Review {
+    @Test
+    public void test1() {
+        double x = 2.00000;
+        int n = 10;
+        assertEquals(1024.0, myPow(x, n));
+    }
+
     public double myPow(double x, int n) {
 
         return 0;

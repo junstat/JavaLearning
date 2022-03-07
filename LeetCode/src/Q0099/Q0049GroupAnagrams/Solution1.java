@@ -1,26 +1,22 @@
 package Q0099.Q0049GroupAnagrams;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /*
-    Moreover, since the string only contains lower-case alphabets, we can sort them using counting sort to improve
-    the time complexity.
+    Use an Map to group the strings by their sorted counterparts. Use the sorted string as the key and all anagram
+    strings as the value.
  */
 public class Solution1 {
     public List<List<String>> groupAnagrams(String[] strs) {
-        if (strs == null || strs.length == 0) return new ArrayList<>();
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String, List<String>> map = new HashMap<String, List<String>>();
         for (String str : strs) {
-            char[] ca = new char[26];
-            for (char c : str.toCharArray()) ca[c - 'a']++;
-            String key = String.valueOf(ca);
-            List<String> list = map.getOrDefault(key, new ArrayList<>());
+            char[] array = str.toCharArray();
+            Arrays.sort(array);
+            String key = new String(array);
+            List<String> list = map.getOrDefault(key, new ArrayList<String>());
             list.add(str);
             map.put(key, list);
         }
-        return new ArrayList<>(map.values());
+        return new ArrayList<List<String>>(map.values());
     }
 }
