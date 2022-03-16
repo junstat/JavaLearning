@@ -6,7 +6,7 @@ import java.util.LinkedList;
 /*
    method 1: 栈
  */
-public class Solution {
+public class Solution1 {
 
     public int evalRPN(String[] tokens) {
         Deque<Integer> stack = new LinkedList<>();
