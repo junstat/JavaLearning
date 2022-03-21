@@ -10,7 +10,7 @@ package Q0099.Q0064MinimumPathSum;
     3. 状态转移方程
         minSum[i][j] = min(minSum[i - 1][j], minSum[i][j - 1]) + grid[i][j]
  */
-public class Solution {
+public class Solution1 {
     /*
       This is a typical DP problem. Suppose the minimum path sum of arriving at point (i, j) is S[i][j], then the state
     equation is S[i][j] = min(S[i - 1][j], S[i][j - 1]) + grid[i][j].

@@ -10,7 +10,7 @@ package Q0099.Q0062UniquePaths;
     3. 转态转移方程
         dp[i][j] = dp[i-1][j] + dp[i][j - 1]
  */
-public class Solution {
+public class Solution1 {
     /*
        Since the robot can only move right and down, when it arrives at a point, it either arrives from left or above.
        If we use dp[i][j] for the number of unique paths to arrive at the point (i, j), then the state equation is
