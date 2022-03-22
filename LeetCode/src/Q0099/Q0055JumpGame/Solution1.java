@@ -1,6 +1,6 @@
 package Q0099.Q0055JumpGame;
 
-public class Solution {
+public class Solution1 {
     /*
       I just iterate and update the maximal index that I can reach
      */

@@ -1,8 +1,8 @@
 package Q0099.Q0059SpiralMatrixII;
 
-/**
- * 思路:
- * num保存1~n*n，现在需要把num按回形放入指定位置
+/*
+  思路:
+  num保存1~n*n，现在需要把num按回形放入指定位置
  */
 class Solution {
     public int[][] generateMatrix(int n) {
