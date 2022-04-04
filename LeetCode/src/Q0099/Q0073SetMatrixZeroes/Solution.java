@@ -10,7 +10,6 @@ public class Solution {
       有0。
       In the first phase, use matrix elements to set states in a top-down way.
       In the second phase, use states to set matrix elements in a bottom-up way.
-
      */
     public void setZeroes(int[][] matrix) {
         int col0 = 1, rows = matrix.length, cols = matrix[0].length;

@@ -1,27 +1,28 @@
 package Q0099.Q0078Subsets;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-/*
-    Iterative
-    Using [1, 2, 3] as an example, the iterative process is like:
-    1) initially, one empty subset [[]]
-    2) Adding 1 to []: [[], [1]]
-    3) Adding 2 to [] and [1]: [[], [1], [2], [1, 2]]
-    4) Adding 3 to [], [1], [2] and [1, 2]: [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
- */
+// Recursive (Backtracking)
 public class Solution1 {
+    /*
+        Time: O(n * 2^n)
+        Space: O(n/2 * 2^n) ~= O(n * 2^n)
+     */
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> subs = new ArrayList<>();
-        subs.add(new ArrayList<>());
-        for (int num : nums) {
-            int n = subs.size();
-            for (int i = 0; i < n; i++) {
-                subs.add(new ArrayList<>(subs.get(i)));
-                subs.get(subs.size() - 1).add(num);
-            }
+        List<List<Integer>> list = new ArrayList<>();
+        Arrays.sort(nums);
+        backtrack(list, new ArrayList<>(), nums, 0);
+        return list;
+    }
+
+    private void backtrack(List<List<Integer>> list, ArrayList<Integer> tempList, int[] nums, int start) {
+        list.add(new ArrayList<>(tempList));
+        for (int i = start; i < nums.length; i++) {
+            tempList.add(nums[i]);
+            backtrack(list, tempList, nums, i + 1);
+            tempList.remove(tempList.size() - 1);
         }
-        return subs;
     }
 }

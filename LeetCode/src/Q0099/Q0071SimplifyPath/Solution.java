@@ -1,7 +1,5 @@
 package Q0099.Q0071SimplifyPath;
 
-import org.junit.Test;
-
 import java.util.*;
 
 /*
@@ -12,15 +10,8 @@ import java.util.*;
     case 2. dir = ".." 显然，需要把之前遍历到的dir缓存，需要返回上一级，符合后进先出(栈) -> 弹栈
     case 3. dir = "" 由"//"切割而来 -> do nothing
     case 4. dir = "xxxx" -> 入栈
-
  */
 public class Solution {
-    @Test
-    public void test1() {
-        String path = "/home//foo/";
-        System.out.println(simplifyPath(path));
-    }
-
     public String simplifyPath(String path) {
         // corner case
         if (path == null || path.length() == 0) return "";

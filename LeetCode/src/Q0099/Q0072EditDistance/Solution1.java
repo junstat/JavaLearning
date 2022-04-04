@@ -19,7 +19,7 @@ package Q0099.Q0072EditDistance;
             i.e. dp[i][j] = dp[i][j-1] + 1
     So when word1[i-1] != word2[j-1], dp[i][j] will just be the minimum of the above three case
 */
-public class Solution {
+public class Solution1 {
     public int minDistance(String word1, String word2) {
         int m = word1.length(), n = word2.length();
         int[][] dp = new int[m + 1][n + 1];

@@ -1,19 +1,6 @@
 package Q0099.Q0079WordSearch;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
-
 public class Solution {
-
-    @Test
-    public void test1() {
-        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
-        String word = "ABCCED";
-        boolean result = exist(board, word);
-        assertTrue(result);
-    }
-
     /*
        Here accepted solution based on recursion. To save memory I decided to apply bit mask for every visited cell.
        Please check board[y][x] ^= 256;
@@ -27,15 +14,8 @@ public class Solution {
         return false;
     }
 
-    /**
-     * 判断以网格的(i,j)位置出发，能否搜索到单词 word[k...]
-     *
-     * @param board
-     * @param i
-     * @param j
-     * @param word
-     * @param k
-     * @return
+    /*
+      判断以网格的(i,j)位置出发，能否搜索到单词 word[k...]
      */
     private boolean exist(char[][] board, int i, int j, String word, int k) {
         if (k == word.length()) return true;

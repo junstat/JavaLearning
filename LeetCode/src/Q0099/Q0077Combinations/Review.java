@@ -1,5 +1,7 @@
 package Q0099.Q0077Combinations;
 
+import org.junit.Test;
+
 import java.util.List;
 
 /*
@@ -24,6 +26,14 @@ import java.util.List;
     Output: [[1]]
  */
 public class Review {
+    @Test
+    public void test1() {
+        int n = 4;
+        int k = 2;
+        List<List<Integer>> result = combine(n, k);
+        System.out.println(result);
+    }
+
     public List<List<Integer>> combine(int n, int k) {
 
         return null;
