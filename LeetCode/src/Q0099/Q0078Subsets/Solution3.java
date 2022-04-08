@@ -11,14 +11,14 @@ import java.util.List;
     Using [1, 2, 3] as an example, 1 appears once in every two consecutive subsets, 2 appears twice in every four
     consecutive subsets, and 3 appears four times in every eight subsets(initially all subsets are empty).
      2 ^ 3 = 8 总共有8个子集
-    1 -> 0001
-    2 -> 0010
-    3 -> 0011
-    4 -> 0100
-    5 -> 0101
-    6 -> 0110
-    7 -> 0111
-
+    0 -> 000
+    1 -> 001
+    2 -> 010
+    3 -> 011
+    4 -> 100
+    5 -> 101
+    6 -> 110
+    7 -> 111
  */
 public class Solution3 {
 

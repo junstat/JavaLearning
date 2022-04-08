@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner in;
         if (!"Linux".equals(System.getProperty("os.name"))) {
-            in = new Scanner(Paths.get("/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ004/input.txt"));
+            in = new Scanner(Paths.get("/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ004/input.txt.txt"));
         } else {
             in = new Scanner(System.in);
         }

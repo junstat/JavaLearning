@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner in;
-    static String inputFileName = "/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ018/input.txt";
+    static String inputFileName = "/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ018/input.txt.txt";
 
     static {
         if (!"Linux".equals(System.getProperty("os.name"))) {
