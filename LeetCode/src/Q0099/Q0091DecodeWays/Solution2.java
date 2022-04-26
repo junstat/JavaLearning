@@ -17,7 +17,7 @@ package Q0099.Q0091DecodeWays;
    s[i] is valid            if s[i] != '0'
    s[i-1]s[i] is valid if "10" <= s[i-1]s[i] <= "26"
  */
-public class Solution {
+public class Solution2 {
     public int numDecodings(String s) {
         int n = s.length();
         int[] f = new int[n + 1];

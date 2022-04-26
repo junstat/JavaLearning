@@ -2,7 +2,7 @@ package Q0099.Q0082RemoveDuplicatesfromSortedListII;
 
 import DataStructure.ListNode;
 
-public class Solution {
+public class Solution2 {
     public ListNode deleteDuplicates(ListNode head) {
         if (head == null || head.next == null) return head;
         ListNode dummy = new ListNode(Integer.MAX_VALUE, head);

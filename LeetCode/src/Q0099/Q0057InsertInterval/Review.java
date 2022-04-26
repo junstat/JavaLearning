@@ -1,5 +1,9 @@
 package Q0099.Q0057InsertInterval;
 
+import org.junit.Test;
+
+import java.util.Arrays;
+
 /*
   [Medium]
   You are given an array of non-overlapping intervals intervals
@@ -24,6 +28,14 @@ package Q0099.Q0057InsertInterval;
   Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
  */
 public class Review {
+
+    @Test
+    public void test1() {
+        int[][] intervals = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}};
+        int[] newInterval = {4, 8};
+        System.out.println(Arrays.deepToString(insert(intervals, newInterval)));
+    }
+
     public int[][] insert(int[][] intervals, int[] newInterval) {
 
         return null;

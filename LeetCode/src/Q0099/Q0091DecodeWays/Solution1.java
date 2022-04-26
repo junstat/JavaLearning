@@ -7,7 +7,7 @@ import java.util.HashMap;
    W("") = 1
    W(s) = 0, if s[0] == '0'
 
-    W(s[0....n-1]) = W(s[1....n-1]) + W(s[2...n-1]) if '10' <= s[0]s[1] <= '26'
+   W(s[0....n-1]) = W(s[1....n-1]) + W(s[2...n-1]) if '10' <= s[0]s[1] <= '26'
  */
 public class Solution1 {
 

@@ -1,5 +1,7 @@
 package Q0099.Q0055JumpGame;
 
+import org.junit.Test;
+
 /*
   [Medium]
   You are given an integer array nums. You are initially positioned at the array's first index,
@@ -18,6 +20,12 @@ package Q0099.Q0055JumpGame;
   Its maximum jump length is 0, which makes it impossible to reach the last index.
  */
 public class Review {
+
+    @Test
+    public void test1() {
+        int[] nums = {2, 3, 1, 1, 4};
+        System.out.println(canJump(nums));
+    }
 
     public boolean canJump(int[] nums) {
 
