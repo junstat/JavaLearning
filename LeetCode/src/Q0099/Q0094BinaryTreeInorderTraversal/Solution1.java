@@ -5,7 +5,7 @@ import DataStructure.TreeNode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solution {
+public class Solution1 {
     /*
        方法一: 递归
      */

@@ -9,7 +9,7 @@ import java.util.List;
    than 1 and the first letter is '0' then it's invalid;
    or the string whose integer representation greater than 255 is invalid.
  */
-public class Solution {
+public class Solution1 {
     public List<String> restoreIpAddresses(String s) {
         List<String> result = new ArrayList<String>();
         int len = s.length();
