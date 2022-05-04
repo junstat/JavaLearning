@@ -1,39 +1,34 @@
 package Q0099.Q0051NQueens;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
     Solution A: Directly check the validity of each position
  */
 public class Solution {
-
     public List<List<String>> solveNQueens(int n) {
         char[][] chess = new char[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                chess[i][j] = '.';
-            }
-        }
-        List<List<String>> res = new ArrayList<>();
+        for (int i = 0; i < n; i++) Arrays.fill(chess[i], '.');
+        List<List<String>> result = new ArrayList<>();
 
-        solve(res, chess, 0);
-        return res;
+        solve(result, chess, 0);
+        return result;
     }
 
-    private void solve(List<List<String>> res, char[][] chess, int row) {
+    private void solve(List<List<String>> result, char[][] chess, int row) {
         if (row == chess.length) {
-            res.add(construct(chess));
+            result.add(construct(chess));
             return;
         }
         for (int col = 0; col < chess.length; col++) {
             if (valid(chess, row, col)) {
                 chess[row][col] = 'Q';
-                solve(res, chess, row + 1);
+                solve(result, chess, row + 1);
                 chess[row][col] = '.';
             }
         }
-
     }
 
     private boolean valid(char[][] chess, int row, int col) {

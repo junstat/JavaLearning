@@ -22,12 +22,11 @@ public class Solution {
         if (i < 0 || j < 0 || i == board.length || j == board[i].length) return false;
         if (board[i][j] != word.charAt(k)) return false;
         board[i][j] ^= 256;  // 已检查过
-        boolean exist = exist(board, i, j + 1, word, k + 1) // 右
+        boolean found = exist(board, i, j + 1, word, k + 1) // 右
                 || exist(board, i, j - 1, word, k + 1) // 左
                 || exist(board, i + 1, j, word, k + 1)  // 上
                 || exist(board, i - 1, j, word, k + 1); // 下
         board[i][j] ^= 256;  // 恢复
-        return exist;
-
+        return found;
     }
 }

@@ -14,5 +14,4 @@ public class Solution {
             return false;
         return isSymmetricAux(left.left, right.right) && isSymmetricAux(left.right, right.left);
     }
-
 }

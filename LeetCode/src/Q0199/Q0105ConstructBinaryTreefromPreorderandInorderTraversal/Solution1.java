@@ -2,7 +2,7 @@ package Q0199.Q0105ConstructBinaryTreefromPreorderandInorderTraversal;
 
 import DataStructure.TreeNode;
 
-public class Solution {
+public class Solution1 {
     /*
        The basic idea is here:
         Say we have 2 arrays, PRE and IN.

@@ -6,7 +6,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 /*
-    BFS, Calculate the count of the last level.
+    Level travel, Calculate the count of the last level.
  */
 public class Solution2 {
     public int maxDepth(TreeNode root) {

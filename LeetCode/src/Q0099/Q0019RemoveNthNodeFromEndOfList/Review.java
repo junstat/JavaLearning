@@ -4,8 +4,6 @@ import DataStructure.ListNode;
 import Utils.ListNodes;
 import org.junit.Test;
 
-import javax.swing.plaf.ListUI;
-
 import static org.junit.Assert.assertEquals;
 
 /*

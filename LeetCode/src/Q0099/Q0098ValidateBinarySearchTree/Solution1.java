@@ -5,7 +5,7 @@ import DataStructure.TreeNode;
 /*
     in order traversal, recursion
  */
-class Solution {
+public class Solution1 {
     TreeNode prev = null;
 
     public boolean isValidBST(TreeNode root) {
