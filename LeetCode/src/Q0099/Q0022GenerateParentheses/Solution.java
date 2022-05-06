@@ -32,22 +32,20 @@ import java.util.List;
     ()()()
  */
 public class Solution {
-
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
-        backtrack(result, "", 0, 0, n);
+        generateParenthesis(result, "", 0, 0, n);
         return result;
     }
 
-    private void backtrack(List<String> result, String str, int open, int close, int max) {
-        if (str.length() == max * 2) {
-            result.add(str);
+    private void generateParenthesis(List<String> result, String s, int open, int close, int max) {
+        if (s.length() == max * 2) {
+            result.add(s);
             return;
         }
-
         if (open < max)
-            backtrack(result, str + "(", open + 1, close, max);
+            generateParenthesis(result, s + "(", open + 1, close, max);
         if (close < open)
-            backtrack(result, str + ")", open, close + 1, max);
+            generateParenthesis(result, s + ")", open, close + 1, max);
     }
 }

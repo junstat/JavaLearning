@@ -12,8 +12,7 @@ public class Solution3 {
     public ListNode mergeKLists(ListNode[] lists) {
         ListNode dummy = new ListNode(0);
         ListNode cur = dummy;
-        Comparator<ListNode> cmp = Comparator.comparingInt(a -> a.val);
-        PriorityQueue<ListNode> q = new PriorityQueue<>(cmp);
+        PriorityQueue<ListNode> q = new PriorityQueue<>(Comparator.comparingInt(a -> a.val));
         for (ListNode list : lists) if (list != null) q.add(list);
         while (!q.isEmpty()) {
             cur.next = q.poll();

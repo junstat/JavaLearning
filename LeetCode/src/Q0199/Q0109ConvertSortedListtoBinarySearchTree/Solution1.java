@@ -5,7 +5,7 @@ import DataStructure.TreeNode;
 
 import java.util.ArrayList;
 
-public class Solution {
+public class Solution1 {
     /*
        方法一: 遍历链表将val保存到 array，套用Q 108
       */
