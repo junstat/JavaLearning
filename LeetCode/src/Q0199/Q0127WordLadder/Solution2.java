@@ -24,7 +24,7 @@ since we cannot remove word from dict due to bidirectional search)
 4) It seems like if(set.add()) is a little slower than if(!contains()) then add() but it's more concise.
 update: the dictList is of List type now. And all transformed words including endWord must be in dictList.
  */
-public class Solution {
+public class Solution2 {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> dict = new HashSet<>(wordList), qs = new HashSet<>(), qe = new HashSet<>(), vis = new HashSet<>();
         qs.add(beginWord);

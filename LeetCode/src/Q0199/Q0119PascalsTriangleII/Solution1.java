@@ -3,7 +3,7 @@ package Q0199.Q0119PascalsTriangleII;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Solution {
+public class Solution1 {
 
     public List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<>();

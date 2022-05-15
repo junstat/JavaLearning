@@ -2,7 +2,7 @@ package Q0199.Q0120Triangle;
 
 import java.util.List;
 
-public class Solution {
+public class Solution1 {
     /*
         This problem is quite well-formed in my opinion. The triangle has a tree-like structure, which would lead
         people to think about traversal algorithms such as DFS. However, if you look closely, you would notice that
@@ -31,12 +31,12 @@ public class Solution {
         minpath[i] = min( minpath[i], minpath[i+1]) + triangle[k][i];
      */
     public int minimumTotal(List<List<Integer>> triangle) {
-        int[] minLine = new int[triangle.size() + 1];
+        int[] dp = new int[triangle.size() + 1];
         for (int i = triangle.size() - 1; i >= 0; i--) {
             for (int j = 0; j < triangle.get(i).size(); j++) {
-                minLine[j] = Math.min(minLine[j], minLine[j + 1]) + triangle.get(i).get(j);
+                dp[j] = Math.min(dp[j], dp[j + 1]) + triangle.get(i).get(j);
             }
         }
-        return minLine[0];
+        return dp[0];
     }
 }

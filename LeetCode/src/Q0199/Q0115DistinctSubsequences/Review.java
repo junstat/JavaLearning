@@ -15,20 +15,20 @@ import org.junit.Test;
     Output: 3
     Explanation:
     As shown below, there are 3 ways you can generate "rabbit" from S.
-    rabb b it
-    ra b bbit
-    rab b bit
+    RABB b IT
+    RA b BBIT
+    RAB b BIT
 
     Example 2:
     Input: s = "babgbag", t = "bag"
     Output: 5
     Explanation:
     As shown below, there are 5 ways you can generate "bag" from S.
-    ba b g bag
-    ba bgba g
-    b abgb ag
-    ba b gb ag
-    babg bag
+    BA b G bag
+    BA bgba G
+    B abgb AG
+    ba B gb AG
+    babg BAG
  */
 public class Review {
 

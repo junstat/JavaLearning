@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // r[i][j] = r[i - 1][j - 1] + r[i - 1][j];
-public class Solution {
+public class Solution1 {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();
         ArrayList<Integer> row = new ArrayList<>();
