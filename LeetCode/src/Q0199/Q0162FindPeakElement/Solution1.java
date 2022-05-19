@@ -3,7 +3,7 @@ package Q0199.Q0162FindPeakElement;
 /*
    Binary Search: iteration
  */
-public class Solution {
+public class Solution1 {
 
     public int findPeakElement(int[] nums) {
         int low = 0;

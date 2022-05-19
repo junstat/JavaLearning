@@ -1,6 +1,6 @@
 package Q0199.Q0164MaximumGap;
 
-public class Solution {
+public class Solution1 {
 
     public int maximumGap(int[] nums) {
         if (nums == null || nums.length < 2) return 0;
