@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // BFS
-public class Solution {
+public class Solution1 {
     public int[] findOrder(int numCourses, int[][] prerequisites) {
         List<List<Integer>> g = buildGraph(numCourses, prerequisites);
         List<Integer> degrees = computerInDegrees(g);

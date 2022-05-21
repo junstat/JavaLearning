@@ -3,7 +3,7 @@ package Q0299.Q0205IsomorphicStrings;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Solution {
+public class Solution1 {
 
     public boolean isIsomorphic(String s, String t) {
         return isIsomorphicAux(s, t) && isIsomorphicAux(t, s);

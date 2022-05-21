@@ -14,30 +14,26 @@ public class Solution2 {
   */
 class BSTIterator {
     private final Deque<TreeNode> stack;
+    private TreeNode cur;
 
     public BSTIterator(TreeNode root) {
-        this.stack = new ArrayDeque<>();
-        this.leftMostInorder(root);
+        stack = new ArrayDeque<>();
+        cur = root;
     }
 
-    private void leftMostInorder(TreeNode root) {
-        while (root != null) {
-            this.stack.push(root);
-            root = root.left;
-        }
-    }
 
     public int next() {
-        TreeNode topMostNode = this.stack.pop();
-
-        if (topMostNode.right != null) {
-            this.leftMostInorder(topMostNode.right);
+        while (cur != null) {
+            stack.push(cur);
+            cur = cur.left;
         }
-
-        return topMostNode.val;
+        cur = stack.pop();
+        int res = cur.val;
+        cur = cur.right;
+        return res;
     }
 
     public boolean hasNext() {
-        return this.stack.size() > 0;
+        return cur != null || !stack.isEmpty();
     }
 }

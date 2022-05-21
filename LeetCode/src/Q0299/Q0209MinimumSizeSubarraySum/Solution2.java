@@ -1,28 +1,22 @@
 package Q0299.Q0209MinimumSizeSubarraySum;
 
 /*
-    O(NLogN) - search if a window of size k exists that satisfy the condition
+   two pointers
+   1. 用 end 、start 去夹
+   2. win 做窗口
+   time complexity: O(n)
  */
 public class Solution2 {
-    public int minSubArrayLen(int target, int[] nums) {
-        int i = 1, j = nums.length, min = 0;
-        while (i <= j) {
-            int mid = (i + j) / 2;
-            if (windowExist(mid, nums, target)) {
-                j = mid - 1;
-                min = mid;
-            } else i = mid + 1;
-        }
-        return min;
-    }
 
-    private boolean windowExist(int size, int[] nums, int target) {
-        int sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (i >= size) sum -= nums[i - size];
-            sum += nums[i];
-            if (sum >= target) return true;
+    public int minSubArrayLen(int target, int[] nums) {
+        int sum = 0, start = 0, win = Integer.MAX_VALUE;
+        for (int end = 0; end < nums.length; end++) {
+            sum += nums[end];
+            while (sum >= target) {
+                win = Math.min(win, end - start + 1);
+                sum -= nums[start++];
+            }
         }
-        return false;
+        return (win == Integer.MAX_VALUE) ? 0 : win;
     }
 }

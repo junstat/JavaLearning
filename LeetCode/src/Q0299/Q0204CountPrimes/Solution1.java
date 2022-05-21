@@ -1,7 +1,7 @@
 package Q0299.Q0204CountPrimes;
 
 // TLE
-public class Solution {
+public class Solution1 {
     public int countPrimes(int n) {
         if (n < 3) return 0;
         int cnt = 0;

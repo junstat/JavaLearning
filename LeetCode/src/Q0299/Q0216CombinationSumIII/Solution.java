@@ -14,15 +14,15 @@ public class Solution {
         return ans;
     }
 
-    private void combination(List<List<Integer>> ans, List<Integer> comb, int k, int start, int n) {
-        if (comb.size() == k && n == 0) {
-            ans.add(new ArrayList<>(comb));
+    private void combination(List<List<Integer>> ans, List<Integer> curResult, int k, int start, int n) {
+        if (curResult.size() == k && n == 0) {
+            ans.add(new ArrayList<>(curResult));
             return;
         }
         for (int i = start; i <= 9; i++) {
-            comb.add(i);
-            combination(ans, comb, k, i + 1, n - i);
-            comb.remove(comb.size() - 1);
+            curResult.add(i);
+            combination(ans, curResult, k, i + 1, n - i);
+            curResult.remove(curResult.size() - 1);
         }
     }
 }

@@ -23,7 +23,7 @@ public class Solution1 {
             int j = 0;
             for (; j < numCourses; j++)
                 if (degrees.get(j) == 0) break; // 找到了入度为0的顶点，作为遍历的起点
-            if (j == numCourses) return false;  // 没有找到入度为0的定点
+            if (j == numCourses) return false;  // 没有找到入度为0的顶点
             degrees.set(j, degrees.get(j) - 1);
             for (int v : g.get(j)) degrees.set(v, degrees.get(v) - 1);
         }
@@ -31,19 +31,15 @@ public class Solution1 {
     }
 
     /*
-        [1, 0]  1 -> 0, To take course 1 you should have finished course 0.
-        对于 p=prerequisites[i] 中的数对，边的方向是 p[0] -> p[1]
-        使用邻接表的方式存储图，
-        index
-         0 : [1, ]
-         1 : []
-         2 : []
+        [1, 0] To take course 1 you should have finished course 0, 0 -> 1.
+        对于 p=prerequisites[i] 中的数对，边的方向是 p[1] -> p[0]
+        使用邻接表的方式存储图
      */
     private List<List<Integer>> buildGraph(int numCourses, int[][] prerequisites) {
         List<List<Integer>> g = new ArrayList<>();
         for (int i = 0; i < numCourses; i++) g.add(new ArrayList<>());
         for (int[] p : prerequisites)
-            g.get(p[1]).add(p[0]);
+            g.get(p[1]).add(p[0]); // p[1] -> p[0]
         return g;
     }
 

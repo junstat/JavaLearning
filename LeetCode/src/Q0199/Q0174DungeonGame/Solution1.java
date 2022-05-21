@@ -22,7 +22,7 @@ import static junit.framework.TestCase.assertEquals;
       2.2 after we fight with demons, we have cur health, i.e. prev + dungeon[prev] = cur
     From above, we have prev >= 1 and prev >= cur - dungeon[prev], thus prev = max(1, cur - dungeon[prev])
  */
-public class Solution {
+public class Solution1 {
 
     public int calculateMinimumHP(int[][] dungeon) {
         if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) return 0;

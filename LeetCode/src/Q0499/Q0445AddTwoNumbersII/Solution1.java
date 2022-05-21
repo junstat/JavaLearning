@@ -1,10 +1,10 @@
-package Q0499.Q445AddTwoNumbersII;
+package Q0499.Q0445AddTwoNumbersII;
 
 import DataStructure.ListNode;
 
 import java.util.Stack;
 
-public class Solution {
+public class Solution1 {
     /*
        栈:
       */
