@@ -3,7 +3,7 @@ package Q0199.Q0191Numberof1Bits;
 /*
     思路同Q190
  */
-public class Solution {
+public class Solution1 {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
         if (n == 0) return 0;
