@@ -1,29 +1,19 @@
 package Q0299.Q0239SlidingWindowMaximum;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.PriorityQueue;
 
 public class Solution1 {
 
     public int[] maxSlidingWindow(int[] nums, int k) {
-        if (nums == null || k <= 0) return new int[0];
         int n = nums.length;
+        PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> (a[0] != b[0] ? b[0] - a[0] : b[1] - a[1]));
+        for (int i = 0; i < k; i++) pq.offer(new int[]{nums[i], i});
         int[] result = new int[n - k + 1];
-        int resultIdx = 0;
-        // store index
-        Deque<Integer> q = new ArrayDeque<>();
-        for (int i = 0; i < n; i++) {
-            // remove numbers out of range k
-            while (!q.isEmpty() && q.peek() < i - k + 1) {
-                q.poll();
-            }
-            // remove smaller numbers in k range as they are useless
-            while (!q.isEmpty() && nums[q.peekLast()] < nums[i]) {
-                q.pollLast();
-            }
-            // q contains index... r contains content
-            q.offer(i);
-            if (i >= k - 1) result[resultIdx++] = nums[q.peek()];
+        result[0] = pq.peek()[0];
+        for (int i = k; i < n; i++) {
+            pq.offer(new int[]{nums[i], i});
+            while (pq.peek()[1] <= i - k) pq.poll();
+            result[i - k + 1] = pq.peek()[0];
         }
         return result;
     }

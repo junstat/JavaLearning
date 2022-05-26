@@ -1,18 +1,9 @@
 package Q0299.Q0279PerfectSquares;
 
-import org.junit.Test;
-
-import static junit.framework.TestCase.assertEquals;
-
 /*
-    Solution1 优化
+    Static Dynamic Programming
  */
 public class Solution2 {
-    @Test
-    public void test1() {
-        assertEquals(3, numSquares(12));
-    }
-
     public int numSquares(int n) {
         if (n < 0) return 0;
         int[] dp = new int[n + 1];

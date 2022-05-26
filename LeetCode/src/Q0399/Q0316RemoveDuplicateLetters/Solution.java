@@ -3,10 +3,9 @@ package Q0399.Q0316RemoveDuplicateLetters;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class Solution2 {
-
+public class Solution {
     public String removeDuplicateLetters(String s) {
-        int[] counter = new int[126];       // will contain number of occurrences of character(i+'a')
+        int[] counter = new int[26];       // will contain number of occurrences of character(i+'a')
         boolean[] visited = new boolean[26]; // will contain if character (i+'a') is present in current result stack
         char[] ch = s.toCharArray();
         for (char c : ch) counter[c - 'a']++;  // count number of occurrences of character
@@ -22,17 +21,15 @@ public class Solution2 {
             // if current character is smaller than last character in stack which occurs later in the string again
             // it can be removed and added later e.g  stack = bc remaining string abc then a can pop b and then c
             while (!stack.isEmpty() && c < stack.peek() && counter[stack.peek() - 'a'] != 0) {
-                visited[stack.pop() - 'a'] = false;
+                visited[stack.removeLast() - 'a'] = false;
             }
 
-            stack.push(c);
+            stack.addLast(c);
             visited[index] = true;
         }
 
-        StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()) {
-            sb.insert(0, stack.pop());
-        }
-        return sb.toString();
+        StringBuilder result = new StringBuilder();
+        for (char c : stack) result.append(c);
+        return result.toString();
     }
 }

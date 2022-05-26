@@ -1,5 +1,9 @@
 package Q0299.Q0274HIndex;
 
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
+
 /*
     [Medium]
     Given an array of integers citations where citations[i] is the number of citations a researcher received for
@@ -21,6 +25,13 @@ package Q0299.Q0274HIndex;
     Output: 1
  */
 public class Review {
+
+    @Test
+    public void test1() {
+        int[] citations = {3, 0, 6, 1, 5};
+        assertEquals(3, hIndex(citations));
+    }
+
     public int hIndex(int[] citations) {
 
         return 0;
