@@ -3,7 +3,7 @@ package Q0399.Q0324WiggleSortII;
 /*
     https://leetcode.com/problems/wiggle-sort-ii/discuss/755415/O(n)-%2B-O(1)-after-median-NO-indexing-required
  */
-public class Solution1 {
+public class Solution {
     public void wiggleSort(int[] nums) {
         int len = nums.length;
         if (len == 1 || len == 0) return;

@@ -17,10 +17,10 @@ public class Solution6 {
         int[] P = new int[n];
         int C = 0, R = 0;
         for (int i = 1; i < n - 1; i++) {
-            int i_m = 2 * C - i;
-            if (R > i) {
-                P[i] = Math.min(R - i, P[i_m]);
-            } else {
+            int iMirror = 2 * C - i;
+            if (i < R) {
+                P[i] = Math.min(R - i, P[iMirror]);  // 做越界限定
+            } else { // i >= R
                 P[i] = 0;   // 等于R的情况
             }
 

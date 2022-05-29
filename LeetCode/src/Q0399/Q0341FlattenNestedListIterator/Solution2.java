@@ -5,7 +5,7 @@ import java.util.Deque;
 import java.util.Iterator;
 import java.util.List;
 
-public class Solution {
+public class Solution2 {
 
 }
 
@@ -22,10 +22,10 @@ public class Solution {
     Note: first version of the solution has some mistakes as mentioned in some of the comments below, updated it and
     apologize if it was misleading.
  */
-class NestedIterator implements Iterator<Integer> {
+class NestedIterator2 implements Iterator<Integer> {
     Deque<NestedInteger> stack = new ArrayDeque<>();
 
-    public NestedIterator(List<NestedInteger> nestedList) {
+    public NestedIterator2(List<NestedInteger> nestedList) {
         prepareStack(nestedList);
     }
 

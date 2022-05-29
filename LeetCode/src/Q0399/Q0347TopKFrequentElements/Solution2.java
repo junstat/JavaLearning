@@ -1,44 +1,47 @@
 package Q0399.Q0347TopKFrequentElements;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Solution2 {
     public int[] topKFrequent(int[] nums, int k) {
-        int min = nums[0], max = nums[0];
-        for (int n : nums) {
-            if (n < min)
-                min = n;
-            else if (n > max)
-                max = n;
+        Map<Integer, Integer> occurrences = new HashMap<Integer, Integer>();
+        for (int num : nums) {
+            occurrences.put(num, occurrences.getOrDefault(num, 0) + 1);
         }
 
-        int[] counts = new int[max - min + 1];
-        for (int n : nums)
-            ++counts[n - min];
-
-        //array of int lists
-        List<Integer>[] count2num = new List[nums.length + 1];
-        for (int i = 0; i < counts.length; ++i) {
-            if (counts[i] == 0)
-                continue;
-            int n = i + min;//number whose count is count[i]
-            if (count2num[counts[i]] == null)
-                count2num[counts[i]] = new ArrayList<Integer>();
-            count2num[counts[i]].add(n); //create list of numbers which have this count
-
+        List<int[]> values = new ArrayList<int[]>();
+        for (Map.Entry<Integer, Integer> entry : occurrences.entrySet()) {
+            int num = entry.getKey(), count = entry.getValue();
+            values.add(new int[]{num, count});
         }
+        int[] ret = new int[k];
+        qsort(values, 0, values.size() - 1, ret, 0, k);
+        return ret;
+    }
 
-        int[] result = new int[k];
-        for (int i = count2num.length - 1; i >= 0 && k > 0; i--) {
-            if (count2num[i] != null) {
-                for (int n : count2num[i]) {
-                    result[--k] = n;
-                    if (k == 0)
-                        break;
-                }
+    public void qsort(List<int[]> values, int start, int end, int[] ret, int retIndex, int k) {
+        int picked = (int) (Math.random() * (end - start + 1)) + start;
+        Collections.swap(values, picked, start);
+
+        int pivot = values.get(start)[1];
+        int index = start;
+        for (int i = start + 1; i <= end; i++) {
+            if (values.get(i)[1] >= pivot) {
+                Collections.swap(values, index + 1, i);
+                index++;
             }
         }
-        return result;
+        Collections.swap(values, start, index);
+
+        if (k <= index - start) {
+            qsort(values, start, index - 1, ret, retIndex, k);
+        } else {
+            for (int i = start; i <= index; i++) {
+                ret[retIndex++] = values.get(i)[0];
+            }
+            if (k > index - start + 1) {
+                qsort(values, index + 1, end, ret, retIndex, k - (index - start + 1));
+            }
+        }
     }
 }
