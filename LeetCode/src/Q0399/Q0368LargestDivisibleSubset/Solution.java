@@ -39,7 +39,7 @@ public class Solution {
                 index = i;
             }
         }
-        List<Integer> res = new ArrayList<Integer>();
+        List<Integer> res = new ArrayList<>();
         while (index != -1) {
             res.add(nums[index]);
             index = prev[index];

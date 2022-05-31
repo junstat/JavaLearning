@@ -1,8 +1,5 @@
 package Q0099.Q0006ZigZagConversion;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Solution1 {
     /*
       1. 使用含min(numRows, len(s)) 个字符串的list表示非空行
@@ -12,23 +9,18 @@ public class Solution1 {
      */
     public String convert(String s, int numRows) {
         if (numRows == 1) return s;
-        List<StringBuilder> rows = new ArrayList<>();
-
-        for (int i = 0; i < Math.min(numRows, s.length()); i++) {
-            rows.add(new StringBuilder());
-        }
+        StringBuilder[] rows = new StringBuilder[numRows];
+        for (int i = 0; i < numRows; i++) rows[i] = new StringBuilder();
 
         int curRow = 0;
-        boolean goUp = false;
+        boolean goDown = true;
 
-        for (char c : s.toCharArray()) {
-            rows.get(curRow).append(c);
-            if (curRow == 0 || curRow == (numRows - 1)) goUp = !goUp;  // 改变行进方向
-            curRow += goUp ? 1 : -1;
+        for (int i = 0; i < s.length(); i++) {
+            rows[curRow].append(s.charAt(i));
+            if (curRow == 0 || curRow == (numRows - 1)) goDown = !goDown;
+            curRow += goDown ? -1 : 1;
         }
-
-        StringBuilder res = new StringBuilder();
-        for (StringBuilder row : rows) res.append(row);
-        return res.toString();
+        for (int i = 1; i < rows.length; i++) rows[0].append(rows[i]);
+        return rows[0].toString();
     }
 }

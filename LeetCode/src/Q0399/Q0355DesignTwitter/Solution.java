@@ -2,16 +2,16 @@ package Q0399.Q0355DesignTwitter;
 
 import java.util.*;
 
-public class Solution2 {
+public class Solution {
 }
 
 // Runtime: 8 ms, faster than 99.80% of Java online submissions for Design Twitter.
-class Twitter2 {
+class Twitter {
 
     private List<Integer[]> posts;
     private Map<Integer, Set<Integer>> relation;
 
-    public Twitter2() {
+    public Twitter() {
         this.posts = new ArrayList<>();
         this.relation = new HashMap<>();
     }
