@@ -1,6 +1,5 @@
 package Q0399.Q0377CombinationSumIV;
 
-// The above solution is top-down. How about a bottom-up one?
 public class Solution3 {
     public int combinationSum4(int[] nums, int target) {
         int[] comb = new int[target + 1];

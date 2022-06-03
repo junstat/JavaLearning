@@ -3,16 +3,15 @@ package Q0399.Q0380InsertDeleteGetRandomO1;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Solution2 {
+public class Solution {
 }
 
-// Runtime: 20 ms, faster than 99.40% of Java online submissions for Insert Delete GetRandom O(1).
-class RandomizedSet2 {
+class RandomizedSet {
     ArrayList<Integer> nums;
     HashMap<Integer, Integer> locs;
     java.util.Random rand = new java.util.Random();
 
-    public RandomizedSet2() {
+    public RandomizedSet() {
         nums = new ArrayList<Integer>();
         locs = new HashMap<Integer, Integer>();
 

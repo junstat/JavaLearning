@@ -2,7 +2,6 @@ package Q0399.Q0377CombinationSumIV;
 
 import java.util.Arrays;
 
-// Runtime: 1 ms, faster than 91.93% of Java online submissions for Combination Sum IV.
 public class Solution4 {
     public int combinationSum4(int[] nums, int target) {
         if (target == 0) return 1;

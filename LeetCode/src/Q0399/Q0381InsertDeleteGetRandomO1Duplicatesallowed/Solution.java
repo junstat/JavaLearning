@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class Solution1 {
+public class Solution {
 }
 
 
@@ -42,10 +42,10 @@ class RandomizedCollection {
         int loc = locs.get(val).iterator().next();
         locs.get(val).remove(loc);
         if (loc < nums.size() - 1) {
-            int lastone = nums.get(nums.size() - 1);
-            nums.set(loc, lastone);
-            locs.get(lastone).remove(nums.size() - 1);
-            locs.get(lastone).add(loc);
+            int lastOne = nums.get(nums.size() - 1);
+            nums.set(loc, lastOne);
+            locs.get(lastOne).remove(nums.size() - 1);
+            locs.get(lastOne).add(loc);
         }
         nums.remove(nums.size() - 1);
 

@@ -2,12 +2,6 @@ package Q0399.Q0377CombinationSumIV;
 
 import java.util.Arrays;
 
-/*
-    Now for a DP solution, we just need to figure out a way to store the intermediate results, to avoid the same
-    combination sum being calculated many times. We can use an array to save those results, and check if there is
-    already a result before calculation. We can fill the array with -1 to indicate that the result hasn't been
-    calculated yet. 0 is not a good choice because it means there is no combination sum for the target.
- */
 public class Solution2 {
     private int[] dp;
 
@@ -23,9 +17,9 @@ public class Solution2 {
             return dp[target];
         }
         int res = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (target >= nums[i]) {
-                res += helper(nums, target - nums[i]);
+        for (int num : nums) {
+            if (target >= num) {
+                res += helper(nums, target - num);
             }
         }
         dp[target] = res;

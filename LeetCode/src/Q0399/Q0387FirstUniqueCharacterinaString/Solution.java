@@ -1,6 +1,6 @@
 package Q0399.Q0387FirstUniqueCharacterinaString;
 
-public class Solution1 {
+public class Solution {
     public int firstUniqChar(String s) {
         int[] counter = new int[26];
         for (int i = 0; i < s.length(); i++)
