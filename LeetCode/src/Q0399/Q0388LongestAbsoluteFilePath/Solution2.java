@@ -1,6 +1,5 @@
 package Q0399.Q0388LongestAbsoluteFilePath;
 
-// An even shorter and faster solution using array instead of stack:
 public class Solution2 {
     public int lengthLongestPath(String input) {
         String[] paths = input.split("\n");

@@ -2,23 +2,6 @@ package Q0399.Q0399EvaluateDivision;
 
 import java.util.*;
 
-/*
-    Binary relationship is represented as a graph usually.
-    Does the direction of an edge matters? -- Yes. Take a / b = 2 for example, it indicates a --2--> b as well as b
-    --1/2--> a.
-    Thus, it is a directed weighted graph.
-    In this graph, how do we evaluate division?
-    Take a / b = 2, b / c = 3, a / c = ? for example,
-
-    a --2--> b --3--> c
-    We simply find a path using DFS from node a to node c and multiply the weights of edges passed, i.e. 2 * 3 = 6.
-
-    Please note that during DFS,
-
-    Rejection case should be checked before accepting case.
-    Accepting case is (graph.get(u).containsKey(v)) rather than (u.equals(v)) for it takes O(1) but (u.equals(v))
-    takes O(n) for n is the length of the longer one between u and v.
- */
 public class Solution {
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
 

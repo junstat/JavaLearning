@@ -1,28 +1,9 @@
 package Q0399.Q0388LongestAbsoluteFilePath;
 
-import org.junit.Test;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-/*
-    This problem is not hard but needs deep understanding on what you want to do. I ended up study the solution
-    posted on Discussion tab, thanks to @sky-xu
-
-    But I carefully read the solution and made a few comments that I want to share.
-
-    Here is the Solution and I left a few comments in the code to make it more understandable. The basic idea is, after
-    splitting the long string by the newline String, "\n", we need to deal with the Tab String "\t". The level of a
-    directory or file is dependent on the number of "\t" in each substring. However, it assumes that neither
-    directory name nor file name contains "\t", otherwise the code below does not work.
- */
 public class Solution1 {
-
-    @Test
-    public void test1() {
-        String input = "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext";
-        System.out.println(lengthLongestPath(input));
-    }
 
     public int lengthLongestPath(String input) {
         Deque<Integer> stack = new ArrayDeque<>();
@@ -49,7 +30,7 @@ public class Solution1 {
             the path length of current directory or file that we are currently looking at.
             */
             while (level < stack.size()) stack.poll();
-            int curLen = stack.peek() + s.length() - numOfTabs + 1;
+            int curLen = stack.peek() + s.length() - numOfTabs + 1; // `+1` for `/`
             stack.push(curLen);
             if (s.contains("."))
                 maxLen = Math.max(maxLen, curLen - 1); //Only update the maxLen when a file is discovered,

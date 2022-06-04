@@ -1,11 +1,5 @@
 package Q0399.Q0397IntegerReplacement;
 
-/*
-    the logic is:
-        If n is even, halve it.
-        If n=3 or n-1 has less 1's than n+1, decrement n.
-        Otherwise, increment n.
- */
 public class Solution1 {
     public int integerReplacement(int n) {
         int c = 0;

@@ -1,12 +1,5 @@
 package Q0499.Q0400NthDigit;
 
-/*
-    Straight forward way to solve the problem in 3 steps:
-
-    1. find the length of the number where the nth digit is from
-    2. find the actual number where the nth digit is from
-    3. find the nth digit and return
- */
 public class Solution {
     public int findNthDigit(int n) {
         int len = 1;

@@ -1,29 +1,28 @@
 package Q0399.Q0394DecodeString;
 
-// Runtime: 0 ms, faster than 100.00% of Java online submissions for Decode String.
-public class Solution2 {
+public class Solution {
     int ind = 0;
 
     public String decodeString(String s) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder res = new StringBuilder();
         while (ind < s.length() && s.charAt(ind) != ']') {
             if (!Character.isDigit(s.charAt(ind))) {
-                sb.append(s.charAt(ind++));
+                res.append(s.charAt(ind++));
             } else {
                 int k = 0;
                 while (ind < s.length() && Character.isDigit(s.charAt(ind))) {
                     k = k * 10 + s.charAt(ind++) - '0';
                 }
-                ind++;
-                String temp = decodeString(s);
-                ind++;
+                ind++;  // for '['
+                String pre = decodeString(s);
+                ind++;  // for ']'
 
                 while (k-- > 0) {
-                    sb.append(temp);
+                    res.append(pre);
                 }
             }
         }
 
-        return sb.toString();
+        return res.toString();
     }
 }

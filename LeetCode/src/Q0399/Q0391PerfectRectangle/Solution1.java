@@ -2,11 +2,6 @@ package Q0399.Q0391PerfectRectangle;
 
 import java.util.HashSet;
 
-/*
-    The right answer must satisfy two conditions:
-        1. the large rectangle area should be equal to the sum of small rectangles
-        2. count of all the points should be even, and that of all the four corner points should be one
- */
 public class Solution1 {
     public boolean isRectangleCover(int[][] rectangles) {
 
@@ -17,7 +12,7 @@ public class Solution1 {
         int y1 = Integer.MAX_VALUE;
         int y2 = Integer.MIN_VALUE;
 
-        HashSet<String> set = new HashSet<String>();
+        HashSet<String> set = new HashSet<>();
         int area = 0;
 
         for (int[] rect : rectangles) {
