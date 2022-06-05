@@ -2,7 +2,7 @@ package Q0499.Q0404SumofLeftLeaves;
 
 import DataStructure.TreeNode;
 
-public class Solution {
+public class Solution1 {
     public int sumOfLeftLeaves(TreeNode root) {
         return sumOfLeftLeaves(root, false);
     }

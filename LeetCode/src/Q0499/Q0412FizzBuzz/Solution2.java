@@ -3,7 +3,6 @@ package Q0499.Q0412FizzBuzz;
 import java.util.Arrays;
 import java.util.List;
 
-// Runtime: 1 ms, faster than 99.73% of Java online submissions for Fizz Buzz.
 public class Solution2 {
     public List<String> fizzBuzz(int n) {
         String[] arr = new String[n];

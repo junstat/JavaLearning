@@ -1,6 +1,6 @@
 package Q0499.Q0414ThirdMaximumNumber;
 
-public class Solution {
+public class Solution2 {
     public int thirdMax(int[] nums) {
         long firstMax = Long.MIN_VALUE, secondMax = Long.MIN_VALUE, thirdMax = Long.MIN_VALUE;
         for (int num : nums) {

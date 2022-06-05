@@ -1,7 +1,6 @@
 package Q0499.Q0409LongestPalindrome;
 
-// Runtime: 1 ms, faster than 100.00% of Java online submissions for Longest Palindrome.
-public class Solution2 {
+public class Solution {
     public int longestPalindrome(String s) {
         int[] occurrence = new int['z' - 'A' + 1];
         for (char c : s.toCharArray()) {

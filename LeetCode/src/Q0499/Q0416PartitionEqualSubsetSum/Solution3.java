@@ -1,6 +1,6 @@
 package Q0499.Q0416PartitionEqualSubsetSum;
 
-public class Solution2 {
+public class Solution3 {
     public boolean canPartition(int[] nums) {
         int sum = 0;
         for (int num : nums) sum += num;
@@ -8,16 +8,16 @@ public class Solution2 {
         int target = sum / 2;
 
         int n = nums.length;
-        boolean[][] dp = new boolean[2][target + 1];
-        dp[0][0] = true;
+        boolean[] dp = new boolean[target + 1];
+        dp[0] = true;
         for (int i = 1; i <= n; i++) {
             int t = nums[i - 1];
-            for (int j = 0; j <= target; j++) {
-                boolean no = dp[(i - 1) & 1][j];
-                boolean yes = j >= t && dp[(i - 1) & 1][j - t];
-                dp[i & 1][j] = no || yes;
+            for (int j = target; j >= 0; j--) {
+                boolean no = dp[j];
+                boolean yes = j >= t && dp[j - t];
+                dp[j] = no || yes;
             }
         }
-        return dp[n & 1][target];
+        return dp[target];
     }
 }
