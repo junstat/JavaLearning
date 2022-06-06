@@ -35,10 +35,7 @@ public class Solution {
             for (int i = 0; i < size; i++) {
                 Node node = queue.poll();
                 curLevel.add(node.val);
-                if (!node.children.isEmpty()) {
-                    for (Node child : node.children)
-                        queue.add(child);
-                }
+                for (Node child : node.children) queue.add(child);
             }
             result.add(curLevel);
         }

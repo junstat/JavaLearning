@@ -37,30 +37,33 @@ class Node {
     }
 };
 
-public class Solution {
+public class Solution1 {
+    int[][] g;
+
     public Node construct(int[][] grid) {
-        return helper(grid, 0, 0, grid.length);
+        g = grid;
+        return dfs(0, 0, g.length - 1, g.length - 1);
     }
 
-    private Node helper(int[][] grid, int x, int y, int len) {
-        if (len == 1) {
-            return new Node(grid[x][y] != 0, true, null, null, null, null);
+    Node dfs(int a, int b, int c, int d) {
+        boolean ok = true;
+        int t = g[a][b];
+        for (int i = a; i <= c && ok; i++) {
+            for (int j = b; j <= d && ok; j++) {
+                if (g[i][j] != t) {
+                    ok = false;
+                    break;
+                }
+            }
         }
-        Node result = new Node();
-        Node topLeft = helper(grid, x, y, len / 2);
-        Node topRight = helper(grid, x, y + len / 2, len / 2);
-        Node bottomLeft = helper(grid, x + len / 2, y, len / 2);
-        Node bottomRight = helper(grid, x + len / 2, y + len / 2, len / 2);
-        if (topLeft.isLeaf && topRight.isLeaf && bottomLeft.isLeaf && bottomRight.isLeaf
-                && topLeft.val == topRight.val && topRight.val == bottomLeft.val && bottomLeft.val == bottomRight.val) {
-            result.isLeaf = true;
-            result.val = topLeft.val;
-        } else {
-            result.topLeft = topLeft;
-            result.topRight = topRight;
-            result.bottomLeft = bottomLeft;
-            result.bottomRight = bottomRight;
-        }
-        return result;
+
+        if (ok) return new Node(t == 1, true);
+        Node root = new Node(t == 1, false);
+        int dx = c - a + 1, dy = d - b + 1;
+        root.topLeft = dfs(a, b, a + dx / 2 - 1, b + dy / 2 - 1);
+        root.topRight = dfs(a, b + dy / 2, a + dx / 2 - 1, d);
+        root.bottomLeft = dfs(a + dx / 2, b, c, b + dy / 2 - 1);
+        root.bottomRight = dfs(a + dx / 2, b + dy / 2, c, d);
+        return root;
     }
 }

@@ -1,18 +1,9 @@
 package Q0499.Q0419BattleshipsinaBoard;
 
-/*
-    Going over all cells, we can count only those that are the "first" cell of the battleship. First cell will be
-    defined as the most top-left cell. We can check for first cells by only counting cells that do not have an 'X' to
-    the left and do not have an 'X' above them.
- */
 public class Solution {
     public int countBattleships(char[][] board) {
-        int m = board.length;
-        if (m == 0) return 0;
-        int n = board[0].length;
-
+        int m = board.length, n = board[0].length;
         int count = 0;
-
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (board[i][j] == '.') continue;
@@ -21,7 +12,6 @@ public class Solution {
                 count++;
             }
         }
-
         return count;
     }
 }

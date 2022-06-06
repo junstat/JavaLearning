@@ -1,47 +1,37 @@
 package Q0499.Q0433MinimumGeneticMutation;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
-// BFS
 public class Solution1 {
-    public int minMutation(String start, String end, String[] bank) {
-        if (start.equals(end)) return 0;
+    static char[] items = new char[]{'A', 'C', 'G', 'T'};
 
-        Set<String> bankSet = new HashSet<>();
-        for (String b : bank) bankSet.add(b);
-
-        char[] charSet = new char[]{'A', 'C', 'G', 'T'};
-
-        int level = 0;
-        Set<String> visited = new HashSet<>();
-        Queue<String> queue = new LinkedList<>();
-        queue.offer(start);
-        visited.add(start);
-
-        while (!queue.isEmpty()) {
-            int size = queue.size();
+    public int minMutation(String S, String T, String[] bank) {
+        Set<String> set = new HashSet<>();
+        for (String s : bank) set.add(s);
+        Deque<String> d = new ArrayDeque<>();
+        Map<String, Integer> map = new HashMap<>();
+        d.addLast(S);
+        map.put(S, 0);
+        while (!d.isEmpty()) {
+            int size = d.size();
             while (size-- > 0) {
-                String curr = queue.poll();
-                if (curr.equals(end)) return level;
-
-                char[] currArray = curr.toCharArray();
-                for (int i = 0; i < currArray.length; i++) {
-                    char old = currArray[i];
-                    for (char c : charSet) {
-                        currArray[i] = c;
-                        String next = new String(currArray);
-                        if (!visited.contains(next) && bankSet.contains(next)) {
-                            visited.add(next);
-                            queue.offer(next);
-                        }
+                String s = d.pollFirst();
+                char[] cs = s.toCharArray();
+                int step = map.get(s);
+                for (int i = 0; i < 8; i++) {
+                    for (char c : items) {
+                        if (cs[i] == c) continue;
+                        char[] clone = cs.clone();
+                        clone[i] = c;
+                        String sub = String.valueOf(clone);
+                        if (!set.contains(sub)) continue;
+                        if (map.containsKey(sub)) continue;
+                        if (sub.equals(T)) return step + 1;
+                        map.put(sub, step + 1);
+                        d.addLast(sub);
                     }
-                    currArray[i] = old;
                 }
             }
-            level++;
         }
         return -1;
     }

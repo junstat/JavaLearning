@@ -1,6 +1,6 @@
 package Q0499.Q0423ReconstructOriginalDigitsfromEnglish;
 
-public class Solution2 {
+public class Solution {
     static String[] digits = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     static char[] ids = {'z', 'o', 'w', 'h', 'u', 'f', 'x', 's', 'g', 'i'};
     static int[] order = {0, 2, 4, 6, 8, 1, 3, 5, 7, 9};

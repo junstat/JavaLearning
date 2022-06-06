@@ -1,59 +1,57 @@
 package Q0499.Q0417PacificAtlanticWaterFlow;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Solution1 {
-    int[][] dir = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    int n, m;
+    int[][] g;
 
     public List<List<Integer>> pacificAtlantic(int[][] heights) {
-        List<List<Integer>> res = new LinkedList<>();
-        if (heights == null || heights.length == 0 || heights[0].length == 0) {
-            return res;
-        }
-        int n = heights.length, m = heights[0].length;
-        //One visited map for each ocean
-        boolean[][] pacific = new boolean[n][m];
-        boolean[][] atlantic = new boolean[n][m];
-        Queue<int[]> pQueue = new LinkedList<>();
-        Queue<int[]> aQueue = new LinkedList<>();
-        for (int i = 0; i < n; i++) { //Vertical border
-            pQueue.offer(new int[]{i, 0});
-            aQueue.offer(new int[]{i, m - 1});
-            pacific[i][0] = true;
-            atlantic[i][m - 1] = true;
-        }
-        for (int i = 0; i < m; i++) { //Horizontal border
-            pQueue.offer(new int[]{0, i});
-            aQueue.offer(new int[]{n - 1, i});
-            pacific[0][i] = true;
-            atlantic[n - 1][i] = true;
-        }
-        bfs(heights, pQueue, pacific);
-        bfs(heights, aQueue, atlantic);
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                if (pacific[i][j] && atlantic[i][j])
-                    res.add(Arrays.asList(i, j));
+        g = heights;
+        m = g.length;
+        n = g[0].length;
+        Deque<int[]> d1 = new ArrayDeque<>(), d2 = new ArrayDeque<>();
+        boolean[][] res1 = new boolean[m][n], res2 = new boolean[m][n];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (i == 0 || j == 0) {
+                    res1[i][j] = true;
+                    d1.addLast(new int[]{i, j});
+                }
+                if (i == m - 1 || j == n - 1) {
+                    res2[i][j] = true;
+                    d2.addLast(new int[]{i, j});
+                }
             }
         }
-        return res;
+        bfs(d1, res1);
+        bfs(d2, res2);
+        List<List<Integer>> ans = new ArrayList<>();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (res1[i][j] && res2[i][j]) {
+                    List<Integer> list = new ArrayList<>();
+                    list.add(i);
+                    list.add(j);
+                    ans.add(list);
+                }
+            }
+        }
+        return ans;
     }
 
-    public void bfs(int[][] heights, Queue<int[]> queue, boolean[][] visited) {
-        int n = heights.length, m = heights[0].length;
-        while (!queue.isEmpty()) {
-            int[] cur = queue.poll();
-            for (int[] d : dir) {
-                int x = cur[0] + d[0];
-                int y = cur[1] + d[1];
-                if (x < 0 || x >= n || y < 0 || y >= m || visited[x][y] || heights[x][y] < heights[cur[0]][cur[1]]) {
-                    continue;
-                }
-                visited[x][y] = true;
-                queue.offer(new int[]{x, y});
+    int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+    void bfs(Deque<int[]> d, boolean[][] res) {
+        while (!d.isEmpty()) {
+            int[] info = d.pollFirst();
+            int x = info[0], y = info[1], t = g[x][y];
+            for (int[] di : dirs) {
+                int nx = x + di[0], ny = y + di[1];
+                if (nx < 0 || nx >= m || ny < 0 || ny >= n) continue;
+                if (res[nx][ny] || g[nx][ny] < t) continue;
+                d.addLast(new int[]{nx, ny});
+                res[nx][ny] = true;
             }
         }
     }
