@@ -4,16 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution {
-    // when find a number i, flip the number at position i-1 to negative.
-    // if the number at position i-1 is already negative, i is the number that occurs twice.
     public List<Integer> findDuplicates(int[] nums) {
-        List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < nums.length; ++i) {
-            int index = Math.abs(nums[i]) - 1;
-            if (nums[index] < 0)
-                res.add(Math.abs(index + 1));
-            nums[index] = -nums[index];
+        List<Integer> ans = new ArrayList<>();
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            int t = nums[i];
+            if (t < 0 || t - 1 == i) continue;
+            if (nums[t - 1] == t) {
+                ans.add(t);
+                nums[i] *= -1;
+            } else {
+                int c = nums[t - 1];
+                nums[t - 1] = t;
+                nums[i--] = c;
+            }
         }
-        return res;
+        return ans;
     }
 }

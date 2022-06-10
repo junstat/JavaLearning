@@ -1,20 +1,35 @@
 package Q0499.Q0443StringCompression;
 
 public class Solution {
-    public int compress(char[] chars) {
-        int indexAns = 0, index = 0;
-        while (index < chars.length) {
-            char currentChar = chars[index];
-            int count = 0;
-            while (index < chars.length && chars[index] == currentChar) {
-                index++;
-                count++;
+    public int compress(char[] cs) {
+        int n = cs.length;
+        int i = 0, j = 0;
+        while (i < n) {
+            int idx = i;
+            while (idx < n && cs[idx] == cs[i]) idx++;
+            int cnt = idx - i;
+            cs[j++] = cs[i];
+            if (cnt > 1) {
+                int start = j, end = start;
+                while (cnt != 0) {
+                    cs[end++] = (char) ((cnt % 10) + '0');
+                    cnt /= 10;
+                }
+                reverse(cs, start, end - 1);
+                j = end;
             }
-            chars[indexAns++] = currentChar;
-            if (count != 1)
-                for (char c : Integer.toString(count).toCharArray())
-                    chars[indexAns++] = c;
+            i = idx;
         }
-        return indexAns;
+        return j;
+    }
+
+    void reverse(char[] cs, int start, int end) {
+        while (start < end) {
+            char t = cs[start];
+            cs[start] = cs[end];
+            cs[end] = t;
+            start++;
+            end--;
+        }
     }
 }

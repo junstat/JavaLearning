@@ -6,7 +6,7 @@ import java.util.Map;
 /*
     Search for the last stone in a depth-first way, prune those exceeding the [k-1,k+1] range.
  */
-public class Solution {
+public class Solution1 {
     private Map<Integer, Boolean> dp = new HashMap<>();
 
     public boolean canCross(int[] stones) {

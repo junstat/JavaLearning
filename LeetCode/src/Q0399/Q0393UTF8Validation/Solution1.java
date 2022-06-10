@@ -1,6 +1,6 @@
 package Q0399.Q0393UTF8Validation;
 
-public class Solution {
+public class Solution1 {
     public boolean validUtf8(int[] data) {
         int count = 0;
         for (int c : data) {

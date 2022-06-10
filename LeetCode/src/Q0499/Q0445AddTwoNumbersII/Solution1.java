@@ -5,9 +5,6 @@ import DataStructure.ListNode;
 import java.util.Stack;
 
 public class Solution1 {
-    /*
-       栈:
-      */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         Stack<Integer> s1 = new Stack<>();
         Stack<Integer> s2 = new Stack<>();

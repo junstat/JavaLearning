@@ -3,18 +3,13 @@ package Q0499.Q0400NthDigit;
 public class Solution {
     public int findNthDigit(int n) {
         int len = 1;
-        long count = 9;
-        int start = 1;
-
-        while (n > len * count) {
-            n -= len * count;
-            len += 1;
-            count *= 10;
-            start *= 10;
+        while (len * 9 * Math.pow(10, len - 1) < n) {
+            n -= len * 9 * Math.pow(10, len - 1);
+            len++;
         }
-
-        start += (n - 1) / len;
-        String s = Integer.toString(start);
-        return Character.getNumericValue(s.charAt((n - 1) % len));
+        long s = (long) Math.pow(10, len - 1);
+        long x = n / len - 1 + s;
+        n -= (x - s + 1) * len;
+        return n == 0 ? (int) (x % 10) : (int) ((x + 1) / Math.pow(10, len - n) % 10);
     }
 }

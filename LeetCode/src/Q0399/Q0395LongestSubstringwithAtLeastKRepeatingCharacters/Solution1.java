@@ -2,7 +2,7 @@ package Q0399.Q0395LongestSubstringwithAtLeastKRepeatingCharacters;
 
 import java.util.Arrays;
 
-public class Solution {
+public class Solution1 {
 
     public int longestSubstring(String s, int k) {
         char[] str = s.toCharArray();

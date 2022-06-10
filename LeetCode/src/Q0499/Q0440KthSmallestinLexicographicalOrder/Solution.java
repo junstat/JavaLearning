@@ -1,55 +1,28 @@
 package Q0499.Q0440KthSmallestinLexicographicalOrder;
 
-/*
-    Main function
-    Firstly, calculate how many steps curr need to move to curr + 1.
-
-    if the steps <= k, we know we can move to curr + 1, and narrow down k to k - steps.
-
-    else if the steps > k, that means the curr + 1 is actually behind the target node x in the preorder path, we
-    can't jump to curr + 1. What we have to do is to move forward only 1 step (curr * 10 is always next preorder
-    node) and repeat the iteration.
-
-    calSteps function
-
-    how to calculate the steps between curr and curr + 1?
-    Here we come up a idea to calculate by level.
-    Let n1 = curr, n2 = curr + 1.
-    n2 is always the next right node beside n1's right most node (who shares the same ancestor "curr")
-    (refer to the pic, 2 is right next to 1, 20 is right next to 19, 200 is right next to 199).
-
-    so, if n2 <= n, what means n1's right most node exists, we can simply add the number of nodes from n1 to n2 to
-    steps.
-
-    else if n2 > n, what means n (the biggest node) is on the path between n1 to n2, add (n + 1 - n1) to steps.
-
-    organize this flow to "steps += Math.min(n + 1, n2) - n1; n1 *= 10; n2 *= 10;"
- */
 public class Solution {
     public int findKthNumber(int n, int k) {
-        int cur = 1;
-        k = k - 1;
-        while (k > 0) {
-            int steps = calSteps(n, cur, cur + 1);
-            if (steps <= k) {
-                cur += 1;
-                k -= steps;
+        int ans = 1;
+        while (k > 1) {
+            int cnt = getCnt(ans, n);
+            if (cnt < k) {
+                k -= cnt;
+                ans++;
             } else {
-                cur *= 10;
-                k -= 1;
+                k--;
+                ans *= 10;
             }
         }
-        return cur;
+        return ans;
     }
 
-    // use long in case of overflow
-    private int calSteps(int n, long n1, long n2) {
-        int steps = 0;
-        while (n1 <= n) {
-            steps += Math.min(n + 1, n2) - n1;
-            n1 *= 10;
-            n2 *= 10;
-        }
-        return steps;
+    int getCnt(int x, int limit) {
+        String a = String.valueOf(x), b = String.valueOf(limit);
+        int n = a.length(), m = b.length(), k = m - n;
+        int ans = 0, u = Integer.parseInt(b.substring(0, n));
+        for (int i = 0; i < k; i++) ans += Math.pow(10, i);
+        if (u > x) ans += Math.pow(10, k);
+        else if (u == x) ans += limit - x * Math.pow(10, k) + 1;
+        return ans;
     }
 }

@@ -1,6 +1,6 @@
 package Q0399.Q0396RotateFunction;
 
-public class Solution {
+public class Solution1 {
     public int maxRotateFunction(int[] nums) {
         int allSum = 0;
         int len = nums.length;

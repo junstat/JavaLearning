@@ -1,6 +1,6 @@
 package Q0399.Q0390EliminationGame;
 
-public class Solution {
+public class Solution1 {
     public int lastRemaining(int n) {
         boolean left = true;
         int head = 1, step = 1, remaining = n;
