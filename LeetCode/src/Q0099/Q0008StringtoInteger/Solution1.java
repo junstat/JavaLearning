@@ -1,22 +1,6 @@
 package Q0099.Q0008StringtoInteger;
 
-/*
-    自动机
-    1. 输入字符所有可能情况分类: space(空格), +/-, number, other
-    2. 根据当前状态(字符)，与下一个字符可以得出下一状态: 即 下一状态 = f(当前状态, 下一字符)
-                            下一字符
-                            space           +/-         number      other
-        当前状态 start       start          signed       in_number   end
-                signed      end             end         in_number   end
-                in_number   end             end         in_number   end
-                end         end             end         end         end
-     System.out.println(Integer.MAX_VALUE);  // 2147483647
-     System.out.println(Integer.MIN_VALUE);  // -2147483648   -2147483647
- */
 public class Solution1 {
-    /*
-      不使用long，手动判断溢出
-     */
     public int myAtoi(String str) {
         str = str.trim();
         if (str.length() == 0) return 0;

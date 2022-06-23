@@ -25,7 +25,3 @@ public class Solution1 {
         return true;
     }
 }
-/*
-    time complexity: 遍历字符两层循环 O(n^2), check函数O(n), 综合O(n^3)
-    space complexity: O(n)
- */

@@ -1,9 +1,6 @@
 package Q0099.Q0003LongestSubstringWithoutRepeatingCharacters;
 
 public class Solution4 {
-    /*
-      使用自定义哈希表
-     */
     public int lengthOfLongestSubstring(String s) {
         int[] lastOccurred = new int[128];
         int res = 0;

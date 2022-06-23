@@ -1,32 +1,42 @@
 package Q0099.Q0017LetterCombinationsOfAPhoneNumber;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Solution {
-    String[] map = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-    List<String> result = new ArrayList<>();
+    Map<Character, String[]> map = new HashMap<Character, String[]>() {{
+        put('2', new String[]{"a", "b", "c"});
+        put('3', new String[]{"d", "e", "f"});
+        put('4', new String[]{"g", "h", "i"});
+        put('5', new String[]{"j", "k", "l"});
+        put('6', new String[]{"m", "n", "o"});
+        put('7', new String[]{"p", "q", "r", "s"});
+        put('8', new String[]{"t", "u", "v"});
+        put('9', new String[]{"w", "x", "y", "z"});
+    }};
 
-    public List<String> letterCombinations(String digits) {
-        if (digits == null || digits.length() == 0) {
-            return new ArrayList<>();
-        }
-        dfs(digits, new StringBuilder(), 0);
-        return result;
+    public List<String> letterCombinations(String ds) {
+        int n = ds.length();
+        List<String> ans = new ArrayList<>();
+        if (n == 0) return ans;
+        StringBuilder sb = new StringBuilder();
+        dfs(ds, 0, n, sb, ans);
+        return ans;
     }
 
-    void dfs(String str, StringBuilder letter, int index) {
-        if (index == str.length()) {
-            result.add(letter.toString());
+    void dfs(String ds, int i, int n, StringBuilder sb, List<String> ans) {
+        if (i == n) {
+            ans.add(sb.toString());
             return;
         }
-
-        int f = str.charAt(index) - '2';
-        String map_string = map[f];
-        for (int i = 0; i < map_string.length(); i++) {
-            letter.append(map_string.charAt(i));
-            dfs(str, letter, index + 1);
-            letter.deleteCharAt(letter.length() - 1);
+        char key = ds.charAt(i);
+        String[] all = map.get(key);
+        for (String item : all) {
+            sb.append(item);
+            dfs(ds, i + 1, n, sb, ans);
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 }

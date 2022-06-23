@@ -4,19 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*
-  General Idea
-  If you have already read and implement the 3sum and 4sum by using the sorting approach:
-  reduce them into 2sum at the end, you might already got the feeling that,
-  all k sum problem can be divided into two problems:
-
-  1> 2sum Problem
-  2> Reduce K sum problem to K – 1 sum Problem
-  Therefore, the ideas is simple and straightforward. We could use recursive to solve this problem.
-  Time complexity is O(N^(K-1)).
- */
-public class Solution {
-
+public class Solution1 {
     public List<List<Integer>> fourSum(int[] nums, int target) {
         Arrays.sort(nums);
         return kSum(nums, 0, 4, target);

@@ -1,10 +1,6 @@
 package Q0099.Q0005LongestPalindromicSubstring;
 
-/*
-    对Solution3的优化，使用一维数组
- */
 public class Solution4 {
-
     public String longestPalindrome(String s) {
         if (s == null || s.length() == 0) return s;
         String res = "";

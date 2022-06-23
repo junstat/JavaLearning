@@ -2,8 +2,6 @@ package Q0099.Q0016ThreeSumClosest;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.assertEquals;
 
 /*

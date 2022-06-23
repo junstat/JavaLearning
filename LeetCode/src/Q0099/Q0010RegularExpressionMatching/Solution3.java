@@ -1,9 +1,6 @@
 package Q0099.Q0010RegularExpressionMatching;
 
 public class Solution3 {
-    /*
-      Just one dimension array.
-     */
     public boolean isMatch(String s, String p) {
         int m = s.length(), n = p.length();
         boolean[] cur = new boolean[n + 1];

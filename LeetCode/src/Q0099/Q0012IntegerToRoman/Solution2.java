@@ -1,21 +1,19 @@
 package Q0099.Q0012IntegerToRoman;
 
 public class Solution2 {
-    public String intToRoman(int num) {
-        if (num < 1 || num > 3999) return "";
+    int[] val = new int[]{1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+    String[] str = new String[]{"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
 
-        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-        String[] roman = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-        int i = 0;
-        StringBuilder result = new StringBuilder();
-
-        while (num > 0) {
-            while (num >= values[i]) {
-                num -= values[i];
-                result.append(roman[i]);
+    public String intToRoman(int x) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < val.length && x > 0; i++) {
+            int cv = val[i];
+            String cs = str[i];
+            while (x >= cv) {
+                sb.append(cs);
+                x -= cv;
             }
-            i++;
         }
-        return result.toString();
+        return sb.toString();
     }
 }

@@ -61,15 +61,6 @@ public class Review {
         System.out.println(findMedianSortedArrays(nums1, nums2));
     }
 
-
-    /*
-          nums1:      3  5     8  9
-          nums2: 1  2       7       10 11 12
-          a. 在隔断左侧有: 1 2 3 5 7 共5个数，右侧有: 8 9 10 11 12 共5个数 => 隔断把序列分为size为5的两part。
-          b. nums1的隔断cut1两边的值为，左l1 = 5, r1=8; nums2的隔断 cur2两边l2=7, r2=10。=> l1 <= r2 && l2 <= r1
-          c. 因为len(nums1) + len(nums2) = 10为偶数 => 中位数为(7+8)*0.5 = 7.5
-           于是，问题变为求解满足上述a. b. c. 的cur1,cu2的位置。进一步地，使用二分查找加快查找速度。
-     */
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 
         return -1;

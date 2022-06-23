@@ -1,12 +1,5 @@
 package Q0099.Q0010RegularExpressionMatching;
 
-/*
- We define dp[i][j] to be true if s[0...i) matches p[0..j) and false otherwise. The state equations will be:
- 1. dp[i][j] = dp[i-1][j-1], if p[j-1] != '*' && (s[i-1] == p[j-1] || p[j-1] == '.')
- 2. dp[i][j] = d[i][j-2], if p[j-1] == '*' and the pattern repeats for 0 time.
- 3. dp[i][j] = dp[i-1][j] && (s[i-1] == p[j-2] || p[j-2] == '.'),
-    if p[j-1] == '*' and the pattern repeats for at least 1 time.
- */
 public class Solution2 {
 
     public boolean isMatch(String s, String p) {

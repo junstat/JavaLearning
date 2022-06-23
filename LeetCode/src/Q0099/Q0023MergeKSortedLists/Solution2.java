@@ -3,7 +3,6 @@ package Q0099.Q0023MergeKSortedLists;
 import DataStructure.ListNode;
 
 public class Solution2 {
-    // 来自Q21
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null || l2 == null) return l1 != null ? l1 : l2;
         if (l1.val < l2.val) {
@@ -15,14 +14,6 @@ public class Solution2 {
         }
     }
 
-    /*
-   方法二: 分治合并
-   1、将lists 分为 [lists.size() / 2] + 1 组
-   2、组内合并
-   重复以上操作，直至合并为1个链表
-   时间复杂度: O(kn x logk)
-   空间复杂度: O(logk)
- */
     public ListNode merge(ListNode[] lists, int l, int r) {
         if (l == r) return lists[l];
         if (l > r) return null;

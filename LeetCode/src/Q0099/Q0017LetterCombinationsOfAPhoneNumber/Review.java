@@ -24,7 +24,7 @@ import java.util.List;
     Output: ["a","b","c"]
 */
 public class Review {
-    public List<List<Integer>> fourSum(int[] nums, int target) {
+    public List<String> letterCombinations(String ds) {
 
         return null;
     }

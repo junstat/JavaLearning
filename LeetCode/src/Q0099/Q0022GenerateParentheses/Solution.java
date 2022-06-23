@@ -3,49 +3,27 @@ package Q0099.Q0022GenerateParentheses;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-    The idea here is to only add '(' and ')' that we know will guarantee us a solution (instead of adding 1 too many
-    close). Once we add a '(' we will then discard it and try a ')' which can only close a valid '('. Each of these
-    steps are recursively called.
-
-    an example to understand this solution:
-    (
-    ((
-    (((
-    ((()
-    ((())
-    ((()))
-    (()
-    (()(
-    (()()
-    (()())
-    (())
-    (())(
-    (())()
-    ()
-    ()(
-    ()((
-    ()(()
-    ()(())
-    ()()
-    ()()(
-    ()()()
- */
 public class Solution {
     public List<String> generateParenthesis(int n) {
-        List<String> result = new ArrayList<>();
-        generateParenthesis(result, "", 0, 0, n);
-        return result;
+        List<String> ans = new ArrayList<>();
+        dfs(0, n * 2, 0, n, "", ans);
+        return ans;
     }
 
-    private void generateParenthesis(List<String> result, String s, int open, int close, int max) {
-        if (s.length() == max * 2) {
-            result.add(s);
-            return;
+    /**
+     * i: 当前遍历到位置
+     * n: 字符总长度
+     * score: 当前得分，令 '(' 为 1， ')' 为 -1
+     * max: 最大得分值
+     * path: 当前的拼接结果
+     * ans: 最终结果集
+     */
+    void dfs(int i, int n, int score, int max, String path, List<String> ans) {
+        if (i == n) {
+            if (score == 0) ans.add(path);
+        } else {
+            if (score + 1 <= max) dfs(i + 1, n, score + 1, max, path + "(", ans);
+            if (score - 1 >= 0) dfs(i + 1, n, score - 1, max, path + ")", ans);
         }
-        if (open < max)
-            generateParenthesis(result, s + "(", open + 1, close, max);
-        if (close < open)
-            generateParenthesis(result, s + ")", open, close + 1, max);
     }
 }

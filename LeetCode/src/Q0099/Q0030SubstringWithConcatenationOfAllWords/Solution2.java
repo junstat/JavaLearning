@@ -7,71 +7,41 @@ import java.util.Map;
 
 public class Solution2 {
     public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> result = new ArrayList<>();
-        if (words.length == 0 || s.length() < words.length * words[0].length()) return result;
-        char[] sArr = s.toCharArray();
-        Map<MyString, Integer> counter = new HashMap<>();
-        for (String value : words) {
-            MyString word = new MyString(value);
-            counter.put(word, counter.getOrDefault(word, 0) + 1);
+        List<Integer> ans = new ArrayList<>();
+        if (words.length == 0) return ans;
+
+        int n = s.length(), m = words.length, w = words[0].length();
+
+        // 统计 words 中「每个目标单词」的出现次数
+        Map<String, Integer> map = new HashMap<>();
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
         }
-        int listLen = words.length;
-        int wordLen = words[0].length();
-        for (int i = 0; i < wordLen; i++) {
-            for (int j = i; j <= s.length() - wordLen * listLen; j += wordLen) {
-                Map<MyString, Integer> segmentCounter = new HashMap<>();
-                // 从尾往头遍历，判断往后第 k 个 len 位置的子串是否在 map 中
-                for (int k = listLen - 1; k >= 0; k--) {
-                    MyString segment = new MyString(sArr, j + k * wordLen, wordLen);
-                    int val = segmentCounter.getOrDefault(segment, 0) + 1;
-                    // 如果从 j+k*wordLen, j 到 (k+1)*wordLen 位置的子串不在 map 中
-                    // 代表可以从 j 到 j+(k+1)*wordLen 这一段都可以舍弃
-                    // 这里只需把 j 移动 k*wordLen，剩余的一个 wordLen 在循环体中移动。
-                    if (val > counter.getOrDefault(segment, 0)) {
-                        j += k * wordLen;
-                        break;
+
+        for (int i = 0; i < w; i++) {
+            // 构建一个当前子串对应 map，统计当前子串中「每个目标单词」的出现次数
+            Map<String, Integer> curMap = new HashMap<>();
+            // 滑动窗口的大小固定是 m * w
+            // 每次将下一个单词添加进 cur，上一个单词移出 cur
+            for (int j = i; j + w <= n; j += w) {
+                String cur = s.substring(j, j + w);
+                if (j >= i + (m * w)) {
+                    int idx = j - m * w;
+                    String prev = s.substring(idx, idx + w);
+                    if (curMap.get(prev) == 1) {
+                        curMap.remove(prev);
+                    } else {
+                        curMap.put(prev, curMap.get(prev) - 1);
                     }
-                    // k到0代表找到了符合的子串
-                    if (k == 0) result.add(j);
-                    else segmentCounter.put(segment, val);
+                }
+                curMap.put(cur, curMap.getOrDefault(cur, 0) + 1);
+                // 如果当前子串对应 map 和 words 中对应的 map 相同，说明当前子串包含了「所有的目标单词」，将起始下标假如结果集
+                if (map.containsKey(cur) && curMap.get(cur).equals(map.get(cur)) && map.equals(curMap)) {
+                    ans.add(j - (m - 1) * w);
                 }
             }
         }
-        return result;
-    }
 
-    private static class MyString {
-        private final char[] value;
-        private final int offset;
-        private final int len;
-        private final int hashCode;
-
-        MyString(String s) {
-            this(s.toCharArray(), 0, s.length());
-        }
-
-        MyString(char[] value, int offset, int len) {
-            this.value = value;
-            this.offset = offset;
-            this.len = len;
-            int h = 0;
-            for (int i = 0; i < len; i++) h = 31 * h + value[offset + i];
-            this.hashCode = h;
-        }
-
-        public int hashCode() {
-            return hashCode;
-        }
-
-        public boolean equals(Object o) {
-            if (o instanceof MyString) {
-                MyString other = (MyString) o;
-                if (len != other.len) return false;
-                for (int i = offset, j = other.offset; i < len; ++i, ++j)
-                    if (value[i] != other.value[j]) return false;
-                return true;
-            }
-            return false;
-        }
+        return ans;
     }
 }

@@ -71,7 +71,7 @@ public class Review {
     @Test
     public void test1() {
         assertEquals(42, myAtoi("42"));
-        assertEquals(-42, myAtoi("      42"));
+        assertEquals(-42, myAtoi("      -42"));
         assertEquals(4229, myAtoi("4229 with words"));
     }
 

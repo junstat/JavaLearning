@@ -1,18 +1,15 @@
 package Q0099.Q009PalindromeNumber;
 
-/*
-   手动模拟Stack
-*/
 public class Solution {
-
     public boolean isPalindrome(int x) {
+        // 对于 负数 和 x0、x00、x000 格式的数，直接返回 false
         if (x < 0 || (x % 10 == 0 && x != 0)) return false;
-        int reverse = 0;
-        while (x > reverse) {
-            int pop = x % 10;
+        int t = 0;
+        while (x > t) {
+            t = t * 10 + x % 10;
             x /= 10;
-            reverse = reverse * 10 + pop;
         }
-        return x == reverse || (reverse / 10) == x;
+        // 回文长度的两种情况：直接比较 & 忽略中心点（t 的最后一位）进行比较
+        return x == t || x == t / 10;
     }
 }

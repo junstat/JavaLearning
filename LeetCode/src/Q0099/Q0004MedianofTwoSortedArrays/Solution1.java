@@ -1,11 +1,5 @@
 package Q0099.Q0004MedianofTwoSortedArrays;
 
-/*
-    把两个有序数组合并成一个有序数组，然后按上面的定义求一个数组的中位数。
-    中位数求法, 先排序，若数组长度是奇数，就取正中间的那个数，如数组长度是偶数，则取中间两个数的平均值。
-    time complexity: 遍历了全部数组，O(m+n)
-    space complexity: 开辟了一个数组，保存合并后的两个数组，O(m+n)
- */
 public class Solution1 {
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {

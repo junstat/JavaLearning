@@ -1,12 +1,6 @@
 package Q0099.Q0008StringtoInteger;
 
 public class Solution2 {
-    /*
-      1. discards all leading whitespaces
-      2. sign of the number
-      3. overflow
-      4. invalid input
-    */
     public int myAtoi(String str) {
         int sign = 1, base = 0, i = 0;
         while (i < str.length() && str.charAt(i) == ' ') i++;

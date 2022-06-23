@@ -1,9 +1,5 @@
 package Q0099.Q0005LongestPalindromicSubstring;
 
-/*
-    Solution 1: Brute force
-    两层循环遍历所有子串，判断是否为回文，保留最长的子串。
- */
 public class Solution1 {
 
     public String longestPalindrome(String s) {
@@ -29,9 +25,3 @@ public class Solution1 {
         return true;
     }
 }
-/*
-    time complexity: 两层循环O(n^2)，判断是否回文O(n)，综合为O(n^3)
-    space complexity: O(1)
-
-    提交之后，TLE(Time Limit Exceeded)
- */

@@ -27,7 +27,3 @@ public class Solution2 {
         return s.substring(end - maxLen + 1, end + 1);
     }
 }
-/*
-    time complexity: O(n^2)
-    space complexity: O(n)
- */

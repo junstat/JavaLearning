@@ -1,5 +1,7 @@
 package Q0999.Q0926FlipStringtoMonotoneIncreasing;
 
+import org.junit.Test;
+
 /*
     [Medium]
     A binary string is monotone increasing if it consists of some number of 0's (possibly none), followed by some

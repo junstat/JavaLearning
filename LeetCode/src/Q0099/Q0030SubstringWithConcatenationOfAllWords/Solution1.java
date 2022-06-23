@@ -3,29 +3,32 @@ package Q0099.Q0030SubstringWithConcatenationOfAllWords;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-/*
-   思路一: 因为单词长度固定，可以计算出截取字符串的单词个数是否和`words`里的各单词出现次数是否相等。count操作的结果保存在 map结构里。
-   时间复杂度: O(n^2)
- */
 public class Solution1 {
     public List<Integer> findSubstring(String s, String[] words) {
-        List<Integer> res = new ArrayList<Integer>();
-        if (s == null || s.length() == 0 || words == null || words.length == 0) return res;
-        HashMap<String, Integer> map = new HashMap<>();
-        int oneWord = words[0].length();
-        int wordNum = words.length;
-        int allLen = oneWord * wordNum;
-        for (String word : words) map.put(word, map.getOrDefault(word, 0) + 1);
-        for (int i = 0; i < s.length() - allLen + 1; i++) {
-            String tmp = s.substring(i, i + allLen);
-            HashMap<String, Integer> tmpMap = new HashMap<>();
-            for (int j = 0; j < allLen; j += oneWord) {
-                String w = tmp.substring(j, j + oneWord);
-                tmpMap.put(w, tmpMap.getOrDefault(w, 0) + 1);
-            }
-            if (map.equals(tmpMap)) res.add(i);
+        List<Integer> ans = new ArrayList<>();
+        if (words.length == 0) return ans;
+
+        int n = s.length(), m = words.length, w = words[0].length();
+
+        Map<String, Integer> map = new HashMap<>();
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
         }
-        return res;
+
+        out:
+        for (int i = 0; i + m * w <= n; i++) {
+            Map<String, Integer> cur = new HashMap<>();
+            String sub = s.substring(i, i + m * w);
+            for (int j = 0; j < sub.length(); j += w) {
+                String item = sub.substring(j, j + w);
+                if (!map.containsKey(item)) continue out;
+                cur.put(item, cur.getOrDefault(item, 0) + 1);
+            }
+            if (map.equals(cur)) ans.add(i);
+        }
+
+        return ans;
     }
 }

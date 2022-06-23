@@ -1,13 +1,5 @@
 package Q0099.Q0014LongestCommonPrefix;
 
-/*
-   方法三: 分治
-   注意到LCP的计算满足结合律:
-        LCP(S1 ... Sn) = LCP(LCP(S1 ... Sk), LCP(Sk+1, ..., Sn))
-
-   时间复杂度: O(mn)
-   空间复杂度: O(m logn)
- */
 public class Solution4 {
     public String longestCommonPrefix(String[] strs) {
         if (strs == null || strs.length == 0) return "";

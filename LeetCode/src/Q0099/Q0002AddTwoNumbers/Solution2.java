@@ -2,7 +2,6 @@ package Q0099.Q0002AddTwoNumbers;
 
 import DataStructure.ListNode;
 
-// Recursion
 public class Solution2 {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

@@ -2,8 +2,6 @@ package Q0099.Q0011ContainerWithMostWater;
 
 import org.junit.Test;
 
-import static java.lang.Math.max;
-import static java.lang.Math.min;
 import static org.junit.Assert.assertEquals;
 
 /*

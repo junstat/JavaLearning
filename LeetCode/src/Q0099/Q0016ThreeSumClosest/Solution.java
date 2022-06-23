@@ -2,28 +2,22 @@ package Q0099.Q0016ThreeSumClosest;
 
 import java.util.Arrays;
 
-/*
-  Similar to 3 Sum(Question 015), use 3 pointers to point current element, next element and the last element.
-  If the sum is less than target, it means we have to add a larger element so next element move to the next.
-  If the sum is greater, it means we have to add a smaller element so last element move to the second last element.
-  Keep doing this until the end. Each time compare the difference between sum and target,
-  if it is less than minimum difference so far, then replace result with it, otherwise keep iterating.
-  Time: O(n^2)
- */
 public class Solution {
-    public int threeSumClosest(int[] nums, int target) {
+    public int threeSumClosest(int[] nums, int t) {
         Arrays.sort(nums);
-        int closet = nums[0] + nums[1] + nums[2];
-        for (int i = 0; i < nums.length; i++) {
-            int low = i + 1, high = nums.length - 1;
-            while (low < high) {
-                int sum = nums[i] + nums[low] + nums[high];
-                if (Math.abs(sum - target) < Math.abs(closet - target)) closet = sum;
-                if (sum < target) low++;    // small
-                else if (sum > target) high--;  // large
-                else return sum;
+        int ans = nums[0] + nums[1] + nums[2];
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            if (i > 0 && nums[i] == nums[i - 1]) continue;
+            int j = i + 1, k = n - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (Math.abs(sum - t) < Math.abs(ans - t)) ans = sum;
+                if (ans == t) return t;
+                else if (sum > t) k--;
+                else j++;
             }
         }
-        return closet;
+        return ans;
     }
 }
