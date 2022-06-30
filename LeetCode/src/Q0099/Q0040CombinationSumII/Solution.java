@@ -1,29 +1,37 @@
 package Q0099.Q0040CombinationSumII;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Solution {
-
-
-    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> list = new ArrayList<>();
-        Arrays.sort(candidates);
-        backtrack(list, new ArrayList<>(), candidates, target, 0);
-        return list;
+    public List<List<Integer>> combinationSum2(int[] cs, int t) {
+        Arrays.sort(cs);
+        Set<List<Integer>> ans = new HashSet<>();
+        List<Integer> cur = new ArrayList<>();
+        dfs(cs, t, 0, ans, cur);
+        return new ArrayList<>(ans);
     }
 
-    private void backtrack(List<List<Integer>> list, ArrayList<Integer> cur, int[] nums, int remain, int start) {
-        if (remain < 0) return;
-        else if (remain == 0) list.add(new ArrayList<>(cur));
-        else {
-            for (int i = start; i < nums.length; i++) {
-                if (i > start && nums[i] == nums[i - 1]) continue; // skip duplicates
-                cur.add(nums[i]);
-                backtrack(list, cur, nums, remain - nums[i], i + 1);
-                cur.remove(cur.size() - 1);
-            }
+    /**
+     * cs: 原数组，从该数组进行选数
+     * t: 还剩多少值需要凑成。起始值为 target ，代表还没选择任何数；当 t = 0，代表选择的数凑成了 target
+     * u: 当前决策到 cs[] 中的第几位
+     * ans: 最终结果集
+     * cur: 当前结果集
+     */
+    void dfs(int[] cs, int t, int u, Set<List<Integer>> ans, List<Integer> cur) {
+        if (t == 0) {
+            ans.add(new ArrayList<>(cur));
+            return;
         }
+        if (u == cs.length || t < 0) return;
+
+        // 使用 cs[u]
+        cur.add(cs[u]);
+        dfs(cs, t - cs[u], u + 1, ans, cur);
+
+        // 进行回溯
+        cur.remove(cur.size() - 1);
+        // 不使用 cs[u]
+        dfs(cs, t, u + 1, ans, cur);
     }
 }

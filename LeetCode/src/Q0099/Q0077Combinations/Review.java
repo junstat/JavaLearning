@@ -2,6 +2,7 @@ package Q0099.Q0077Combinations;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*

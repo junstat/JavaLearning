@@ -24,7 +24,7 @@ package Q0099.Q0087ScrambleString;
 
     Base case is k = 1, where we simply need to check for S1[i] and S2[j] to be equal
  */
-public class Solution {
+public class Solution2 {
     public boolean isScramble(String s1, String s2) {
         if (s1.length() != s2.length()) return false;
         int len = s1.length();

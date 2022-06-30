@@ -1,24 +1,25 @@
 package Q0099.Q0042TrappingRainWater;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 
 public class Solution4 {
-    /*
-      方法4: 单调栈
-     */
     public int trap(int[] height) {
-        int ans = 0, current = 0;
-        Deque<Integer> stack = new LinkedList<>();
-        while (current < height.length) {
-            while (!stack.isEmpty() && height[current] > height[stack.peek()]) {
-                int top = stack.pop();
-                if (stack.isEmpty()) break;
-                int distance = current - stack.peek() - 1;
-                int boundedHeight = Math.min(height[current], height[stack.peek()]) - height[top];
-                ans += distance * boundedHeight;
+        int n = height.length;
+        int ans = 0;
+        Deque<Integer> d = new ArrayDeque<>();
+        for (int r = 0; r < n; r++) {
+            // 维护一个单减的栈
+            while (!d.isEmpty() && height[r] > height[d.peekLast()]) {
+                int cur = d.pollLast();  // pop
+
+                if (d.isEmpty()) continue;
+                int l = d.peekLast(); // peek
+                int w = r - l + 1 - 2;
+                int h = Math.min(height[l], height[r]) - height[cur];
+                ans += w * h;
             }
-            stack.push(current++);
+            d.addLast(r); // push
         }
         return ans;
     }

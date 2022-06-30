@@ -1,14 +1,15 @@
 package Q0099.Q0080RemoveDuplicatesFromSortedArrayII;
 
 public class Solution {
-    /*
-       Q026 的续集
-     */
     public int removeDuplicates(int[] nums) {
-        int i = 0;
-        for (int n : nums) {
-            if (i < 2 || n > nums[i - 2]) nums[i++] = n;
+        return process(nums, 2);
+    }
+
+    int process(int[] nums, int k) {
+        int u = 0;
+        for (int x : nums) {
+            if (u < k || nums[u - k] != x) nums[u++] = x;
         }
-        return i;
+        return u;
     }
 }

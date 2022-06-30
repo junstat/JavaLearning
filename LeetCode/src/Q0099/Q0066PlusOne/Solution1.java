@@ -1,6 +1,6 @@
 package Q0099.Q0066PlusOne;
 
-public class Solution {
+public class Solution1 {
     public int[] plusOne(int[] digits) {
         if (digits == null || digits.length == 0) return digits;
         for (int i = digits.length - 1; i >= 0; i--) {

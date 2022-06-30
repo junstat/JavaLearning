@@ -1,23 +1,25 @@
 package Q0099.Q0038CountAndSay;
 
 public class Solution {
-    public String countAndSay(int n) {
-        String prevLine = "1";
-        for (int i = 1; i < n; i++) {
-            StringBuilder nextLine = new StringBuilder();
-            char num = prevLine.charAt(0);
-            int count = 1;
-            for (int j = 1; j < prevLine.length(); j++) {
-                if (prevLine.charAt(j) == num) count++;
-                else {
-                    nextLine.append(count).append(num);
-                    num = prevLine.charAt(j);
-                    count = 1;
-                }
+    static String[] f = new String[35];
+
+    static {
+        f[1] = "1";
+        for (int i = 2; i < 35; i++) {
+            String prev = f[i - 1], cur = "";
+            int m = prev.length();
+            for (int j = 0; j < m; ) {
+                int k = j + 1;
+                while (k < m && prev.charAt(j) == prev.charAt(k)) k++;
+                int cnt = k - j;
+                cur += cnt + "" + prev.charAt(j);
+                j = k;
             }
-            nextLine.append(count).append(num);
-            prevLine = nextLine.toString();
+            f[i] = cur;
         }
-        return prevLine;
+    }
+
+    public String countAndSay(int n) {
+        return f[n];
     }
 }

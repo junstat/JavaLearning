@@ -2,7 +2,6 @@ package Q0099.Q0079WordSearch;
 
 import org.junit.Test;
 
-import static com.sun.tools.doclint.Entity.exist;
 import static org.junit.Assert.assertTrue;
 
 /*

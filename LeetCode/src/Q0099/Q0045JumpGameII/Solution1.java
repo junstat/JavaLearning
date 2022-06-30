@@ -1,6 +1,6 @@
 package Q0099.Q0045JumpGameII;
 
-public class Solution {
+public class Solution1 {
 
     /*
       Explanation

@@ -13,8 +13,7 @@ import java.util.List;
         (00, 01, 11, 10) -> (000, 001, 011, 010) union (100, 101, 111, 110)
         The middle two numbers only differ at their highest bit.
  */
-public class Solution {
-
+public class Solution1 {
     public List<Integer> grayCode(int n) {
         List<Integer> result = new ArrayList<>();
         result.add(0);

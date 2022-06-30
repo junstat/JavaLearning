@@ -17,7 +17,7 @@ package Q0099.Q0081SearchInRotatedSortedArrayII;
     if nums[mid]== nums[left] == nums[right] before the original logic, and if so, we can move left and
     right both towards the middle by 1. and repeat.
  */
-public class Solution {
+public class Solution1 {
 
     public boolean search(int[] nums, int target) {
         int lo = 0, hi = nums.length - 1, mid;

@@ -1,5 +1,9 @@
 package Q0099.Q0041FirstMissingPositive;
 
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
+
 /*
   [Hard]
   Given an unsorted integer array nums, return the smallest missing positive integer.
@@ -19,8 +23,14 @@ package Q0099.Q0041FirstMissingPositive;
  */
 public class Review {
 
+    @Test
+    public void test1() {
+        int[] nums = {3, 4, -1, 1};
+        assertEquals(2, firstMissingPositive(nums));
+    }
+
     public int firstMissingPositive(int[] nums) {
 
-        return nums.length + 1;
+        return 0;
     }
 }

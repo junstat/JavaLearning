@@ -1,7 +1,5 @@
 package Q0099.Q0089GrayCode;
 
-import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,11 +7,6 @@ import java.util.List;
     Backtracking
  */
 public class Solution3 {
-    @Test
-    public void test1() {
-        System.out.println(1 << 3 - 1);
-    }
-
     int nums = 0;
 
     public List<Integer> grayCode(int n) {

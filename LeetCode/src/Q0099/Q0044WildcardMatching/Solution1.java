@@ -7,7 +7,7 @@ package Q0099.Q0044WildcardMatching;
     case 3: startIndex被标记过，即pattern中出出现过'*'，此时，令p=starIndex+1，s可以继续匹配，s= match+1。
     case 4: 当前p不是'*'，starIndex没有被标记过，最近没有匹配'*'，失配，返回false。
  */
-public class Solution {
+public class Solution1 {
     public boolean isMatch(String str, String pattern) {
         int s = 0, p = 0, starIndex = -1, match = 0;
         while (s < str.length()) {

@@ -3,24 +3,24 @@ package Q0099.Q092ReverseLinkedListII;
 import DataStructure.ListNode;
 
 public class Solution {
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        ListNode dummy = new ListNode(0, head); // 挂头结点
-        ListNode p = dummy;
-        // Find the m-1 th node
-        for (int i = 0; i < m - 1; i++) p = p.next;
-        ListNode prev = p;
-        ListNode cur = p.next;
-        ListNode tail = cur;
-        // Reverse from m to n
-        for (int i = m; i <= n; i++) {
-            ListNode next = cur.next;
-            cur.next = prev;
-            prev = cur;
-            cur = next;
+    public ListNode reverseBetween(ListNode head, int l, int r) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        r -= l;
+        ListNode hh = dummy;
+        while (l-- > 1) hh = hh.next;
+
+        ListNode a = hh.next, b = a.next;
+        while (r-- > 0) {
+            ListNode tmp = b.next;
+            b.next = a;
+            a = b;
+            b = tmp;
         }
-        // Connect three parts
-        p.next = prev;
-        tail.next = cur;
+
+        hh.next.next = b;
+        hh.next = a;
         return dummy.next;
     }
 }

@@ -1,18 +1,6 @@
 package Q0099.Q0085MaximalRectangle;
 
-import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
-
 public class Solution2 {
-    @Test
-    public void test1() {
-        char[][] matrix = {
-                {'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'},
-                {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
-        assertEquals(maximalRectangle(matrix), 6);
-    }
-
     /*
     执行耗时:2 ms,击败了100.00% 的Java用户
     内存消耗:41.8 MB,击败了36.24% 的Java用户

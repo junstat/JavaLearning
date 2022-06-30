@@ -8,7 +8,7 @@ import DataStructure.ListNode;
   倒数第2个结点为4，其前驱为3，把 4 -> 5 -> null 从链表上取下，插入到头部
   4 -> 5 -> 1 -> 2 -> 3 -> null
  */
-public class Solution {
+public class Solution1 {
     public ListNode rotateRight(ListNode head, int k) {
         if (head == null) return head;
         int len = 1;
