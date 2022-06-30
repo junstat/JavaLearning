@@ -5,7 +5,7 @@ public class Solution6 {
         String T = preProcess(s);
         int n = T.length();
         int[] P = new int[n];
-        int C = 0, R = 0, maxLen = Integer.MIN_VALUE, centerIndex = 0;
+        int C = 0, R = 0, maxLen = Integer.MIN_VALUE, cI = 0;
         for (int i = 1; i < n - 1; i++) {
             int iM = 2 * C - i;
             P[i] = i < R ? Math.min(R - i, P[iM]) : 0; // 左边界越界限定
@@ -18,10 +18,10 @@ public class Solution6 {
             }
             if (P[i] > maxLen) {
                 maxLen = P[i];
-                centerIndex = i;
+                cI = i;
             }
         }
-        int start = (centerIndex - maxLen) / 2; // 求原始字符串下标
+        int start = (cI - maxLen) / 2; // 求原始字符串下标
         return s.substring(start, start + maxLen);
     }
 

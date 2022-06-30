@@ -5,8 +5,7 @@ public class Solution2 {
 
     public int divide(int _a, int _b) {
         long a = _a, b = _b;
-        boolean flag = false;
-        if ((a < 0 && b > 0) || (a > 0 && b < 0)) flag = true;
+        boolean negative = (a < 0 && b > 0) || (a > 0 && b < 0);
         if (a < 0) a = -a;
         if (b < 0) b = -b;
         long l = 0, r = a;
@@ -15,7 +14,7 @@ public class Solution2 {
             if (mul(mid, b) <= a) l = mid;
             else r = mid - 1;
         }
-        r = flag ? -r : r;
+        r = negative ? -r : r;
         if (r > INF || r < -INF - 1) return INF;
         return (int) r;
     }

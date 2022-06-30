@@ -1,5 +1,9 @@
 package Q0099.Q0058LengthOfLastWord;
 
+import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
+
 /*
     [Easy]
     Given a string s consisting of some words separated by some number of spaces,
@@ -22,4 +26,14 @@ package Q0099.Q0058LengthOfLastWord;
     Explanation: The last word is "joyboy" with length 6.
  */
 public class Review {
+    @Test
+    public void test1() {
+        String s = "   fly me   to   the moon  ";
+        int expected = 4;
+        assertEquals(expected, lengthOfLastWord(s));
+    }
+
+    public int lengthOfLastWord(String s) {
+        return 0;
+    }
 }

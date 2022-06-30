@@ -44,7 +44,7 @@ public class Review {
         assertEquals(strStr(haystack, needle), 4);
     }
 
-    public int strStr(String haystack, String needle) {
+    public int strStr(String ss, String pp) {
 
         return 0;
     }

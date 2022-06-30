@@ -29,7 +29,7 @@ public class Review {
         assertEquals(expected, result);
     }
 
-    public int threeSumClosest(int[] nums, int target) {
+    public int threeSumClosest(int[] nums, int t) {
 
         return 0;
     }

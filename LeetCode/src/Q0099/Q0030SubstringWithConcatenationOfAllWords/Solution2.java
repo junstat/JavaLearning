@@ -35,7 +35,7 @@ public class Solution2 {
                     }
                 }
                 curMap.put(cur, curMap.getOrDefault(cur, 0) + 1);
-                // 如果当前子串对应 map 和 words 中对应的 map 相同，说明当前子串包含了「所有的目标单词」，将起始下标假如结果集
+                // 如果当前子串对应 map 和 words 中对应的 map 相同，说明当前子串包含了「所有的目标单词」，将起始下标加入结果集
                 if (map.containsKey(cur) && curMap.get(cur).equals(map.get(cur)) && map.equals(curMap)) {
                     ans.add(j - (m - 1) * w);
                 }
