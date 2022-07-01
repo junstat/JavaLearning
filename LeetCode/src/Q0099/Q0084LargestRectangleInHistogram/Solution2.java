@@ -4,32 +4,22 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class Solution2 {
-
-    /*
-      方法2: 单调栈
-      area of rectangle include heights[i] is:
-      (index of nextSmaller - index of previousSmaller - 1) * heights[i]
-
-      回顾方法1，用数组遍历的视角来看
-        left是指前一个小于当前高度的下标(index of previousSmaller)
-        right是指下一个小于当前高度的下标(index of nextSmaller)
-    */
     public int largestRectangleArea(int[] heights) {
-        int len = heights.length;
-        Deque<Integer> s = new ArrayDeque<>();
-        int maxArea = 0;
-        for (int i = 0; i <= len; i++) {
-            int h = (i == len ? 0 : heights[i]);
-            if (s.isEmpty() || h >= heights[s.peek()]) {
-                s.push(i);
+        int n = heights.length;
+        Deque<Integer> d = new ArrayDeque<>();
+        int ans = 0;
+        for (int i = 0; i <= n; i++) {
+            int h = (i == n ? 0 : heights[i]);
+            if (d.isEmpty() || h >= heights[d.peek()]) {
+                d.push(i);
             } else {
-                int tp = s.pop();
-                int width = (s.isEmpty() ? i : i - 1 - s.peek());
-                maxArea = Math.max(maxArea, heights[tp] * width);
+                int top = d.pop();
+                int w = (d.isEmpty() ? i : i - 1 - d.peek());
+                ans = Math.max(ans, heights[top] * w);
                 i--;
             }
         }
-        return maxArea;
+        return ans;
     }
 }
 

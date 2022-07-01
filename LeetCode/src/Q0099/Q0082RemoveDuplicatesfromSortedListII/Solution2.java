@@ -4,17 +4,19 @@ import DataStructure.ListNode;
 
 public class Solution2 {
     public ListNode deleteDuplicates(ListNode head) {
-        if (head == null || head.next == null) return head;
-        ListNode dummy = new ListNode(Integer.MAX_VALUE, head);
-        ListNode prev = dummy;
-        while (prev != null && prev.next != null) {
-            ListNode cur = prev.next;
-            if (cur.next == null || cur.next.val != cur.val) prev = cur;
-            else {
-                while (cur.next != null && cur.next.val == cur.val) cur = cur.next;  // 找到重复值的最后一个结点
-                prev.next = cur.next;  // 删除重复结点
+        ListNode dummy = new ListNode();
+        ListNode tail = dummy;
+        while (head != null) {
+            // 进入循环时，确保了 head 不会与上一节点相同
+            if (head.next == null || head.val != head.next.val) {
+                tail.next = head;
+                tail = head;
             }
+            // 如果 head 与下一节点相同，跳过相同节点
+            while (head.next != null && head.val == head.next.val) head = head.next;
+            head = head.next;
         }
+        tail.next = null;
         return dummy.next;
     }
 }

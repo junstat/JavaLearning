@@ -4,10 +4,7 @@ import DataStructure.ListNode;
 
 public class Solution {
     public ListNode partition(ListNode head, int x) {
-        ListNode left = new ListNode(0);
-        ListNode right = new ListNode(0);
-        ListNode l = left;
-        ListNode r = right;
+        ListNode left = new ListNode(0), l = left, right = new ListNode(0), r = right;
         while (head != null) {
             if (head.val < x) {
                 l.next = head;
