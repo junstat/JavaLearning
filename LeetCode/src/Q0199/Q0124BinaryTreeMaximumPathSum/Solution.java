@@ -13,14 +13,14 @@ import DataStructure.TreeNode;
         (2) returns the maximum sum of the path that can be extended to input node's parent.
  */
 public class Solution {
-    private int result = Integer.MIN_VALUE;
+    int result = Integer.MIN_VALUE;
 
     public int maxPathSum(TreeNode root) {
         maxPathDown(root);
         return result;
     }
 
-    private int maxPathDown(TreeNode root) {
+    int maxPathDown(TreeNode root) {
         if (root == null) return 0;
         int left = Math.max(0, maxPathDown(root.left));
         int right = Math.max(0, maxPathDown(root.right));

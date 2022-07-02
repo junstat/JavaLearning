@@ -3,24 +3,22 @@ package Q0099.Q0099RecoverBinarySearchTree;
 import DataStructure.TreeNode;
 
 public class Solution2 {
-    private TreeNode cur = null, first = null, second = null, pre = null;
+    TreeNode cur = null, first = null, second = null, parent = null, pre = null;
 
     public void recoverTree(TreeNode root) {
-        TreeNode predecessor = null;
         cur = root;
         while (cur != null) {
             if (cur.left != null) {
                 // the left subtree's rightmost node is predecessor
-                predecessor = cur.left;
-                while (predecessor.right != null && predecessor.right != cur)
-                    predecessor = predecessor.right;
-                if (predecessor.right == null) {
-                    predecessor.right = cur;
+                pre = cur.left;
+                while (pre.right != null && pre.right != cur)
+                    pre = pre.right;
+                if (pre.right == null) {
+                    pre.right = cur;
                     cur = cur.left;
                 } else {
                     labelNode();
-
-                    predecessor.right = null;
+                    pre.right = null;
                     cur = cur.right;
                 }
             } else {
@@ -28,21 +26,20 @@ public class Solution2 {
                 cur = cur.right;
             }
         }
-
         // swap two node values
         swap();
     }
 
-    private void labelNode() {
-        if (pre != null && cur.val < pre.val) {
+    void labelNode() {
+        if (parent != null && cur.val < parent.val) {
             second = cur;
             if (first == null)
-                first = pre;
+                first = parent;
         }
-        pre = cur;
+        parent = cur;
     }
 
-    private void swap() {
+    void swap() {
         if (first != null && second != null) {
             int t = first.val;
             first.val = second.val;

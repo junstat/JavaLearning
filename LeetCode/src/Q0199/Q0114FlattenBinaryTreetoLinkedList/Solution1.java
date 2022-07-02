@@ -8,7 +8,7 @@ import DataStructure.TreeNode;
     因为预期的目标是用树的right域充当链表的next域，故从右子树出发，每次寻找前驱。
  */
 public class Solution1 {
-    private TreeNode prev = null;
+    TreeNode prev = null;
 
     public void flatten(TreeNode root) {
         if (root == null) return;

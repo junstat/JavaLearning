@@ -2,7 +2,7 @@ package Q0199.Q0117PopulatingNextRightPointersinEachNodeII;
 
 import DataStructure.Node;
 
-public class Solution {
+public class Solution1 {
     public Node connect(Node root) {
         Node head = root;
         while (head != null) {

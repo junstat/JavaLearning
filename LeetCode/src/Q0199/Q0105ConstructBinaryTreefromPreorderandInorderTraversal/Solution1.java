@@ -3,35 +3,31 @@ package Q0199.Q0105ConstructBinaryTreefromPreorderandInorderTraversal;
 import DataStructure.TreeNode;
 
 public class Solution1 {
-    /*
-       The basic idea is here:
-        Say we have 2 arrays, PRE and IN.
-        Preorder traversing implies that PRE[0] is the root node.
-        Then we can find this PRE[0] in IN, say it's IN[5].
-        Now we know that IN[5] is root, so we know that IN[0] - IN[4] is on the left side,
-        IN[6] to the end is on the right side.
-        Recursively doing this on subarrays, we can build a tree out of it :)
-     */
+    int[] PRE; // 先序序列
+    int[] IN;  // 中序序列
+
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        return helper(0, 0, inorder.length - 1, preorder, inorder);
+        PRE = preorder;
+        IN = inorder;
+        return build(0, 0, IN.length - 1);
     }
 
-    private TreeNode helper(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder) {
-        // preStart 即为 root
-        if (preStart > preorder.length - 1 || inStart > inEnd) return null;
-        TreeNode root = new TreeNode(preorder[preStart]);
-        int inIndex = 0;  // Index of current root in inorder
-        for (int i = inStart; i <= inEnd; i++) {
-            if (inorder[i] == root.val) {
-                inIndex = i;
+    TreeNode build(int ps, int is, int ie) {
+        // start of preorder 即为 root
+        if (ps > PRE.length - 1 || is > ie) return null;
+        TreeNode root = new TreeNode(PRE[ps]);
+        int rii = 0;  // Index of current root in inorder
+        for (int i = is; i <= ie; i++) {
+            if (IN[i] == root.val) {
+                rii = i;
                 break;
             }
         }
         // 左子树: root为 PRE[preStat+1], range: [inStart, inIndex - 1] =>
         // 左子树元素个数 inIndex - 1 - inStart + 1 = inIndex - inStart
-        root.left = helper(preStart + 1, inStart, inIndex - 1, preorder, inorder);
+        root.left = build(ps + 1, is, rii - 1);
         // 右子树: root为 preStart + inIndex - inStart + 1(先序遍历中，越过 root, 越过 左子树范围 的下一个节点)
-        root.right = helper(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder);
+        root.right = build(ps + rii - is + 1, rii + 1, ie);
         return root;
     }
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Solution1 {
-
     public List<Integer> getRow(int rowIndex) {
         List<Integer> result = new ArrayList<>();
         result.add(1);

@@ -5,7 +5,7 @@ import DataStructure.TreeNode;
 public class Solution {
     public int minDepth(TreeNode root) {
         if (root == null) return 0;
-        int left = minDepth(root.left), right = minDepth(root.right);
-        return (left == 0 || right == 0) ? left + right + 1 : Math.min(left, right) + 1;
+        int lh = minDepth(root.left), rh = minDepth(root.right);
+        return (lh == 0 || rh == 0) ? lh + rh + 1 : Math.min(lh, rh) + 1;
     }
 }
