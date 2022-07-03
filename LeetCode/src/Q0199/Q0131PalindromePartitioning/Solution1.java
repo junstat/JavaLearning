@@ -6,7 +6,7 @@ import java.util.List;
 /*
     Backtracking
  */
-public class Solution {
+public class Solution1 {
 
     public List<List<String>> partition(String s) {
         List<List<String>> result = new ArrayList<>();

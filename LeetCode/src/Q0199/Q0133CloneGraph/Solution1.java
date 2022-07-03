@@ -8,7 +8,7 @@ import java.util.Map;
 /*
     DFS
  */
-public class Solution {
+public class Solution1 {
 
     private Map<Integer, Node> map = new HashMap<>();
 

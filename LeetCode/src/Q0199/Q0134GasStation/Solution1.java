@@ -5,7 +5,7 @@ package Q0199.Q0134GasStation;
     can not reach B.(B is the first station that A can not reach.)
     2> If the total number of gas is bigger than the total number of cost. There must be a solution.
  */
-public class Solution {
+public class Solution1 {
 
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int start = 0, total = 0, tank = 0;

@@ -1,6 +1,12 @@
 package Q0199.Q0139WordBreak;
 
+import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static junit.framework.TestCase.assertTrue;
 
 /*
     [Medium]
@@ -24,6 +30,13 @@ import java.util.List;
     Output: false
  */
 public class Review {
+    @Test
+    public void test1() {
+        String s = "leetcode";
+        List<String> wordDict = new ArrayList<>(Arrays.asList("leet", "code"));
+        assertTrue(wordBreak(s, wordDict));
+    }
+
     public boolean wordBreak(String s, List<String> wordDict) {
 
         return false;

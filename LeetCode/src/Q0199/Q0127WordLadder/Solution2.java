@@ -2,50 +2,80 @@ package Q0199.Q0127WordLadder;
 
 import java.util.*;
 
-/*
-This problem has a nice BFS structure. Let's illustrate this using the example in the problem statement.
-beginWord = "hit",
-endWord = "cog",
-wordList = ["hot","dot","dog","lot","log","cog"]
-
-Since only one letter can be changed at a time, if we start from "hit", we can only change to those words which have
-exactly one letter different from it (in this case, "hot"). Putting in graph-theoretic terms, "hot" is a neighbor of
-"hit". The idea is simpy to start from the beginWord, then visit its neighbors, then the non-visited neighbors of
-its neighbors until we arrive at the endWord. This is a typical BFS structure.
-
-We may also start from the endWord simultaneously. Two-end BFS.
-
-At last I'm able to understand. I learned a lot from this solution.
-1) It's much faster than one-end search indeed as explained in wiki. https://en.wikipedia.org/wiki/Bidirectional_search
-2) BFS isn't equivalent to Queue. Sometimes Set is more accurate representation for nodes of level. (also handy since
-we need to check if we meet from two ends)
-3) It's safe to share a visited set for both ends since if they meet same string it terminates early. (vis is useful
-since we cannot remove word from dict due to bidirectional search)
-4) It seems like if(set.add()) is a little slower than if(!contains()) then add() but it's more concise.
-update: the dictList is of List type now. And all transformed words including endWord must be in dictList.
- */
 public class Solution2 {
-    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-        Set<String> dict = new HashSet<>(wordList), qs = new HashSet<>(), qe = new HashSet<>(), vis = new HashSet<>();
-        qs.add(beginWord);
-        if (dict.contains(endWord)) qe.add(endWord); // all transformed words must be in dict (including endWord)
-        for (int len = 2; !qs.isEmpty(); len++) {
-            Set<String> nq = new HashSet<>();
-            for (String w : qs) {
-                for (int j = 0; j < w.length(); j++) {
-                    char[] ch = w.toCharArray();
-                    for (char c = 'a'; c <= 'z'; c++) {
-                        if (c == w.charAt(j)) continue; // beginWord and endWord not the same, so bypass itself
-                        ch[j] = c;
-                        String nb = String.valueOf(ch);
-                        if (qe.contains(nb)) return len; // meet from two ends
-                        if (dict.contains(nb) && vis.add(nb)) nq.add(nb); // not meet yet, vis is safe to use
+    String s, e;
+    Set<String> set;
+
+    public int ladderLength(String _s, String _e, List<String> ws) {
+        s = _s;
+        e = _e;
+        // 将所有word存入set，若目标单词不在set中，说明无解
+        set = new HashSet<>(ws);
+        if (!set.contains(e)) return 0;
+        int ans = bfs();
+        return ans == -1 ? 0 : ans + 1;
+    }
+
+    int bfs() {
+        // d1代表从起点beginWord开始搜索(正向)
+        // d2代表从结尾endWord开始搜索(反向)
+        Deque<String> d1 = new ArrayDeque<>(), d2 = new ArrayDeque<>();
+
+        // m1 和 m2 分别记录两个方向出现的
+        // e.g.
+        // m1 = {"abc":1} 代表abc 由beginWord替换1次字符而来
+        // m2 = {"xyz":3} 代表xyz 由endWord替换3次字符而来
+        Map<String, Integer> m1 = new HashMap<>(), m2 = new HashMap<>();
+        d1.add(s);
+        m1.put(s, 0);
+        d2.add(e);
+        m2.put(e, 0);
+
+        /*
+         * 只有两个队列都不空了，才有必要继续往下搜索
+         * 若其中一个队列空了，说明从某个方向搜到底都搜不到该方向的目标节点
+         * e.g.
+         * 例如，若d1为空了，说明从beginWord搜索到底都搜索不到endWord，反向搜索也没必要进行了
+         */
+        while (!d1.isEmpty() && !d2.isEmpty()) {
+            int t = -1;
+            // 为了让两个方向的搜索尽可能平均，优先拓展队列内元素少的方向
+            if (d1.size() <= d2.size()) t = update(d1, m1, m2);
+            else t = update(d2, m2, m1);
+            if (t != -1) return t;
+        }
+        return -1;
+    }
+
+    // update 代表从deque中取出一个单词进行扩展
+    int update(Deque<String> deque, Map<String, Integer> cur, Map<String, Integer> other) {
+        int m = deque.size();
+        while (m-- > 0) {
+            // 获取当前需要扩展的原字符串
+            String poll = deque.pollFirst();
+            int n = poll.length();
+
+            // 枚举替换原字符串的哪个字符i
+            for (int i = 0; i < n; i++) {
+                // 枚举将i替换成哪个小写字母
+                for (int j = 0; j < 26; j++) {
+                    // 替换后的字符串
+                    String sub = poll.substring(0, i) + String.valueOf((char) ('a' + j)) + poll.substring(i + 1);
+                    if (set.contains(sub)) {
+                        // 若该字符串在「当前方向」被记录过(拓展过)，跳过即可
+                        if (cur.containsKey(sub) && cur.get(sub) <= cur.get(poll) + 1) continue;
+                        // 若该字符串在「另一方向」出现过，说明找到了联通两个方向的最短路
+                        if (other.containsKey(sub)) {
+                            return cur.get(poll) + 1 + other.get(sub);
+                        } else {
+                            // 否则加入deque队列
+                            deque.addLast(sub);
+                            cur.put(sub, cur.get(poll) + 1);
+                        }
                     }
                 }
             }
-            qs = (nq.size() < qe.size()) ? nq : qe; // switch to small one to traverse from other end
-            qe = (qs == nq) ? qe : nq;
         }
-        return 0;
+        return -1;
     }
 }

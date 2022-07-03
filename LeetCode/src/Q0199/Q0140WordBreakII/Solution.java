@@ -9,20 +9,24 @@ import java.util.Map;
     DFS
  */
 public class Solution {
+    List<String> dict;
+    // used HashMap to save the previous results to prune duplicated branches
+    Map<String, List<String>> mem = new HashMap<String, List<String>>();
+
     public List<String> wordBreak(String s, List<String> wordDict) {
-        // used HashMap to save the previous results to prune duplicated branches
-        return backtracking(s, wordDict, new HashMap<String, List<String>>());
+        dict = wordDict;
+        return dfs(s);
     }
 
-    private List<String> backtracking(String s, List<String> wordDict, Map<String, List<String>> mem) {
+    List<String> dfs(String s) {
         if (mem.containsKey(s)) return mem.get(s);
         List<String> result = new ArrayList<>();
-        for (String word : wordDict) {
+        for (String word : dict) {
             if (s.startsWith(word)) {
                 String next = s.substring(word.length());
                 if (next.length() == 0) result.add(word);
                 else
-                    for (String sub : backtracking(next, wordDict, mem))
+                    for (String sub : dfs(next))
                         result.add(word + " " + sub);
             }
         }
