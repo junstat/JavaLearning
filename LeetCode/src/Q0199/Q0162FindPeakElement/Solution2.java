@@ -1,20 +1,29 @@
 package Q0199.Q0162FindPeakElement;
 
 public class Solution2 {
-    /*
-      Binary Search: recursion
-    */
     public int findPeakElement(int[] nums) {
-        return helper(nums, 0, nums.length - 1);
-    }
-
-    private int helper(int[] nums, int low, int high) {
-        if (low == high) return low;
-        else {
-            int mid1 = low + (high - low) / 2;
-            int mid2 = mid1 + 1;
-            if (nums[mid1] > nums[mid2]) return helper(nums, low, mid1);
-            else return helper(nums, mid2, high);
+        int n = nums.length;
+        int l = 0, r = n - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (nums[mid] > nums[mid + 1]) r = mid;
+            else l = mid + 1;
         }
+        return r;
+    }
+}
+
+
+class Other {
+    public int findPeakElement(int[] nums) {
+        int n = nums.length;
+        if (n == 1) return 0;
+        int l = 0, r = n - 1;
+        while (l < r) {
+            int mid = l + r + 1 >> 1;
+            if (nums[mid] > nums[mid - 1]) l = mid;
+            else r = mid - 1;
+        }
+        return r;
     }
 }

@@ -1,6 +1,6 @@
 package Q0199.Q0168ExcelSheetColumnTitle;
 
-public class Solution {
+public class Solution1 {
 
     // Iteration
     public String convertToTitle(int n) {

@@ -2,7 +2,7 @@ package Q0199.Q0160IntersectionofTwoLinkedLists;
 
 import DataStructure.ListNode;
 
-public class Solution {
+public class Solution1 {
     /*
          设len(A) = m, len(B) = n; A与B共同的部分len = s;
           m1 = m - s; n1 = n - s;

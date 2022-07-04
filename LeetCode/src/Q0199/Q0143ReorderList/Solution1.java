@@ -2,7 +2,7 @@ package Q0199.Q0143ReorderList;
 
 import DataStructure.ListNode;
 
-public class Solution {
+public class Solution1 {
     /*
       方法一:
           1、找中点，把链表断成前后2部分

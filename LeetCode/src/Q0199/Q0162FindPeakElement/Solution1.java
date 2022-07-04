@@ -1,20 +1,18 @@
 package Q0199.Q0162FindPeakElement;
 
-/*
-   Binary Search: iteration
- */
 public class Solution1 {
-
     public int findPeakElement(int[] nums) {
-        int low = 0;
-        int high = nums.length - 1;
-
-        while (low < high) {
-            int mid1 = low + (high - low) / 2;
-            int mid2 = mid1 + 1;
-            if (nums[mid1] < nums[mid2]) low = mid2;
-            else high = mid1;
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            boolean ok = true;
+            if (i - 1 >= 0) {
+                if (nums[i - 1] >= nums[i]) ok = false;
+            }
+            if (i + 1 < n) {
+                if (nums[i + 1] >= nums[i]) ok = false;
+            }
+            if (ok) return i;
         }
-        return low;
+        return -1;
     }
 }

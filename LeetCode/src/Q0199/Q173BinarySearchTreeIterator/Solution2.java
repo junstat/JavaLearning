@@ -12,11 +12,11 @@ public class Solution2 {
 /*
    方法二: 改递归为栈
   */
-class BSTIterator {
+class BSTIterator2 {
     private final Deque<TreeNode> stack;
     private TreeNode cur;
 
-    public BSTIterator(TreeNode root) {
+    public BSTIterator2(TreeNode root) {
         stack = new ArrayDeque<>();
         cur = root;
     }

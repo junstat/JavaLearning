@@ -15,7 +15,7 @@ import java.util.Arrays;
     Apparently, case1 is greater than case2 in terms of value.
     So, we should always put s1 in front of s2.
  */
-public class Solution {
+public class Solution2 {
     public String largestNumber(int[] nums) {
         String[] strings = Arrays.stream(nums).mapToObj(String::valueOf).toArray(String[]::new);
         Arrays.sort(strings, (s1, s2) -> (s2 + s1).compareTo(s1 + s2));

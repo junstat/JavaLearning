@@ -1,7 +1,6 @@
 package Q0199.Q0153FindMinimuminRotatedSortedArray;
 
-public class Solution {
-
+public class Solution1 {
     public int findMin(int[] nums) {
         int start = 0;
         int end = nums.length - 1;

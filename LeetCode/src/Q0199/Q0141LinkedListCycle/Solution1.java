@@ -5,7 +5,7 @@ import DataStructure.ListNode;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Solution {
+public class Solution1 {
     /*
        方法一: 用set 保存结点元素，若已存在则有环，不然无环
       */

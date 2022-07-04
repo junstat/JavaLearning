@@ -1,38 +1,30 @@
 package Q0199.Q0150EvaluateReversePolishNotation;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /*
    用数组代替栈
  */
-class Solution2 {
-
-    boolean isOp(String str) {
-        if (str.length() != 1) return false;
-        char ch = str.charAt(0);
-        return ch == '+' || ch == '*' || ch == '-' || ch == '/';
-    }
-
-    int calc(String op, int v2, int v1) {
-        switch(op.charAt(0)) {
-            case '+' : return v1 + v2;
-            case '-' : return v1 - v2;
-            case '*' : return v1 * v2;
-            case '/' : return v1 / v2;
-        }
-        return 0;
-    }
-
-    public int evalRPN(String[] tokens) {
-        int[] s = new int[tokens.length];
-        int i = 0;
-        for (String token : tokens) {
-            if (isOp(token)) {
-                int v2 = s[--i];
-                int v1 = s[--i];
-                s[i++] = calc(token, v2, v1);
+public class Solution2 {
+    public int evalRPN(String[] ts) {
+        Deque<Integer> d = new ArrayDeque<>();
+        for (String s : ts) {
+            if ("+-*/".contains(s)) {
+                int b = d.pollLast(), a = d.pollLast();
+                d.addLast(calc(a, b, s));
             } else {
-                s[i++] = Integer.parseInt(token);
+                d.addLast(Integer.parseInt(s));
             }
         }
-        return s[0];
+        return d.pollLast();
+    }
+
+    int calc(int a, int b, String op) {
+        if (op.equals("+")) return a + b;
+        else if (op.equals("-")) return a - b;
+        else if (op.equals("*")) return a * b;
+        else if (op.equals("/")) return a / b;
+        else return -1;
     }
 }

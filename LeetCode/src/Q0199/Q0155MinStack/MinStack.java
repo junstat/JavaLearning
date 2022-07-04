@@ -1,30 +1,31 @@
 package Q0199.Q0155MinStack;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class MinStack {
-    private Stack<Integer> s1 = new Stack<>();
-    private Stack<Integer> s2 = new Stack<>();
+    Deque<Integer> data = new ArrayDeque<>();
+    Deque<Integer> help = new ArrayDeque<>();
 
-    public MinStack() {
-
-    }
-
-    public void push(int x) {
-        s1.push(x);
-        if (s2.isEmpty() || s2.peek() >= x) s2.push(x);
+    public void push(int val) {
+        data.addLast(val);
+        if (help.isEmpty() || help.peekLast() >= val) {
+            help.addLast(val);
+        } else {
+            help.addLast(help.peekLast());
+        }
     }
 
     public void pop() {
-        int x = s1.pop();
-        if (s2.peek() == x) s2.pop();
+        data.pollLast();
+        help.pollLast();
     }
 
     public int top() {
-        return s1.peek();
+        return data.peekLast();
     }
 
     public int getMin() {
-        return s2.peek();
+        return help.peekLast();
     }
 }

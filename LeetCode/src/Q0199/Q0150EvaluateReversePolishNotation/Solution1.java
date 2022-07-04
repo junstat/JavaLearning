@@ -1,41 +1,25 @@
 package Q0199.Q0150EvaluateReversePolishNotation;
 
-import java.util.Deque;
-import java.util.LinkedList;
-
-/*
-   method 1: 栈
- */
 public class Solution1 {
-
-    public int evalRPN(String[] tokens) {
-        Deque<Integer> stack = new LinkedList<>();
-        for (String token : tokens) {
-            if (isNumber(token)) stack.push(Integer.parseInt(token));
-            else {
-                int num2 = stack.pop();
-                int num1 = stack.pop();
-                switch (token) {
-                    case "+":
-                        stack.push(num1 + num2);
-                        break;
-                    case "-":
-                        stack.push(num1 - num2);
-                        break;
-                    case "*":
-                        stack.push(num1 * num2);
-                        break;
-                    case "/":
-                        stack.push(num1 / num2);
-                        break;
-                }
+    public int evalRPN(String[] ts) {
+        int[] d = new int[ts.length];
+        int hh = 0, tt = -1;
+        for (String s : ts) {
+            if ("+-*/".contains(s)) {
+                int b = d[tt--], a = d[tt--];
+                d[++tt] = calc(a, b, s);
+            } else {
+                d[++tt] = Integer.parseInt(s);
             }
-
         }
-        return stack.pop();
+        return d[tt];
     }
 
-    public boolean isNumber(String token) {
-        return !("+".equals(token) || "-".equals(token) || "*".equals(token) || "/".equals(token));
+    int calc(int a, int b, String op) {
+        if (op.equals("+")) return a + b;
+        else if (op.equals("-")) return a - b;
+        else if (op.equals("*")) return a * b;
+        else if (op.equals("/")) return a / b;
+        else return -1;
     }
 }

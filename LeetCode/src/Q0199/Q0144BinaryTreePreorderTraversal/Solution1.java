@@ -9,19 +9,19 @@ import java.util.List;
    先序遍历: 根左右
    method 1: 递归做法
  */
-public class Solution {
+public class Solution1 {
+    List<Integer> result = new ArrayList<Integer>();
 
     public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<Integer>();
-        helper(result, root);
+        dfs(root);
         return result;
     }
 
-    private void helper(List<Integer> result, TreeNode root) {
+    void dfs(TreeNode root) {
         if (root != null) {
             result.add(root.val);
-            helper(result, root.left);
-            helper(result, root.right);
+            dfs(root.left);
+            dfs(root.right);
         }
     }
 }

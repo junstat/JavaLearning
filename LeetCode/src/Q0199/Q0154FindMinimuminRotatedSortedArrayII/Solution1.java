@@ -1,6 +1,6 @@
 package Q0199.Q0154FindMinimuminRotatedSortedArrayII;
 
-public class Solution {
+public class Solution1 {
 
     /*
        When num[mid] == num[hi], we couldn't sure the position of minimum in mid's left or right, so just let upper
