@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-/*
-    思路: 层次遍历，每次把最右边的结点放入结果中。
- */
 public class Solution2 {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> result = new ArrayList<>();

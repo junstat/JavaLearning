@@ -6,7 +6,7 @@ import java.util.Set;
 /*
     Solution 1: 用HashSet记录过程中得到的数字，重复则返回false.
  */
-public class Solution {
+public class Solution1 {
     public boolean isHappy(int n) {
         Set<Integer> set = new HashSet<>();
         set.add(n);

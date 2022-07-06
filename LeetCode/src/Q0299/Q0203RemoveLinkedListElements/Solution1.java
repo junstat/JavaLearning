@@ -2,7 +2,7 @@ package Q0299.Q0203RemoveLinkedListElements;
 
 import DataStructure.ListNode;
 
-public class Solution {
+public class Solution1 {
     /*
        删除，找前驱咯~
       */

@@ -8,7 +8,7 @@ import java.util.Set;
 /*
     方法一: 遍历s，截取区间[i, i+10] 10个字符判断是否已经重复。
  */
-public class Solution {
+public class Solution1 {
     public List<String> findRepeatedDnaSequences(String s) {
         Set<String> seen = new HashSet<>(), repeated = new HashSet<>();
         for (int i = 0; i + 9 < s.length(); i++) {

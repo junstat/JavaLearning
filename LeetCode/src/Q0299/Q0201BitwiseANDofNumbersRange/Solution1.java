@@ -18,7 +18,7 @@ import org.junit.Test;
 
     I think after understand this, the code is trivial:
  */
-public class Solution {
+public class Solution1 {
 
     public int rangeBitwiseAnd(int left, int right) {
         int i = 0;  // i means we have how many bits are 0 on the right

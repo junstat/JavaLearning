@@ -9,7 +9,7 @@ package Q0199.Q0121BestTimetoBuyandSellStock;
    Here, the logic is to calculate the difference (maxCur += prices[i] - prices[i-1]) of the original array, and find
    a contiguous subarray giving maximum profit. If the difference falls below 0, reset it to zero.
  */
-public class Solution {
+public class Solution1 {
 
     public int maxProfit(int[] prices) {
         int maxCur = 0, maxSoFar = 0;
