@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
   Input: head = [1,2,3,4,5], k = 2
   Output: [2,1,4,3,5]
  */
-public class Solution{
+public class Solution {
 
     @Test
     public void test1() {

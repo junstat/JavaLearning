@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
   merging them into one sorted list:
   1->1->2->3->4->4->5->6
  */
-public class Solution{
+public class Solution {
     @Test
     public void test1() {
         ListNode l1 = ListNodes.createListFromArray(new int[]{1, 4, 5});

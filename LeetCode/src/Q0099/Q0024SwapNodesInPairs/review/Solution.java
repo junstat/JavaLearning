@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
   Input: head = [1,2,3,4]
   Output: [2,1,4,3]
  */
-public class Solution{
+public class Solution {
     @Test
     public void test1() {
         ListNode head = ListNodes.createListFromArray(new int[]{1, 2, 3, 4});
