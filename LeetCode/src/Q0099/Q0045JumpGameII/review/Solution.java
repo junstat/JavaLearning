@@ -19,7 +19,7 @@ import org.junit.Test;
   Input: nums = [2,3,0,1,4]
   Output: 2
  */
-public class Solution{
+public class Solution {
     @Test
     public void test1() {
         int[] nums = {2, 3, 1, 1, 4};

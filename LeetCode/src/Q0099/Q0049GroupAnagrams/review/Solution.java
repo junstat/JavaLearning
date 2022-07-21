@@ -1,6 +1,6 @@
 package Q0099.Q0049GroupAnagrams.review;
 
-import java.util.List;
+import java.util.*;
 
 /*
     [Medium]

@@ -9,7 +9,6 @@ public class Solution {
         while (p != null && u-- > 1) p = p.next;
         if (p == null) return head;
 
-        ListNode tail = head;
         ListNode prev = head, cur = prev.next;
         u = k;
         while (u-- > 1) {
@@ -18,7 +17,7 @@ public class Solution {
             prev = cur;
             cur = tmp;
         }
-        tail.next = reverseKGroup(cur, k);
+        head.next = reverseKGroup(cur, k);
         return prev;
     }
 }
