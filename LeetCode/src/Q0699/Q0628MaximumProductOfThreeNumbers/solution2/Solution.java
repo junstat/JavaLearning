@@ -1,6 +1,6 @@
-package Q0699.Q0628MaximumProductOfThreeNumbers;
+package Q0699.Q0628MaximumProductOfThreeNumbers.solution2;
 
-public class Solution1 {
+public class Solution {
     /*
        方法二: 线性扫描
          在方法一中， 实际上只要求出数组中最大的三个数以及最小的两个数，因此可以不用排序，用线性扫描直接得出这五个数。

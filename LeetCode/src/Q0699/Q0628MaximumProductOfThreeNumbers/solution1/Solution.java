@@ -1,4 +1,4 @@
-package Q0699.Q0628MaximumProductOfThreeNumbers;
+package Q0699.Q0628MaximumProductOfThreeNumbers.solution1;
 
 import java.util.Arrays;
 
