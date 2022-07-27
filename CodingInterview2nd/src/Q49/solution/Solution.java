@@ -1,4 +1,4 @@
-package Q0299.Q0264UglyNumberII.solution2;
+package Q49.solution;
 
 public class Solution {
     public int GetUglyNumber_Solution(int n) {

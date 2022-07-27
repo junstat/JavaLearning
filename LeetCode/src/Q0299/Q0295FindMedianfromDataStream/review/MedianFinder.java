@@ -1,6 +1,6 @@
 package Q0299.Q0295FindMedianfromDataStream.review;
 
-class MedianFinder {
+public class MedianFinder {
 
     public MedianFinder() {
 

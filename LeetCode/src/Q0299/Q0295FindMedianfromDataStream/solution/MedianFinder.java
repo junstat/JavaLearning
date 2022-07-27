@@ -3,7 +3,7 @@ package Q0299.Q0295FindMedianfromDataStream.solution;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-class MedianFinder {
+public class MedianFinder {
     private PriorityQueue<Integer> small = new PriorityQueue<>(Collections.reverseOrder());
     private PriorityQueue<Integer> large = new PriorityQueue<>();
     private boolean even = true;
