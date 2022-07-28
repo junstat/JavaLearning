@@ -2,18 +2,16 @@ package Q0399.Q0396RotateFunction.solution1;
 
 public class Solution {
     public int maxRotateFunction(int[] nums) {
-        int allSum = 0;
-        int len = nums.length;
-        int F = 0;
-        for (int i = 0; i < len; i++) {
+        int tot = 0, n = nums.length, F = 0;
+        for (int i = 0; i < n; i++) {
             F += i * nums[i];
-            allSum += nums[i];
+            tot += nums[i];
         }
-        int max = F;
-        for (int i = len - 1; i >= 1; i--) {
-            F = F + allSum - len * nums[i];
-            max = Math.max(F, max);
+        int ans = F;
+        for (int i = n - 1; i >= 1; i--) {
+            F = F + tot - n * nums[i];
+            ans = Math.max(ans, F);
         }
-        return max;
+        return ans;
     }
 }

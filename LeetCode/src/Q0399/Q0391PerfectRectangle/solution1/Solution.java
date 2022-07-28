@@ -3,14 +3,13 @@ package Q0399.Q0391PerfectRectangle.solution1;
 import java.util.HashSet;
 
 public class Solution {
-    public boolean isRectangleCover(int[][] rectangles) {
+    static int MIN = Integer.MIN_VALUE, MAX = Integer.MAX_VALUE;
 
+    public boolean isRectangleCover(int[][] rectangles) {
         if (rectangles.length == 0 || rectangles[0].length == 0) return false;
 
-        int x1 = Integer.MAX_VALUE;
-        int x2 = Integer.MIN_VALUE;
-        int y1 = Integer.MAX_VALUE;
-        int y2 = Integer.MIN_VALUE;
+        // (x1, y1) point of bottom-left, (x2, y2) point of top-right
+        int x1 = MAX, x2 = MIN, y1 = MAX, y2 = MIN;
 
         HashSet<String> set = new HashSet<>();
         int area = 0;

@@ -1,28 +1,23 @@
 package Q0399.Q0394DecodeString.solution;
 
 public class Solution {
-    int ind = 0;
+    int idx = 0;
 
     public String decodeString(String s) {
-        StringBuilder res = new StringBuilder();
-        while (ind < s.length() && s.charAt(ind) != ']') {
-            if (!Character.isDigit(s.charAt(ind))) {
-                res.append(s.charAt(ind++));
-            } else {
+        StringBuilder ans = new StringBuilder();
+        while (idx < s.length() && s.charAt(idx) != ']') {
+            if (!Character.isDigit(s.charAt(idx))) ans.append(s.charAt(idx++));
+            else {
                 int k = 0;
-                while (ind < s.length() && Character.isDigit(s.charAt(ind))) {
-                    k = k * 10 + s.charAt(ind++) - '0';
-                }
-                ind++;  // for '['
+                while (idx < s.length() && Character.isDigit(s.charAt(idx)))
+                    k = k * 10 + s.charAt(idx++) - '0';
+                idx++; // for '['
                 String pre = decodeString(s);
-                ind++;  // for ']'
+                idx++;  // for ']'
 
-                while (k-- > 0) {
-                    res.append(pre);
-                }
+                while (k-- > 0) ans.append(pre);
             }
         }
-
-        return res.toString();
+        return ans.toString();
     }
 }
