@@ -6,13 +6,22 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        Scanner in;
+    static Scanner in;
+
+    static {
+        String inputPath = "/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ003/input.txt";
         if (!"Linux".equals(System.getProperty("os.name"))) {
-            in = new Scanner(Paths.get("/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ003/input.txt.txt"));
+            try {
+                in = new Scanner(Paths.get(inputPath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             in = new Scanner(System.in);
         }
+    }
+
+    public static void main(String[] args) throws IOException {
         while (in.hasNext()) {
             int n = in.nextInt();
             int[] nums = new int[n];
@@ -22,7 +31,7 @@ public class Main {
         }
     }
 
-    private static void solve(int[] nums) {
+    static void solve(int[] nums) {
         Arrays.sort(nums);
         System.out.println(nums[0]);
         for (int i = 1; i < nums.length; i++) {

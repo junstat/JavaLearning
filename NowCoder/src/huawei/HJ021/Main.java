@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner in;
-    static String inputFileName = "/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ020/input.txt.txt";
 
     static {
+        String inputPath = "/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ021/input.txt";
         if (!"Linux".equals(System.getProperty("os.name"))) {
             try {
-                in = new Scanner(Paths.get(inputFileName));
+                in = new Scanner(Paths.get(inputPath));
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -9,19 +9,27 @@ import java.util.TreeMap;
 public class Main {
     static Scanner in;
 
-    public static void main(String[] args) throws IOException {
+    static {
+        String inputPath = "/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ008/input.txt";
         if (!"Linux".equals(System.getProperty("os.name"))) {
-            in = new Scanner(Paths.get("/Users/jun/Learn/JavaLearning/NowCoder/src/huawei/HJ008/input.txt.txt"));
+            try {
+                in = new Scanner(Paths.get(inputPath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             in = new Scanner(System.in);
         }
+    }
+
+    public static void main(String[] args) throws IOException {
         while (in.hasNext()) {
             int n = in.nextInt();
             solve(n);
         }
     }
 
-    private static void solve(int n) {
+    static void solve(int n) {
         TreeMap<Integer, Integer> map = new TreeMap<>();
         for (int i = 0; i < n; i++) {
             int index = in.nextInt();

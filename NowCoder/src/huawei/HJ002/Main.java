@@ -5,13 +5,22 @@ import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        Scanner in;
+    static Scanner in;
+
+    static {
+        String inputPath = "/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ002/input.txt";
         if (!"Linux".equals(System.getProperty("os.name"))) {
-            in = new Scanner(Paths.get("/Users/jun/Documents/Learn/JavaLearning/NowCoder/src/huawei/HJ002/input.txt.txt"));
+            try {
+                in = new Scanner(Paths.get(inputPath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             in = new Scanner(System.in);
         }
+    }
+
+    public static void main(String[] args) throws IOException {
         while (in.hasNext()) {
             String s = in.nextLine();
             String key = in.nextLine();
@@ -19,7 +28,7 @@ public class Main {
         }
     }
 
-    private static void solve(String s, char key) {
+    static void solve(String s, char key) {
         int cnt = 0;
         char keyLowerCase = Character.toLowerCase(key);
         for (int i = 0; i < s.length(); i++) {

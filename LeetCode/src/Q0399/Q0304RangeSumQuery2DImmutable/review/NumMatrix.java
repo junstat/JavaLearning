@@ -32,7 +32,7 @@ public class NumMatrix {
 
     }
 
-    public int sumRegion(int row1, int col1, int row2, int col2) {
+    public int sumRegion(int x1, int y1, int x2, int y2) {
 
         return 0;
     }
