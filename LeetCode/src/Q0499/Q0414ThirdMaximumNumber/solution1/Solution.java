@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Solution {
     public int thirdMax(int[] nums) {
-        Set<Integer> set = new HashSet<Integer>();
-        for (int num : nums) set.add(num);
-        List<Integer> sortedNums = new ArrayList<>(set);
-        Collections.sort(sortedNums);
-        return sortedNums.size() < 3 ? sortedNums.get(sortedNums.size() - 1) : sortedNums.get(sortedNums.size() - 3);
+        Set<Integer> set = new HashSet<>();
+        for (int x : nums) set.add(x);
+        List<Integer> list = new ArrayList<>(set);
+        Collections.sort(list);
+        return list.size() < 3 ? list.get(list.size() - 1) : list.get(list.size() - 3);
     }
 }

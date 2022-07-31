@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
   Input: s = "cbbd"
   Output: "bb"
 */
-public class Solution{
+public class Solution {
 
     @Test
     public void test1() {

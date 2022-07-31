@@ -35,7 +35,7 @@ import static junit.framework.TestCase.assertEquals;
 
     Follow up: The overall run time complexity should be O(log (m+n)).
  */
-public class Solution{
+public class Solution {
 
     @Test
     public void test() {
