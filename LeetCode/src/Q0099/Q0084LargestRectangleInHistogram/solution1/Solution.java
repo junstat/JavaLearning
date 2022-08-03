@@ -1,7 +1,7 @@
 package Q0099.Q0084LargestRectangleInHistogram.solution1;
 
 public class Solution {
-    public int largestRectangleArea(int[] heights) {
+    public int largestRectangleArea1(int[] heights) {
         int len = heights.length;
         int ans = 0;
         for (int cur = 0; cur < len; cur++) { // 枚举高

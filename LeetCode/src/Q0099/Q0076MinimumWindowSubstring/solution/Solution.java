@@ -1,13 +1,5 @@
 package Q0099.Q0076MinimumWindowSubstring.solution;
 
-/*
-    Here is a 10-line template that can solve most 'substring' problems
-    https://leetcode.com/problems/minimum-window-substring/discuss/26808/Here-is-a-10-line-template-that-can-solve-most-'substring'-problems
-
-    1. Use two pointers: start and end to represent a window.
-    2. Move end to find a valid window.
-    3. When a valid window is found, move start to find a smaller window.
- */
 public class Solution {
     public String minWindow(String s, String t) {
         int[] map = new int[128];

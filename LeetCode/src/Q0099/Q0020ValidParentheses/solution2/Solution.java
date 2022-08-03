@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Solution {
-
     public boolean isValid(String s) {
         Deque<Character> brackets = new ArrayDeque<>();
         Map<Character, Character> bracketMaps = new HashMap<>();

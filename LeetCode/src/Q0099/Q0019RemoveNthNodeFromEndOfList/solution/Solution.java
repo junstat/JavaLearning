@@ -2,20 +2,15 @@ package Q0099.Q0019RemoveNthNodeFromEndOfList.solution;
 
 import DataStructure.ListNode;
 
-public class Solution {
+class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
-        if (head.next == null) return null;
-        ListNode slow = head, fast = head;
+        ListNode dummy = new ListNode(-1, head), fast = dummy, slow = dummy;
         while (n-- > 0) fast = fast.next;
-
-        if (fast == null) head = slow.next;
-        else {
-            while (fast.next != null) {
-                slow = slow.next;
-                fast = fast.next;
-            }
-            slow.next = slow.next.next;
+        while (fast.next != null) { // 找前驱
+            fast = fast.next;
+            slow = slow.next;
         }
-        return head;
+        slow.next = slow.next.next;
+        return dummy.next;
     }
 }

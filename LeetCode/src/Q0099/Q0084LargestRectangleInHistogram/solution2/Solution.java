@@ -8,15 +8,15 @@ public class Solution {
         int n = heights.length;
         Deque<Integer> d = new ArrayDeque<>();
         int ans = 0;
-        for (int i = 0; i <= n; i++) {
-            int h = (i == n ? 0 : heights[i]);
-            if (d.isEmpty() || h >= heights[d.peek()]) {
-                d.push(i);
-            } else {
-                int top = d.pop();
-                int w = (d.isEmpty() ? i : i - 1 - d.peek());
-                ans = Math.max(ans, heights[top] * w);
-                i--;
+        for (int r = 0; r <= n; r++) {
+            int h = (r == n ? 0 : heights[r]);
+            if (d.isEmpty() || h >= heights[d.peekLast()]) d.addLast(r);
+            else {
+                int cur = d.pollLast();
+                int l = d.isEmpty() ? -1 : d.peekLast();
+                int w = r - l - 1;
+                ans = Math.max(ans, heights[cur] * w);
+                r--;
             }
         }
         return ans;

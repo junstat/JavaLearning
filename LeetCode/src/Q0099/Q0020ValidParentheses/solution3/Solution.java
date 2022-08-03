@@ -4,15 +4,15 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class Solution {
-
     public boolean isValid(String s) {
-        Deque<Character> stack = new ArrayDeque<>();
-        for (char c : s.toCharArray()) {
-            if ('(' == c) stack.push(')');
-            else if ('[' == c) stack.push(']');
-            else if ('{' == c) stack.push('}');
-            else if (stack.isEmpty() || stack.pop() != c) return false;
+        Deque<Character> d = new ArrayDeque<>();
+        char[] cs = s.toCharArray();
+        for (char c : cs) {
+            if (c == '(') d.addLast(')');
+            else if (c == '[') d.addLast(']');
+            else if (c == '{') d.addLast('}');
+            else if (d.isEmpty() || c != d.pollLast()) return false;
         }
-        return stack.isEmpty();
+        return d.isEmpty();
     }
 }

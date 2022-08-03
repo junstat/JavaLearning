@@ -12,4 +12,3 @@ public class Solution {
         return last == 0;
     }
 }
-

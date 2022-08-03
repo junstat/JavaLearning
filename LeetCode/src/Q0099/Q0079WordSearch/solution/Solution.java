@@ -1,32 +1,39 @@
 package Q0099.Q0079WordSearch.solution;
 
 public class Solution {
-    /*
-       Here accepted solution based on recursion. To save memory I decided to apply bit mask for every visited cell.
-       Please check board[y][x] ^= 256;
-     */
-    public boolean exist(char[][] board, String word) {
-        for (int i = 0; i < board.length; i++) {  // y represent row number
-            for (int j = 0; j < board[i].length; j++) {  // x represent col number
-                if (exist(board, i, j, word, 0)) return true;
+    char[][] board;
+    boolean[][] visited;
+    int m, n;
+    char[] word;
+    int pathLen = 0;
+
+    public boolean exist(char[][] _board, String _word) {
+        board = _board;
+        m = board.length;
+        n = board[0].length;
+        visited = new boolean[m][n];
+        word = _word.toCharArray();
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (dfs(i, j)) return true;
             }
         }
         return false;
     }
 
-    /*
-      判断以网格的(i,j)位置出发，能否搜索到单词 word[k...]
-     */
-    private boolean exist(char[][] board, int i, int j, String word, int k) {
-        if (k == word.length()) return true;
-        if (i < 0 || j < 0 || i == board.length || j == board[i].length) return false;
-        if (board[i][j] != word.charAt(k)) return false;
-        board[i][j] ^= 256;  // 已检查过
-        boolean found = exist(board, i, j + 1, word, k + 1) // 右
-                || exist(board, i, j - 1, word, k + 1) // 左
-                || exist(board, i + 1, j, word, k + 1)  // 上
-                || exist(board, i - 1, j, word, k + 1); // 下
-        board[i][j] ^= 256;  // 恢复
-        return found;
+    boolean dfs(int i, int j) {
+        if (pathLen == word.length) return true;
+        boolean ans = false;
+        if (i >= 0 && i < m && j >= 0 && j < n
+                && board[i][j] == word[pathLen] && !visited[i][j]) {
+            ++pathLen;
+            visited[i][j] = true;
+            ans = dfs(i, j - 1) || dfs(i - 1, j) || dfs(i, j + 1) || dfs(i + 1, j);
+            if (!ans) {
+                --pathLen;
+                visited[i][j] = false;
+            }
+        }
+        return ans;
     }
 }
