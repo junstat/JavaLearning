@@ -24,7 +24,7 @@ package Q0399.Q0338CountingBits.review;
     4 --> 100
     5 --> 101
  */
-public class Solution{
+public class Solution {
     public int[] countBits(int n) {
 
         return null;

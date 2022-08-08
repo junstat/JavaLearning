@@ -1,8 +1,5 @@
 package Q0299.Q0221MaximalSquare.solution3;
 
-/*
-    Furthermore, we may only use just one dimension Array.
- */
 public class Solution {
     public int maximalSquare(char[][] matrix) {
         if (matrix == null || matrix.length == 0) return 0;

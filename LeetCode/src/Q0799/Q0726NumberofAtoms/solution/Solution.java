@@ -2,7 +2,7 @@ package Q0799.Q0726NumberofAtoms.solution;
 
 import java.util.*;
 
-class Solution {
+public class Solution {
     class Node {
         String s;
         int v;

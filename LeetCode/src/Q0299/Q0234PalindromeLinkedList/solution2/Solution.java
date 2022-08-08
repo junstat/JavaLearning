@@ -6,20 +6,13 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class Solution {
-    /*
-   方法二: 用栈
-  */
     public boolean isPalindrome(ListNode head) {
-        Deque<ListNode> S = new ArrayDeque<>();
-        ListNode p = head, q;
-        while (p != null) {
-            S.push(p);
-            p = p.next;
-        }
-        for (p = head; p != null; p = p.next) {
-            q = S.peek();
+        Deque<ListNode> d = new ArrayDeque<>();
+        for (ListNode p = head; p != null; p = p.next) d.addLast(p);
+        for (ListNode p = head; p != null && !d.isEmpty(); p = p.next) {
+            ListNode q = d.peekLast();
             if (q.val != p.val) return false;
-            S.pop();
+            d.pollLast();
         }
         return true;
     }

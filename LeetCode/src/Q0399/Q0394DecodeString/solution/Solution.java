@@ -3,18 +3,19 @@ package Q0399.Q0394DecodeString.solution;
 public class Solution {
     int idx = 0;
 
-    public String decodeString(String s) {
+    public String decodeString(String ss) {
         StringBuilder ans = new StringBuilder();
-        while (idx < s.length() && s.charAt(idx) != ']') {
-            if (!Character.isDigit(s.charAt(idx))) ans.append(s.charAt(idx++));
+        char[] s = ss.toCharArray();
+        int n = s.length;
+        while (idx < n && s[idx] != ']') {
+            if (!Character.isDigit(s[idx])) ans.append(s[idx++]);
             else {
                 int k = 0;
-                while (idx < s.length() && Character.isDigit(s.charAt(idx)))
-                    k = k * 10 + s.charAt(idx++) - '0';
-                idx++; // for '['
-                String pre = decodeString(s);
+                while (idx < n && Character.isDigit(s[idx]))
+                    k = k * 10 + s[idx++] - '0';
+                idx++;  // for '['
+                String pre = decodeString(ss);
                 idx++;  // for ']'
-
                 while (k-- > 0) ans.append(pre);
             }
         }

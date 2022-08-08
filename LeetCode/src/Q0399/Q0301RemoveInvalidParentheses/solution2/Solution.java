@@ -23,6 +23,13 @@ public class Solution {
         return new ArrayList<>(set);
     }
 
+    /**
+     * dfs爆搜
+     *
+     * @param u:     当前处理到s的位置(下标)
+     * @param cur:   局部结果
+     * @param score: 左括号、右括号得分
+     */
     void dfs(int u, String cur, int score) {
         if (score < 0 || score > max) return;
         if (u == n) {
