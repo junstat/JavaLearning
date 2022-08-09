@@ -9,9 +9,8 @@ public class Solution {
         int c = 0, r = 0, len = 1, start = 0;
         for (int i = 1; i < n - 1; i++) {
             int iM = 2 * c - i;
-            p[i] = i < r ? Math.min(r - i, p[iM]) : 0; // 左边界越界限定
-            while (ts[i + 1 + p[i]] == ts[i - 1 - p[i]]) p[i]++;
-            // 判断是否更新R
+            p[i] = i < r ? Math.min(r - i, p[iM]) : 0;
+            while (ts[i + p[i] + 1] == ts[i - p[i] - 1]) p[i]++;
             if (i + p[i] > r) {
                 c = i;
                 r = i + p[i];
@@ -28,9 +27,9 @@ public class Solution {
         int n = s.length();
         if (n == 0) return "^$";
         char[] cs = s.toCharArray();
-        StringBuilder res = new StringBuilder("^");
-        for (int i = 0; i < n; i++) res.append('#').append(cs[i]);
-        res.append("#$");
-        return res.toString();
+        StringBuilder ans = new StringBuilder("^");
+        for (char c : cs) ans.append('#').append(c);
+        ans.append("#$");
+        return ans.toString();
     }
 }
