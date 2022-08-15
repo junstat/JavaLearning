@@ -1,0 +1,4 @@
+ab aab
+.*
+ab abc bsd
+.*

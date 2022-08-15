@@ -1,0 +1,16 @@
+0
+6
+word
+dd
+da
+dc
+dword
+d
+4
+6
+word
+dd
+da
+dc
+dword
+d
