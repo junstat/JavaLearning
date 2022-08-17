@@ -2,7 +2,7 @@ import random
 import sys
 
 if sys.platform != "Linux":
-    file_in = open("input.txt")
+    file_in = open("lc.txt")
     sys.stdin = file_in
 
 questions = [x.strip() for x in sys.stdin]
