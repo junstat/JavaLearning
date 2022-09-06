@@ -1,4 +1,4 @@
-package Q0699.Q0647PalindromicSubstrings.solution;
+package Q0699.Q0647PalindromicSubstrings.solution2;
 
 public class Solution {
     public int countSubstrings(String s) {
