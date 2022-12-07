@@ -12,8 +12,8 @@ def solve(nums, n):
     # 按工作时间降序
     nums.sort(key=lambda x: -x[1])
     for i in range(n):
-        f[i] = last + machine[i][0] + machine[i][1]
-        last += machine[i][0]
+        f[i] = last + nums[i][0] + nums[i][1]
+        last += nums[i][0]
         ans = max(ans, f[i])
     print(ans)
 
