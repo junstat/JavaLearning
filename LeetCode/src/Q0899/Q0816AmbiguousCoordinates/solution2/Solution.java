@@ -1,4 +1,4 @@
-package Q0899.Q0816AmbiguousCoordinates.solution;
+package Q0899.Q0816AmbiguousCoordinates.solution2;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Q0799.Q0754ReachaNumber.solution;
+package Q0799.Q0754ReachaNumber.solution2;
 
 public class Solution {
     public int reachNumber(int target) {
