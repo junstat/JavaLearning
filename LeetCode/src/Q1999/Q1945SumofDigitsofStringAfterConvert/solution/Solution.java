@@ -21,7 +21,6 @@ public class Solution {
     }
 
     public int getLucky(String s, int k) {
-        int n = s.length();
         char[] cs = s.toCharArray();
         int ans = 0, cur = 0;
         for (char c : cs) {

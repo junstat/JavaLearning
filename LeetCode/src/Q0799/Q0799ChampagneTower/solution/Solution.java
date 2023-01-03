@@ -1,11 +1,12 @@
 package Q0799.Q0799ChampagneTower.solution;
 
+
 import java.util.ArrayList;
 
 public class Solution {
     public double champagneTower(int poured, int query_row, int query_glass) {
         if (poured == 0) return 0;
-        ArrayList<Double> prevRow = new ArrayList<>(poured);
+        ArrayList<Double> prevRow = new ArrayList<Double>(poured);
 
         while (query_row-- > 0) {
             ArrayList<Double> curRow = new ArrayList<Double>();
