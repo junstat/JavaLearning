@@ -1,4 +1,4 @@
-package Q0799.Q0799ChampagneTower.solution;
+package Q0799.Q0799ChampagneTower.solution2;
 
 
 import java.util.ArrayList;
