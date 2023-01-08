@@ -1,4 +1,4 @@
-package Q0899.Q0808SoupServings.solution;
+package Q0899.Q0808SoupServings.solution2;
 
 public class Solution {
     double[][] memo = new double[200][200];
