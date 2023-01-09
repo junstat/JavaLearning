@@ -1,23 +1,31 @@
 package Q0899.Q0818RaceCar.solution3;
 
+import java.util.Arrays;
+
 public class Solution {
     public int racecar(int target) {
         int[] dp = new int[target + 1];
+        Arrays.fill(dp, 1, dp.length, -1);
+        return racecar(target, dp);
+    }
 
-        for (int i = 1; i <= target; i++) {
-            dp[i] = Integer.MAX_VALUE;
-
-            int m = 1, j = 1;
-
-            for (; j < i; j = (1 << ++m) - 1) {
-                for (int q = 0, p = 0; p < j; p = (1 << ++q) - 1) {
-                    dp[i] = Math.min(dp[i], m + 1 + q + 1 + dp[i - (j - p)]);
-                }
-            }
-
-            dp[i] = Math.min(dp[i], m + (i == j ? 0 : 1 + dp[j - i]));
+    private int racecar(int i, int[] dp) {
+        if (dp[i] >= 0) {
+            return dp[i];
         }
 
-        return dp[target];
+        dp[i] = Integer.MAX_VALUE;
+
+        int m = 1, j = 1;
+
+        for (; j < i; j = (1 << ++m) - 1) {
+            for (int q = 0, p = 0; p < j; p = (1 << ++q) - 1) {
+                dp[i] = Math.min(dp[i],  m + 1 + q + 1 + racecar(i - (j - p), dp));
+            }
+        }
+
+        dp[i] = Math.min(dp[i], m + (i == j ? 0 : 1 + racecar(j - i, dp)));
+
+        return dp[i];
     }
 }

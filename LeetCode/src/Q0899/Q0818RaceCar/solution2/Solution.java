@@ -1,31 +1,43 @@
 package Q0899.Q0818RaceCar.solution2;
 
-import java.util.Arrays;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Set;
 
 public class Solution {
     public int racecar(int target) {
-        int[] dp = new int[target + 1];
-        Arrays.fill(dp, 1, dp.length, -1);
-        return racecar(target, dp);
-    }
+        Deque<int[]> queue = new LinkedList<>();
+        queue.offerLast(new int[] {0, 1}); // starts from position 0 with speed 1
 
-    private int racecar(int i, int[] dp) {
-        if (dp[i] >= 0) {
-            return dp[i];
-        }
+        Set<String> visited = new HashSet<>();
+        visited.add(0 + " " + 1);
 
-        dp[i] = Integer.MAX_VALUE;
+        for (int level = 0; !queue.isEmpty(); level++) {
+            for(int k = queue.size(); k > 0; k--) {
+                int[] cur = queue.pollFirst();  // cur[0] is position; cur[1] is speed
 
-        int m = 1, j = 1;
+                if (cur[0] == target) {
+                    return level;
+                }
 
-        for (; j < i; j = (1 << ++m) - 1) {
-            for (int q = 0, p = 0; p < j; p = (1 << ++q) - 1) {
-                dp[i] = Math.min(dp[i],  m + 1 + q + 1 + racecar(i - (j - p), dp));
+                int[] nxt = new int[] {cur[0] + cur[1], cur[1] << 1};  // accelerate instruction
+                String key = (nxt[0] + " " + nxt[1]);
+
+                if (!visited.contains(key) && 0 < nxt[0] && nxt[0] < (target << 1)) {
+                    queue.offerLast(nxt);
+                    visited.add(key);
+                }
+
+                nxt = new int[] {cur[0], cur[1] > 0 ? -1 : 1};  // reverse instruction
+                key = (nxt[0] + " " + nxt[1]);
+
+                if (!visited.contains(key) && 0 < nxt[0] && nxt[0] < (target << 1)) {
+                    queue.offerLast(nxt);
+                    visited.add(key);
+                }
             }
         }
-
-        dp[i] = Math.min(dp[i], m + (i == j ? 0 : 1 + racecar(j - i, dp)));
-
-        return dp[i];
+        return -1;
     }
 }

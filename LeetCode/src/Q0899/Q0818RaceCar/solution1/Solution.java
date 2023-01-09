@@ -1,43 +1,39 @@
 package Q0899.Q0818RaceCar.solution1;
 
-import java.util.Deque;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Set;
-
 public class Solution {
-    public int racecar(int target) {
-        Deque<int[]> queue = new LinkedList<>();
-        queue.offerLast(new int[] {0, 1}); // starts from position 0 with speed 1
+    // 动态规划 + 数学
+    public static int racecar(int target) {
+        int[] dp = new int[target + 1];
+        return process(target, dp);
+    }
 
-        Set<String> visited = new HashSet<>();
-        visited.add(0 + " " + 1);
-
-        for (int level = 0; !queue.isEmpty(); level++) {
-            for(int k = queue.size(); k > 0; k--) {
-                int[] cur = queue.pollFirst();  // cur[0] is position; cur[1] is speed
-
-                if (cur[0] == target) {
-                    return level;
-                }
-
-                int[] nxt = new int[] {cur[0] + cur[1], cur[1] << 1};  // accelerate instruction
-                String key = (nxt[0] + " " + nxt[1]);
-
-                if (!visited.contains(key) && 0 < nxt[0] && nxt[0] < (target << 1)) {
-                    queue.offerLast(nxt);
-                    visited.add(key);
-                }
-
-                nxt = new int[] {cur[0], cur[1] > 0 ? -1 : 1};  // reverse instruction
-                key = (nxt[0] + " " + nxt[1]);
-
-                if (!visited.contains(key) && 0 < nxt[0] && nxt[0] < (target << 1)) {
-                    queue.offerLast(nxt);
-                    visited.add(key);
-                }
+    public static int process(int target, int[] dp) {
+        if (dp[target] > 0) {
+            return dp[target];
+        }
+        int steps = 0;
+        int speed = 1;
+        while (speed <= target) {
+            speed <<= 1;
+            steps++;
+        }
+        int ans = 0;
+        int beyond = speed - 1 - target;
+        if (beyond == 0) {
+            ans = steps;
+        } else {
+            ans = steps + 1 + process(beyond, dp);
+            steps--;
+            speed >>= 1;
+            int lack = target - (speed - 1);
+            int offset = 1;
+            for (int back = 0; back < steps; back++) {
+                ans = Math.min(ans, steps + 1 + back + 1 + process(lack, dp));
+                lack += offset;
+                offset <<= 1;
             }
         }
-        return -1;
+        dp[target] = ans;
+        return ans;
     }
 }
