@@ -14,8 +14,8 @@ public class Solution {
             best = Math.max(map.get(key), best);
             map.put(key, best);
         }
-        for (int i = 0; i < worker.length; i++) {
-            res += map.floorEntry(worker[i]).getValue();
+        for (int j : worker) {
+            res += map.floorEntry(j).getValue();
         }
         return res;
     }
