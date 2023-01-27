@@ -3,7 +3,7 @@ package Q30.solution;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class Solution {
+public class MinStack {
     Deque<Integer> data = new ArrayDeque<>();
     Deque<Integer> helper = new ArrayDeque<>();
 
