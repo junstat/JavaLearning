@@ -2,9 +2,9 @@ package Q1299.Q1234ReplacetheSubstringforBalancedString.solution;
 
 public class Solution {
     public int balancedString(String S) {
-        var s = S.toCharArray();
-        var cnt = new int['X']; // 也可以用哈希表，不过数组更快一些
-        for (var c : s) ++cnt[c];
+        char[] s = S.toCharArray();
+        int[] cnt = new int['X']; // 也可以用哈希表，不过数组更快一些
+        for (char c : s) ++cnt[c];
         int n = s.length, m = n / 4;
         if (cnt['Q'] == m && cnt['W'] == m && cnt['E'] == m && cnt['R'] == m)
             return 0; // 已经符合要求啦
