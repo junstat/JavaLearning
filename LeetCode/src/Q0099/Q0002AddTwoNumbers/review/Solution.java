@@ -6,23 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-/*
-   [Medium]
-   You are given two non-empty linked lists representing two non-negative integers.
-   The digits are stored in reverse order, and each of their nodes contains a single digit.
-   Add the two numbers and return the sum as a linked list.
-
-   You may assume the two numbers do not contain any leading zero, except the number 0 itself.
-
-   Input: l1 = [2,4,3], l2 = [5,6,4]
-   Output: [7,0,8]
-   Explanation: 342 + 465 = 807.
-
-   分析:
-   假设l1, l2均为3位数，对于阅读顺序: 百位、十位、个位，链表存储顺序: 个位、十位、百位，计算顺序与链表存储顺序一致，
-   故遍历链表，设置进位即可。
- */
-public class Solution{
+public class Solution {
 
     @Test
     public void test1() {
@@ -39,10 +23,25 @@ public class Solution{
         ListNode expect = ListNodes.createListFromArray(new int[]{8, 9, 9, 9, 0, 0, 0, 1});
         assertEquals(expect, addTwoNumbers(l1, l2));
     }
-
-
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-
-        return null;
+        var p = l1;
+        var q = l2;
+        var dummy = new ListNode(0);
+        var tail = dummy;
+        var c = 0;
+        while (p != null || q != null) {
+            var a = p != null ? p.val : 0;
+            var b = q != null ? q.val : 0;
+            c = a + b + c;
+            tail.next = new ListNode(c % 10);
+            tail = tail.next;
+            c /= 10;
+            if (p != null) p = p.next;
+            if (q != null) q = q.next;
+        }
+        if (c != 0) tail.next = new ListNode(c);
+        return dummy.next;
     }
+
+
 }
