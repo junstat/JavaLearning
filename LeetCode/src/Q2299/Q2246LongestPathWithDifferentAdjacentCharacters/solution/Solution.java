@@ -1,0 +1,32 @@
+package Q2299.Q2246LongestPathWithDifferentAdjacentCharacters.solution;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+
+public class Solution {
+    int ans;
+
+    public int longestPath(int[] parent, String s) {
+        ans = 0;
+        List<Integer>[] children = new ArrayList[parent.length];
+        for (int i = 0; i < parent.length; i++)
+            children[i] = new ArrayList<>();
+        for (int i = 1; i < parent.length; i++)
+            children[parent[i]].add(i);
+        dfs(children, s, 0);
+        return ans;
+    }
+
+    int dfs(List<Integer>[] children, String s, int i) {
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        for (int j : children[i]) {
+            int cur = dfs(children, s, j);
+            if (s.charAt(j) != s.charAt(i)) queue.offer(-cur);
+        }
+        int big1 = queue.isEmpty() ? 0 : -queue.poll();
+        int big2 = queue.isEmpty() ? 0 : -queue.poll();
+        ans = Math.max(ans, big1 + big2 + 1);
+        return big1 + 1;
+    }
+}
