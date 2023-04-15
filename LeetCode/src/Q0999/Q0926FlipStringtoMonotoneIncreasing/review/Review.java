@@ -1,6 +1,4 @@
-package Q0999.Q0926FlipStringtoMonotoneIncreasing;
-
-import org.junit.Test;
+package Q0999.Q0926FlipStringtoMonotoneIncreasing.review;
 
 /*
     [Medium]

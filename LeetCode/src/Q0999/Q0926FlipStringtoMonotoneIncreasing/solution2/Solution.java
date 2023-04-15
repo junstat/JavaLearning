@@ -1,4 +1,4 @@
-package Q0999.Q0926FlipStringtoMonotoneIncreasing;
+package Q0999.Q0926FlipStringtoMonotoneIncreasing.solution2;
 
 public class Solution {
     public int minFlipsMonoIncr(String s) {
