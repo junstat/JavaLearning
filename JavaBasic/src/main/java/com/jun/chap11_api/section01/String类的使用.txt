@@ -1,0 +1,60 @@
+1. String类的理解(以JDK8为例说明)
+1.1 类的声明:
+JDK 8
+public final class String
+    implements java.io.Serializable, Comparable<String>, CharSequence
+
+JDK 17
+public final class String
+    implements java.io.Serializable, Comparable<String>, CharSequence,
+               Constable, ConstantDesc
+
+> final: String是不可被继承的
+> Serializable: 可序列化的接口。凡是实现此接口的类的对象就可以通过网络或本地流进行性数据的传输
+> Comparable: 凡是实现此接口的类，其对象都可以比较大小
+
+1.2 内部声明的属性:
+JDK 8
+private final char value[];
+
+JDK 17
+private final byte[] value;  // 存储字符串数据的容器
+> final: 指明此value数组一旦初始化，其地址就不可变
+
+为了节省内存做了优化
+that most String objects contain only Latin-1 characters. Such characters
+require only one byte of storage, hence half of the space in the internal
+char arrays of such String objects is going unused.
+
+2. 字符串常量的存储位置
+> 字符串常量都存储在字符串常量池(StringTable)中
+> 字符串常量池不允许存放两个相同的字符串常量。
+> 字符串常量池，在不同的jdk版本中，存放位置不同
+   jdk7之前：字符串常量池存放在方法区中
+   jdk7及之后: 字符串常量池存放在堆中
+
+3. String的不可变性的理解
+① 当对字符串变量重新赋值时，需要重新指定一个字符串常量的位置进行赋值，不能在原有的位置修改
+② 当对现有的字符串进行拼接操作时，需要重新开辟空间保存拼接后的字符串，不能在原有的位置修改
+③ 当调用字符串的replace()替换现有的某个字符时，需要重新开辟空间保存修改以后的字符串，不能在原有的位置修改
+
+4. String实例化的两种方式
+第1种方式: String s1 = "hello";
+第2种方式: String s2 = new String("hello");
+
+[面试题]
+String s2 = new String("hello"); 在内存中创建了几个对象？ 两个
+一个是堆空间中new的对象，另一个是在字符串常量池中生成的字面量
+
+5. String的连接操作+
+情况1: 常量 + 常量
+情况2: 常量 + 变量 或 变量 + 变量
+情况3: 调用字符串的intern()
+
+(了解) 情况4: concat()
+
+6. String的构造器和常用方法
+6.1 构造器
+
+
+6.2 常用方法

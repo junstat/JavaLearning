@@ -1,0 +1,9 @@
+除了用synchronize同步机制处理线程安全问题之外，还可以使用jdk5.0提供的Lock锁的方式
+
+1. 步骤
+1> 创建Lock实例，需要确保多个线程共用同一个Lock实例
+2> 执行 lock()方法
+3> 执行 unlock()方法
+
+2. 面试题
+synchronize同步的方式与Lock的对比？

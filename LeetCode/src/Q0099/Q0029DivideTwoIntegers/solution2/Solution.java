@@ -24,7 +24,7 @@ public class Solution {
         while (k > 0) {
             if ((k & 1) == 1) ans += a;
             k >>= 1;
-            a += a;
+            a <<= 1;
         }
         return ans;
     }
