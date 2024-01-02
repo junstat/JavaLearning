@@ -47,14 +47,23 @@ String s2 = new String("hello"); 在内存中创建了几个对象？ 两个
 一个是堆空间中new的对象，另一个是在字符串常量池中生成的字面量
 
 5. String的连接操作+
-情况1: 常量 + 常量
-情况2: 常量 + 变量 或 变量 + 变量
-情况3: 调用字符串的intern()
+情况1: 常量 + 常量: 结果仍然存储在字符串常量池中，返回此字面量的地址。注: 此时的常量可能是字面量，也可能是final修饰的变量
+情况2: 常量 + 变量 或 变量 + 变量: 都会通过new的方式创建一个新的字符串，返回堆空间中此字符串对象的地址
+情况3: 调用字符串的intern(): 返回的是字符串常量池中字面量的地址
 
-(了解) 情况4: concat()
+(了解) 情况4: concat(): 不管是常量调用此方法，还是变量调用，同样不管参数是常量还是变量，总之，调用完concat()方法都返回一个新new的对象>
 
 6. String的构造器和常用方法
 6.1 构造器
-
+* `public String() ` ：初始化新创建的 String对象，以使其表示空字符序列。
+* ` String(String original)`： 初始化一个新创建的 `String` 对象，使其表示一个与参数相同的字符序列；换句话说，新创建的字符串是该参数字符串的副本。
+* `public String(char[] value) ` ：通过当前参数中的字符数组来构造新的String。
+* `public String(char[] value,int offset, int count) ` ：通过字符数组的一部分来构造新的String。
+* `public String(byte[] bytes) ` ：通过使用平台的**默认字符集**解码当前参数中的字节数组来构造新的String。
+* `public String(byte[] bytes,String charsetName) ` ：通过使用指定的字符集解码当前参数中的字节数组来构造新的String。
 
 6.2 常用方法
+
+
+7. String 算法训练
+

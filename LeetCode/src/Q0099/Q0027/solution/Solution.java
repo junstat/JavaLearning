@@ -1,0 +1,9 @@
+package Q0099.Q0027.solution;
+
+public class Solution {
+    public int removeElement(int[] nums, int val) {
+        int i = 0;
+        for (int n : nums) if (n != val) nums[i++] = n;
+        return i;
+    }
+}
